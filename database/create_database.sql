@@ -1,1 +1,3 @@
-CREATE DATABASE IF NOT EXISTS realtorairbnb;
+-- Create the database if it doesn't exist
+CREATE DATABASE
+IF NOT EXISTS realtorairbnb;
