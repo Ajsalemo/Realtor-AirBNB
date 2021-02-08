@@ -4,14 +4,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
+    
     private Integer id;
+    @Min(1)
     private Integer uid;
+    @NotEmpty(message = "Username may not be empty")
     private String username;
 
     public Integer getId() {
