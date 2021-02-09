@@ -11,7 +11,8 @@ import javax.validation.constraints.NotEmpty;
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    
+    // Integer and UID must start as a minimum of 1
+    @Min(1)
     private Integer id;
     @Min(1)
     private Integer uid;
