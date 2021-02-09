@@ -30,6 +30,14 @@ stages:
       vmImage: $(vmImageName)
 
     steps:
+    - bash: |
+        echo "Setting environment variables"
+      env:
+        DATABASE_HOST: $(DATABASE_HOST)
+        DATABASE_NAME: $(DATABASE_NAME)
+        DATABASE_PASSWORD: $(DATABASE_PASSWORD)
+        DATABASE_PORT: $(DATABASE_PORT)
+        DATABASE_USERNAME: $(DATABASE_USERNAME)
     - task: Maven@3
       displayName: 'Maven Package'
       inputs:
