@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.3.8",
-    "@brainhubeu/react-carousel": "^1.19.26",
+    "@brainhubeu/react-carousel": "^2.0.1",
     "@craco/craco": "^6.1.1",
     "@tailwindcss/postcss7-compat": "^2.0.3",
     "@testing-library/jest-dom": "^5.11.4",
