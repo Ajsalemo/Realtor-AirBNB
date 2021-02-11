@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Users {
@@ -17,6 +18,7 @@ public class Users {
     @Min(1)
     private Integer uid;
     @NotEmpty(message = "Username may not be empty")
+    @Size(min = 2, max = 255, message = "Username must be between 2 and 255 characters")
     private String username;
 
     public Integer getId() {

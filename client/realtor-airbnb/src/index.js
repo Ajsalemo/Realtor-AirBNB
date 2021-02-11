@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
+// Tailwind styles
+import "./index.css";
 import Home from "./pages/home/Home";
 import reportWebVitals from "./reportWebVitals";
 
