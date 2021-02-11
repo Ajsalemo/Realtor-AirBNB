@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
 // Tailwind styles
 import "./index.css";
 import Home from "./pages/home/Home";
@@ -7,7 +8,9 @@ import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Home />
+    <BrowserRouter >
+      <Home />
+    </BrowserRouter >
   </React.StrictMode>,
   document.getElementById("root")
 );

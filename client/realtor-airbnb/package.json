@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.3.8",
-    "@brainhubeu/react-carousel": "^2.0.1",
     "@craco/craco": "^6.1.1",
     "@tailwindcss/postcss7-compat": "^2.0.3",
     "@testing-library/jest-dom": "^5.11.4",
@@ -16,6 +15,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-lazy-load-image-component": "^1.5.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.2",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "web-vitals": "^1.0.1"

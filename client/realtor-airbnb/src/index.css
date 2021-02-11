@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .img-filter {
+    filter: opacity(var(--value, 100%));
+    --value: 57%;
+  }
+}
