@@ -14,7 +14,7 @@ export default function App() {
         classNames="object-center object-cover w-full h-screen img-filter"
       />
       <LandingNavigation />
-      <Footer classNames="bg-white h-12 fixed bottom-0 w-full" />
+      <Footer classNames="bg-gray-400 h-12 fixed bottom-0 w-full border-t-4 font-suez-one text-white" />
     </div>
   );
 }

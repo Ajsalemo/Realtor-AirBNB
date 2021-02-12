@@ -6,6 +6,9 @@ module.exports = {
       inset: {
         "1/10": "10%",
       },
+      fontFamily: {
+        "suez-one": ["Suez One, Helvetica, Arial, sans-serif"],
+      },
     },
   },
   variants: {
