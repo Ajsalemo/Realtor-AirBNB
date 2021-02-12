@@ -10,3 +10,24 @@
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Suez+One&display=swap");
+
+/* Scrollbar */
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: blue orange;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgb(133, 127, 127);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #3b3a3a;
+  border-radius: 20px;
+}
