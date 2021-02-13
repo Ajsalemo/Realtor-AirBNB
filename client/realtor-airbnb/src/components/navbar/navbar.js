@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [isOpen, expandDropdown] = useState(false);
-  console.log(isOpen);
   return (
     <nav className="h-12 bg-gray-400 border-b-4 border-white font-suez-one text-white">
       {/* This div contains navigation links for tablet sized screens and bigger - this is hidden on mobile */}
