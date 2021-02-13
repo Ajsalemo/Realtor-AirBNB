@@ -20,9 +20,11 @@ export default function RealtorDashboard() {
           initialValues={{
             location: "",
           }}
-          onSubmit={async (values) => {
+          onSubmit={async (values, { resetForm }) => {
             await sleep(500);
-            console.log(JSON.stringify(values, null, 2));
+            console.log(values);
+            // Reset the form after form submission
+            resetForm();
           }}
         >
           {({ isSubmitting }) => (
@@ -33,7 +35,11 @@ export default function RealtorDashboard() {
                 className="w-full"
               />
               <button type="submit">
-                <FontAwesomeLib icon={faSearch} size="2x" classNames="text-white ml-2" />
+                <FontAwesomeLib
+                  icon={faSearch}
+                  size="2x"
+                  classNames="text-white ml-2"
+                />
               </button>
             </Form>
           )}
