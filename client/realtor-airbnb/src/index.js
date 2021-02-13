@@ -1,13 +1,17 @@
+import { ApolloProvider } from "@apollo/client";
 import RouteContainer from "@components/routecontainer/routecontainer";
 import React from "react";
 import ReactDOM from "react-dom";
+import { client } from "./apollographql/client/apolloclient";
 // Tailwind styles
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
-    <RouteContainer />
+    <ApolloProvider client={client}>
+      <RouteContainer />
+    </ApolloProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

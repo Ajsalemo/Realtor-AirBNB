@@ -1,3 +1,4 @@
+import DisplaySuggestions from "@components/displaysuggestions/displaysuggestions";
 import FontAwesomeLib from "@components/fontawesomelib/fontawesomelib";
 import Footer from "@components/footer/footer";
 import Navbar from "@components/navbar/navbar";
@@ -16,6 +17,8 @@ export default function RealtorDashboard() {
         className="object-center object-cover w-full sm:h-96"
       />
       <div className="flex justify-center bg-gray-400 border-b-4 border-t-4 border-white">
+        <button>For Sale</button>
+        <button>For Rent</button>
         <Formik
           initialValues={{
             location: "",
@@ -45,6 +48,7 @@ export default function RealtorDashboard() {
           )}
         </Formik>
       </div>
+      <DisplaySuggestions />
       <Footer classNames="bg-gray-400 h-12 absolute bottom-0 w-full border-t-4 font-suez-one text-white text-center pt-1" />
     </div>
   );
