@@ -15,7 +15,7 @@ export default function Navbar() {
           <Link to="/" className="pr-3">
             Home
           </Link>
-          <Link to="/" className="pr-3">
+          <Link to="/realtor-dashboard" className="pr-3">
             Realtor listings
           </Link>
           <Link to="/">AirBnB listings</Link>
