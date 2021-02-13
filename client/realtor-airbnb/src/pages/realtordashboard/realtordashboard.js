@@ -5,10 +5,30 @@ import Navbar from "@components/navbar/navbar";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import RealtorDashboardBackgroundImage from "@images/backgrounds/realtor_dashboard_background.jpg";
 import { Field, Form, Formik } from "formik";
+import { useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 export default function RealtorDashboard() {
+  const [isForSale, setIsForSale] = useState(true);
+  const [isForRent, setIsForRent] = useState(false);
+  // Functions to toggle the search mode state between looking for homes for rent or homes for sale
+  const toggleSaleSearchMode = () => {
+    if (isForSale) return;
+    if (!isForSale && isForRent) {
+      setIsForSale(true);
+      setIsForRent(false);
+    }
+  };
+
+  const toggleRentSearchMode = () => {
+    if (isForRent) return;
+    if (!isForRent && isForSale) {
+      setIsForRent(true);
+      setIsForSale(false);
+    }
+  };
+
   return (
     <div>
       <Navbar />
@@ -17,8 +37,26 @@ export default function RealtorDashboard() {
         className="object-center object-cover w-full sm:h-96"
       />
       <div className="flex justify-center bg-gray-400 border-b-4 border-t-4 border-white">
-        <button>For Sale</button>
-        <button>For Rent</button>
+        <button
+          className={
+            isForSale
+              ? "transition duration-500 ease-in-out rounded-lg border-2 border-white py-1 px-6 mx-1 my-1 font-suez-one bg-red-600"
+              : "rounded-lg border-2 border-white py-1 px-6 mx-1 my-1 font-suez-one"
+          }
+          onClick={() => toggleSaleSearchMode()}
+        >
+          For Sale
+        </button>
+        <button
+          className={
+            isForRent
+              ? "transition duration-500 ease-in-out rounded-lg border-2 border-white py-1 px-6 mx-1 my-1 font-suez-one bg-red-600"
+              : "rounded-lg border-2 border-white py-1 px-6 mx-1 my-1 font-suez-one"
+          }
+          onClick={() => toggleRentSearchMode()}
+        >
+          For Rent
+        </button>
         <Formik
           initialValues={{
             location: "",
