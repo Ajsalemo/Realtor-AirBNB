@@ -5,8 +5,8 @@ import { RestLink } from "apollo-link-rest";
 const restLink = new RestLink({
   uri: `${process.env.REACT_APP_RAPID_API_REST_API_URL}`,
   headers: {
-    "x-rapidapi-key": `${process.env.REACT_APP_RAPID_API_HOST}`,
-    "x-rapidapi-host": `${process.env.REACT_APP_RAPID_API_KEY}`,
+    "x-rapidapi-host": `${process.env.REACT_APP_RAPID_API_HOST}`,
+    "x-rapidapi-key": `${process.env.REACT_APP_RAPID_API_KEY}`,
   },
 });
 

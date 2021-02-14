@@ -1,21 +1,20 @@
+import { useLazyQuery } from "@apollo/client";
 import DisplaySuggestions from "@components/displaysuggestions/displaysuggestions";
 import FontAwesomeLib from "@components/fontawesomelib/fontawesomelib";
 import Footer from "@components/footer/footer";
+import LazyLoadImages from "@components/lazyloadimages/lazyloadimages";
 import Navbar from "@components/navbar/navbar";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import RealtorDashboardBackgroundImage from "@images/backgrounds/realtor_dashboard_background.jpg";
 import { Field, Form, Formik } from "formik";
 import { useState } from "react";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import { useLazyQuery } from "@apollo/client";
 import { REALTOR_FORSALE_QUERY } from "../../apollographql/queries/realtorforsalequery";
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 export default function RealtorDashboard() {
   const [getRealtorForsaleQuery, { loading, data }] = useLazyQuery(
     REALTOR_FORSALE_QUERY
   );
-  console.log(data)
+  console.log(data);
   const [isForSale, setIsForSale] = useState(true);
   const [isForRent, setIsForRent] = useState(false);
   // Functions to toggle the search mode state between looking for homes for rent or homes for sale
@@ -38,9 +37,9 @@ export default function RealtorDashboard() {
   return (
     <div>
       <Navbar />
-      <LazyLoadImage
+      <LazyLoadImages
         src={RealtorDashboardBackgroundImage}
-        className="object-center object-cover w-full sm:h-96"
+        classNames="object-center object-cover w-full sm:h-96"
       />
       <div className="flex justify-center bg-gray-400 border-b-4 border-t-4 border-white">
         <button
@@ -68,27 +67,21 @@ export default function RealtorDashboard() {
             location: "",
           }}
           onSubmit={async (values, { resetForm }) => {
-            await sleep(500);
-            console.log(values);
+            await getRealtorForsaleQuery({
+              variables: { location: values.location },
+            });
             // Reset the form after form submission
             resetForm();
           }}
         >
-          {({ isSubmitting, values }) => (
+          {({ isSubmitting, handleSubmit }) => (
             <Form className="flex bg-gray-400 w-3/4 md:w-1/2 my-2">
               <Field
                 name="location"
                 placeholder="Address, School, City, ZIP or Neighborhood"
                 className="w-full"
               />
-              <button
-                type="submit"
-                onClick={() =>
-                  getRealtorForsaleQuery({
-                    variables: { location: values.location },
-                  })
-                }
-              >
+              <button type="submit" onClick={handleSubmit}>
                 <FontAwesomeLib
                   icon={faSearch}
                   size="2x"
