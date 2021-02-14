@@ -7,9 +7,15 @@ import RealtorDashboardBackgroundImage from "@images/backgrounds/realtor_dashboa
 import { Field, Form, Formik } from "formik";
 import { useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { useLazyQuery } from "@apollo/client";
+import { REALTOR_FORSALE_QUERY } from "../../apollographql/queries/realtorforsalequery";
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 export default function RealtorDashboard() {
+  const [getRealtorForsaleQuery, { loading, data }] = useLazyQuery(
+    REALTOR_FORSALE_QUERY
+  );
+  console.log(data)
   const [isForSale, setIsForSale] = useState(true);
   const [isForRent, setIsForRent] = useState(false);
   // Functions to toggle the search mode state between looking for homes for rent or homes for sale
@@ -68,14 +74,21 @@ export default function RealtorDashboard() {
             resetForm();
           }}
         >
-          {({ isSubmitting }) => (
+          {({ isSubmitting, values }) => (
             <Form className="flex bg-gray-400 w-3/4 md:w-1/2 my-2">
               <Field
                 name="location"
                 placeholder="Address, School, City, ZIP or Neighborhood"
                 className="w-full"
               />
-              <button type="submit">
+              <button
+                type="submit"
+                onClick={() =>
+                  getRealtorForsaleQuery({
+                    variables: { location: values.location },
+                  })
+                }
+              >
                 <FontAwesomeLib
                   icon={faSearch}
                   size="2x"

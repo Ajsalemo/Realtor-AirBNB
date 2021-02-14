@@ -6,6 +6,7 @@ import { client } from "./apollographql/client/apolloclient";
 // Tailwind styles
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
+require("dotenv").config();
 
 ReactDOM.render(
   <React.StrictMode>
