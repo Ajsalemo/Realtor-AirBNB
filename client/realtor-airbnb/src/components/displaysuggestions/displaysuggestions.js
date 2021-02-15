@@ -10,7 +10,7 @@ export default function DisplaySuggestions({ data }) {
         if (searchTerm.full_address > 0) return `${searchTerm.full_address[0]}`;
         return `${searchTerm.line} ${searchTerm.city}, ${searchTerm.state_code} ${searchTerm.postal_code}`;
       case "city":
-        return `${searchTerm.city}, ${searchTerm.state_code} ${searchTerm.country}`
+        return `${searchTerm.city}, ${searchTerm.state_code} ${searchTerm.country}`;
       default:
         break;
     }
@@ -25,14 +25,20 @@ export default function DisplaySuggestions({ data }) {
           ? "No results. Try a different search query."
           : null}
       </h2>
-      <ul>
-        {data &&
-          data.realtorForsaleQuery.autocomplete.map((loc, i) => (
-            <li>
-              <Link to="/">{filterByAreaType(loc)}</Link>
-            </li>
-          ))}
-      </ul>
+      <div className="flex flex-col items-center md:justify-center md:flex-row">
+        <div className="bg-gray-400 w-1/2 sm:1/4">some text</div>
+        <div className="order-first md:order-none">
+          <ul className="text-center">
+            {data &&
+              data.realtorForsaleQuery.autocomplete.map((loc, i) => (
+                <li>
+                  <Link to="/" className="font-suez-one flex-grow">{filterByAreaType(loc)}</Link>
+                </li>
+              ))}
+          </ul>
+        </div>
+        <div className="bg-gray-400 w-1/2 sm:1/4">other text</div>
+      </div>
     </div>
   );
 }
