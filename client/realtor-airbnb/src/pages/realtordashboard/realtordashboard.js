@@ -4,7 +4,7 @@ import FontAwesomeLib from "@components/fontawesomelib/fontawesomelib";
 import Footer from "@components/footer/footer";
 import LazyLoadImages from "@components/lazyloadimages/lazyloadimages";
 import Navbar from "@components/navbar/navbar";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import RealtorDashboardBackgroundImage from "@images/backgrounds/realtor_dashboard_background.jpg";
 import { Field, Form, Formik } from "formik";
 import { useState } from "react";
@@ -14,7 +14,7 @@ export default function RealtorDashboard() {
   const [getRealtorForsaleQuery, { loading, data }] = useLazyQuery(
     REALTOR_FORSALE_QUERY
   );
-  console.log(data);
+
   const [isForSale, setIsForSale] = useState(true);
   const [isForRent, setIsForRent] = useState(false);
   // Functions to toggle the search mode state between looking for homes for rent or homes for sale
@@ -41,12 +41,12 @@ export default function RealtorDashboard() {
         src={RealtorDashboardBackgroundImage}
         classNames="object-center object-cover w-full sm:h-96"
       />
-      <div className="flex justify-center bg-gray-400 border-b-4 border-t-4 border-white">
+      <div className="flex flex-col justify-center md:flex-row bg-gray-400 border-b-4 border-t-4 border-white">
         <button
           className={
             isForSale
-              ? "transition duration-500 ease-in-out rounded-lg border-2 border-white py-1 px-6 mx-1 my-1 font-suez-one bg-red-600"
-              : "rounded-lg border-2 border-white py-1 px-6 mx-1 my-1 font-suez-one"
+              ? "transition duration-500 ease-in-out rounded-lg border-2 border-white py-1 px-6 my-1 font-suez-one bg-red-600 w-3/4 sm:w-1/2 mx-auto md:m-1 md:w-32"
+              : "rounded-lg border-2 border-white py-1 px-6 my-1 font-suez-one w-3/4 sm:w-1/2 mx-auto md:m-1 md:w-32"
           }
           onClick={() => toggleSaleSearchMode()}
         >
@@ -55,8 +55,8 @@ export default function RealtorDashboard() {
         <button
           className={
             isForRent
-              ? "transition duration-500 ease-in-out rounded-lg border-2 border-white py-1 px-6 mx-1 my-1 font-suez-one bg-red-600"
-              : "rounded-lg border-2 border-white py-1 px-6 mx-1 my-1 font-suez-one"
+              ? "transition duration-500 ease-in-out rounded-lg border-2 border-white py-1 px-6 my-1 font-suez-one bg-red-600 w-3/4 sm:w-1/2 mx-auto md:m-1 md:w-32"
+              : "rounded-lg border-2 border-white py-1 px-6 my-1 font-suez-one w-3/4 sm:w-1/2 mx-auto md:m-1 md:w-32"
           }
           onClick={() => toggleRentSearchMode()}
         >
@@ -75,24 +75,28 @@ export default function RealtorDashboard() {
           }}
         >
           {({ isSubmitting, handleSubmit }) => (
-            <Form className="flex bg-gray-400 w-3/4 md:w-1/2 my-2">
+            <Form className="flex bg-gray-400 w-5/6 md:w-1/2 my-2 mx-auto">
               <Field
                 name="location"
                 placeholder="Address, School, City, ZIP or Neighborhood"
                 className="w-full"
               />
-              <button type="submit" onClick={handleSubmit}>
+              <button type="submit" onClick={handleSubmit} disabled={loading}>
                 <FontAwesomeLib
-                  icon={faSearch}
+                  icon={!loading ? faSearch : faSpinner}
                   size="2x"
-                  classNames="text-white ml-2"
+                  classNames={
+                    !loading
+                      ? "text-white ml-2"
+                      : "animate-spin text-red-600 ml-2 transition duration-400 ease-in-out"
+                  }
                 />
               </button>
             </Form>
           )}
         </Formik>
       </div>
-      <DisplaySuggestions />
+      <DisplaySuggestions data={data} />
       <Footer classNames="bg-gray-400 h-12 absolute bottom-0 w-full border-t-4 font-suez-one text-white text-center pt-1" />
     </div>
   );
