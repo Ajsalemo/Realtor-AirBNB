@@ -8,10 +8,15 @@ export const REALTOR_FORSALE_QUERY = gql`
         path: "/locations/auto-complete?input={args.location}"
       ) {
       autocomplete {
+        area_type
         city
-        state_code
         country
+        full_address
+        line
+        postal_code
+        neighborhood
         slug_id
+        state_code
       }
     }
   }
