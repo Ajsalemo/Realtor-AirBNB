@@ -29,11 +29,11 @@ export default function DisplaySuggestions({ data }) {
         <div className="bg-gray-400 w-1/2 sm:1/4 font-suez-one p-1 text-center mt-2 rounded h-32 flex flex-col justify-center bg-realtor-dashboard-one bg-center mx-1">
           <span className="bg-white">Search for your next home.</span>
         </div>
-        <div className="order-first md:order-none w-1/2 sm:1/4 rounded">
+        <div className="order-first md:order-none w-3/4 sm:1/4 rounded">
           <ul className="text-center">
             {data &&
               data.realtorForsaleQuery.autocomplete.map((loc, i) => (
-                <li>
+                <li key={loc.slug_id}>
                   <Link to="/" className="font-suez-one flex-grow">
                     {filterByAreaType(loc)}
                   </Link>
