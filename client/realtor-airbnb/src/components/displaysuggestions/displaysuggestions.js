@@ -26,18 +26,27 @@ export default function DisplaySuggestions({ data }) {
           : null}
       </h2>
       <div className="flex flex-col items-center md:justify-center md:flex-row">
-        <div className="bg-gray-400 w-1/2 sm:1/4">some text</div>
-        <div className="order-first md:order-none">
+        <div className="bg-gray-400 w-1/2 sm:1/4 font-suez-one p-1 text-center mt-2 rounded h-32 flex flex-col justify-center bg-realtor-dashboard-one bg-center mx-1">
+          <span className="bg-white">Search for your next home.</span>
+        </div>
+        <div className="order-first md:order-none w-1/2 sm:1/4 rounded">
           <ul className="text-center">
             {data &&
               data.realtorForsaleQuery.autocomplete.map((loc, i) => (
                 <li>
-                  <Link to="/" className="font-suez-one flex-grow">{filterByAreaType(loc)}</Link>
+                  <Link to="/" className="font-suez-one flex-grow">
+                    {filterByAreaType(loc)}
+                  </Link>
                 </li>
               ))}
           </ul>
         </div>
-        <div className="bg-gray-400 w-1/2 sm:1/4">other text</div>
+        <div className="bg-gray-400 w-1/2 sm:1/4 font-suez-one p-1 text-center mt-2 rounded h-32 flex flex-col justify-center bg-realtor-dashboard-two bg-center">
+          <span className="bg-white">
+            Locate listings by searching for addresses, cities, zip codes or
+            neighborhoods.
+          </span>
+        </div>
       </div>
     </div>
   );

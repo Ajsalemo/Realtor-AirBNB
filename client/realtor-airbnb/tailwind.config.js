@@ -9,6 +9,12 @@ module.exports = {
       fontFamily: {
         "suez-one": ["Suez One, Helvetica, Arial, sans-serif"],
       },
+      backgroundImage: (theme) => ({
+        "realtor-dashboard-one":
+          "url('@images/realtordashboard/landingpagebackground1.jpg')",
+        "realtor-dashboard-two":
+          "url('@images/realtordashboard/landingpagebackground2.jpg')",
+      }),
     },
   },
   variants: {
