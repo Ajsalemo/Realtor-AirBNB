@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function DisplaySuggestions({ data }) {
+export default function DisplaySuggestions({ data, isForRent, isForSale }) {
   const filterByAreaType = (searchTerm) => {
     // Switch statement to filter output responses by area type // ex., city, address or neighborhood
     switch (searchTerm && searchTerm.area_type.toLowerCase()) {
@@ -35,7 +35,9 @@ export default function DisplaySuggestions({ data }) {
               data.realtorForsaleQuery.autocomplete.map((loc) => (
                 <li key={loc.slug_id}>
                   <Link
-                    to={`/listings/${loc.slug_id}/${loc.state_code}/200/0`}
+                    to={`/listings/${loc.slug_id}/${loc.state_code}/200/0/${
+                      isForRent ? "rent" : "sell"
+                    }`}
                     className="font-suez-one flex-grow"
                   >
                     {filterByAreaType(loc)}

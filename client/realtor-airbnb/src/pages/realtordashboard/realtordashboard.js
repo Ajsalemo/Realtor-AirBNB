@@ -96,7 +96,11 @@ export default function RealtorDashboard() {
           )}
         </Formik>
       </div>
-      <DisplaySuggestions data={data} />
+      <DisplaySuggestions
+        data={data}
+        isForRent={isForRent}
+        isForSale={isForRent}
+      />
       <Footer classNames="bg-gray-400 h-12 absolute bottom-0 w-full border-t-4 font-suez-one text-white text-center pt-1" />
     </div>
   );

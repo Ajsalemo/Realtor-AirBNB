@@ -8,7 +8,11 @@ export default function RouteContainer() {
     <Router>
       <Route path="/" exact component={Home} />
       <Route path="/realtor-dashboard" exact component={RealtorDashboard} />
-      <Route path="/listings/:slug_id/:state_code/:limit/:offset" exact component={RealtorListings} />
+      <Route
+        path="/listings/:slug_id/:state_code/:limit/:offset/:rentOrSell"
+        exact
+        component={RealtorListings}
+      />
     </Router>
   );
 }
