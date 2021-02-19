@@ -32,9 +32,12 @@ export default function DisplaySuggestions({ data }) {
         <div className="order-first md:order-none w-3/4 sm:1/4 rounded">
           <ul className="text-center">
             {data &&
-              data.realtorForsaleQuery.autocomplete.map((loc, i) => (
+              data.realtorForsaleQuery.autocomplete.map((loc) => (
                 <li key={loc.slug_id}>
-                  <Link to="/" className="font-suez-one flex-grow">
+                  <Link
+                    to={`/listings/${loc.slug_id}/${loc.state_code}/200/0`}
+                    className="font-suez-one flex-grow"
+                  >
                     {filterByAreaType(loc)}
                   </Link>
                 </li>

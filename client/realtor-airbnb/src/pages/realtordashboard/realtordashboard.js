@@ -1,4 +1,5 @@
 import { useLazyQuery } from "@apollo/client";
+import { REALTOR_FORSALE_QUERY } from "@apollographql_queries/realtorforsalequery";
 import DisplaySuggestions from "@components/displaysuggestions/displaysuggestions";
 import FontAwesomeLib from "@components/fontawesomelib/fontawesomelib";
 import Footer from "@components/footer/footer";
@@ -8,7 +9,6 @@ import { faSearch, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import RealtorDashboardBackgroundImage from "@images/backgrounds/realtor_dashboard_background.jpg";
 import { Field, Form, Formik } from "formik";
 import { useState } from "react";
-import { REALTOR_FORSALE_QUERY } from "../../apollographql/queries/realtorforsalequery";
 
 export default function RealtorDashboard() {
   const [getRealtorForsaleQuery, { loading, data }] = useLazyQuery(
