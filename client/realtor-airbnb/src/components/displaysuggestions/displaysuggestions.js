@@ -18,10 +18,10 @@ export default function DisplaySuggestions({ data, isForRent, isForSale }) {
 
   return (
     <div>
-      <h2 className="font-suez-one text-center text-2xl sm:text-3xl md:4xl">
-        {data && data.realtorForsaleQuery.autocomplete.length > 0
+      <h2 className="transition-opacity duration-300 ease-in-out font-suez-one text-center text-2xl sm:text-3xl md:4xl">
+        {data && data.autoCompleteQuery.autocomplete.length > 0
           ? "This is what we have found.."
-          : data && data.realtorForsaleQuery.autocomplete.length <= 0
+          : data && data.autoCompleteQuery.autocomplete.length <= 0
           ? "No results. Try a different search query."
           : null}
       </h2>
@@ -32,10 +32,10 @@ export default function DisplaySuggestions({ data, isForRent, isForSale }) {
         <div className="order-first md:order-none w-3/4 sm:1/4 rounded">
           <ul className="text-center">
             {data &&
-              data.realtorForsaleQuery.autocomplete.map((loc) => (
+              data.autoCompleteQuery.autocomplete.map((loc) => (
                 <li key={loc.slug_id}>
                   <Link
-                    to={`/listings/${loc.slug_id}/${loc.state_code}/200/0/${
+                    to={`/listings/${loc.city}/${loc.state_code}/200/0/${
                       isForRent ? "rent" : "sell"
                     }`}
                     className="font-suez-one flex-grow"

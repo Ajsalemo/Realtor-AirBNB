@@ -9,7 +9,7 @@ export default function RouteContainer() {
       <Route path="/" exact component={Home} />
       <Route path="/realtor-dashboard" exact component={RealtorDashboard} />
       <Route
-        path="/listings/:slug_id/:state_code/:limit/:offset/:rentOrSell"
+        path="/listings/:city/:state_code/:limit/:offset/:rentOrSell"
         exact
         component={RealtorListings}
       />

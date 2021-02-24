@@ -1,22 +1,26 @@
 import { gql } from "@apollo/client";
 
 export const REALTOR_FORSALE_QUERY = gql`
-  query RealtorForsaleQuery($location: String!) {
-    realtorForsaleQuery(location: $location)
+  query RealtorForSaleQuery($city: String!, $limit: String!, $offset: String!, $state_code: String!) {
+    RealtorForSaleQuery(city: $city, limit: $limit, offset: $offset, state_code: $state_code, sort: "relevance")
       @rest(
-        type: "Autocomplete"
-        path: "/locations/auto-complete?input={args.location}"
+        type: "RealtorForSale"
+        path: "/properties/v2/list-for-sale?city={args.city}&limit={args.limit}&offset={args.offset}&state_code={args.state_code}&sort={args.sort}"
       ) {
-      autocomplete {
-        area_type
-        city
-        country
-        full_address
-        line
-        postal_code
-        neighborhood
-        slug_id
-        state_code
+      properties {
+        address {
+          city
+          county
+          fips_code
+          lat
+          line
+          lon
+          neighborhood_name
+          postal_code
+          state
+          state_code
+          time_zone
+        }
       }
     }
   }

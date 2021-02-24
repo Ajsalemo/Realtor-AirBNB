@@ -1,5 +1,5 @@
 import { useLazyQuery } from "@apollo/client";
-import { REALTOR_FORSALE_QUERY } from "@apollographql_queries/realtorforsalequery";
+import { AUTO_COMPLETE_QUERY } from "@apollographql_queries/autocomplete";
 import DisplaySuggestions from "@components/displaysuggestions/displaysuggestions";
 import FontAwesomeLib from "@components/fontawesomelib/fontawesomelib";
 import Footer from "@components/footer/footer";
@@ -11,8 +11,8 @@ import { Field, Form, Formik } from "formik";
 import { useState } from "react";
 
 export default function RealtorDashboard() {
-  const [getRealtorForsaleQuery, { loading, data }] = useLazyQuery(
-    REALTOR_FORSALE_QUERY
+  const [getAutocompleteQuery, { loading, data }] = useLazyQuery(
+    AUTO_COMPLETE_QUERY
   );
 
   const [isForSale, setIsForSale] = useState(true);
@@ -67,14 +67,14 @@ export default function RealtorDashboard() {
             location: "",
           }}
           onSubmit={async (values, { resetForm }) => {
-            await getRealtorForsaleQuery({
+            await getAutocompleteQuery({
               variables: { location: values.location },
             });
             // Reset the form after form submission
             resetForm();
           }}
         >
-          {({ isSubmitting, handleSubmit }) => (
+          {({ handleSubmit }) => (
             <Form className="flex bg-gray-400 w-5/6 md:w-1/2 my-2 mx-auto">
               <Field
                 name="location"
