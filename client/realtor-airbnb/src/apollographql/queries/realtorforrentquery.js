@@ -5,7 +5,7 @@ export const REALTOR_FORRENT_QUERY = gql`
     RealtorForRentQuery(city: $city, limit: $limit, offset: $offset, state_code: $state_code, sort: "relevance")
       @rest(
         type: "RealtorForRent"
-        path: "/properties/v2/list-for-rent?city={args.city}&limit={args.limit}&offset={args.offset}&state_code={args.state_code}&sort={args.sort}"
+        path: "/properties/v2/list-for-rent?city={args.city}&limit=20&offset={args.offset}&state_code={args.state_code}&sort={args.sort}"
       ) {
       properties {
         address {

@@ -1,7 +1,9 @@
 import { useLazyQuery } from "@apollo/client";
 import { REALTOR_FORRENT_QUERY } from "@apollographql_queries/realtorforrentquery";
 import { REALTOR_FORSALE_QUERY } from "@apollographql_queries/realtorforsalequery";
-import { useEffect } from "react";
+import DisplayListings from "@components/displaylistings/displaylistings";
+import Navbar from "@components/navbar/navbar";
+import { Fragment, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 export default function RealtorListings() {
@@ -46,5 +48,12 @@ export default function RealtorListings() {
     rentOrSell,
     state_code,
   ]);
-  return <div>test</div>;
+  return (
+    <Fragment>
+      <Navbar />
+      <DisplayListings
+        data={rentOrSell === "sell" ? forSaleData : forRentData}
+      />
+    </Fragment>
+  );
 }
