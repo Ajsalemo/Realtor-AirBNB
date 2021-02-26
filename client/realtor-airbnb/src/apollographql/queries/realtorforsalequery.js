@@ -21,6 +21,15 @@ export const REALTOR_FORSALE_QUERY = gql`
           state_code
           time_zone
         }
+        price
+        baths_full
+        baths
+        beds
+        building_size {
+          size
+          units
+        }
+        thumbnail
       }
     }
   }
