@@ -1,6 +1,7 @@
 import { useLazyQuery } from "@apollo/client";
 import { REALTOR_FORRENT_QUERY } from "@apollographql_queries/realtorforrentquery";
 import { REALTOR_FORSALE_QUERY } from "@apollographql_queries/realtorforsalequery";
+import DisplayRentalListings from "@components/displayrentallistings/displayrentallistings";
 import DisplaySaleListings from "@components/displaysalelistings/displaysalelistings";
 import Navbar from "@components/navbar/navbar";
 import { Fragment, useEffect } from "react";
@@ -56,10 +57,17 @@ export default function RealtorListings() {
         Splitting the Rent and Sale listings into their own components for easier component management
         The returned API's share mostly the same properties but vary just enough to warrant a splitting of components
       */}
-      <DisplaySaleListings
-        data={forSaleData}
-        forSaleLoading={forSaleLoading}
-      />
+      {rentOrSell === "sell" ? (
+        <DisplaySaleListings
+          data={forSaleData}
+          forSaleLoading={forSaleLoading}
+        />
+      ) : (
+        <DisplayRentalListings
+          data={forRentData}
+          forRentLoading={forRentLoading}
+        />
+      )}
     </Fragment>
   );
 }

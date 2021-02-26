@@ -1,4 +1,4 @@
-export default function DisplayListings({ data, forSaleLoading }) {
+export default function DisplaySaleListings({ data, forSaleLoading }) {
   if (forSaleLoading) return <div>Loading..</div>;
   console.log(data);
   return (
