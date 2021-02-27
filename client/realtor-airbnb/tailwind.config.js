@@ -15,6 +15,9 @@ module.exports = {
         "realtor-dashboard-two":
           "url('@images/realtordashboard/landingpagebackground2.jpg')",
       }),
+      width: {
+        'ft': 'fit-content'
+      }
     },
   },
   variants: {

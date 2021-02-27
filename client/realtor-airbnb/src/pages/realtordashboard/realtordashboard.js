@@ -81,7 +81,12 @@ export default function RealtorDashboard() {
                 placeholder="Address, School, City, ZIP or Neighborhood"
                 className="w-full"
               />
-              <button type="submit" onClick={handleSubmit} disabled={loading}>
+              <button
+                type="submit"
+                onClick={handleSubmit}
+                disabled={loading}
+                className={!loading ? "cursor-pointer" : "cursor-default"}
+              >
                 <FontAwesomeLib
                   icon={!loading ? faSearch : faSpinner}
                   size="2x"
