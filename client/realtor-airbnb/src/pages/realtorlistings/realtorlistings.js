@@ -3,8 +3,9 @@ import { REALTOR_FORRENT_QUERY } from "@apollographql_queries/realtorforrentquer
 import { REALTOR_FORSALE_QUERY } from "@apollographql_queries/realtorforsalequery";
 import DisplayRentalListings from "@components/displayrentallistings/displayrentallistings";
 import DisplaySaleListings from "@components/displaysalelistings/displaysalelistings";
+import Footer from "@components/footer/footer";
 import Navbar from "@components/navbar/navbar";
-import { Fragment, useEffect } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 export default function RealtorListings() {
@@ -51,7 +52,7 @@ export default function RealtorListings() {
   ]);
 
   return (
-    <Fragment>
+    <div className="min-h-screen">
       <Navbar />
       {/* 
         Splitting the Rent and Sale listings into their own components for easier component management
@@ -68,6 +69,7 @@ export default function RealtorListings() {
           forRentLoading={forRentLoading}
         />
       )}
-    </Fragment>
+      <Footer classNames="bg-gray-400 h-12 w-full border-t-4 font-suez-one text-white text-center pt-1" />
+    </div>
   );
 }

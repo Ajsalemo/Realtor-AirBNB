@@ -7,7 +7,7 @@ export default function DisplaySaleListings({ data, forSaleLoading }) {
     );
   console.log(data);
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 pt-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 py-8">
       {data &&
         data.RealtorForSaleQuery.properties.map((property) => (
           // If the thumbnail is missing for the property - hide the result
@@ -21,6 +21,10 @@ export default function DisplaySaleListings({ data, forSaleLoading }) {
               src={property.thumbnail}
               classNames="rounded-lg mx-auto"
             />
+            {/* Show the price of the property if it exists */}
+            {property.price ? (
+              <span className="font-suez-one text-lg sm:text-xl md:text-2xl">${property.price}</span>
+            ) : null}
             <div className="flex">
               {/* Show how many bedrooms of the property if it exists */}
               {property.beds ? (
