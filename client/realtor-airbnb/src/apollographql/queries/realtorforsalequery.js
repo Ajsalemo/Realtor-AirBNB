@@ -8,6 +8,7 @@ export const REALTOR_FORSALE_QUERY = gql`
         path: "/properties/v2/list-for-sale?city={args.city}&limit={args.limit}&offset={args.offset}&state_code={args.state_code}&sort={args.sort}"
       ) {
       properties {
+        property_id
         address {
           city
           county

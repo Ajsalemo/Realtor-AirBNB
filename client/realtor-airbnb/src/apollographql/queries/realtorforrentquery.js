@@ -8,6 +8,7 @@ export const REALTOR_FORRENT_QUERY = gql`
         path: "/properties/v2/list-for-rent?city={args.city}&limit=20&offset={args.offset}&state_code={args.state_code}&sort={args.sort}"
       ) {
       properties {
+        property_id
         address {
           city
           county
