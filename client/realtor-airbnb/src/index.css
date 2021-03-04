@@ -31,3 +31,9 @@
   background-color: #3b3a3a;
   border-radius: 20px;
 }
+
+html,
+body,
+#root {
+  min-height: 100vh;
+}

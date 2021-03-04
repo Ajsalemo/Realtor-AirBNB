@@ -9,12 +9,14 @@ export default function App() {
   return (
     <div className="relative bg-black">
       <Navbar />
-      <LazyLoadImages
-        src={LandingBackground}
-        classNames="object-center object-cover w-full h-screen img-filter"
-      />
-      <LandingNavigation />
-      <Footer classNames="bg-gray-400 h-12 fixed bottom-0 w-full border-t-4 font-suez-one text-white text-center pt-1" />
+      <div className="pb-12">
+        <LazyLoadImages
+          src={LandingBackground}
+          classNames="object-center object-cover w-full h-screen img-filter"
+        />
+        <LandingNavigation />
+      </div>
+      <Footer />
     </div>
   );
 }
