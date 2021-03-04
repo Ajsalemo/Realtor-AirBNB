@@ -52,24 +52,26 @@ export default function RealtorListings() {
   ]);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
       <Navbar />
       {/* 
         Splitting the Rent and Sale listings into their own components for easier component management
         The returned API's share mostly the same properties but vary just enough to warrant a splitting of components
       */}
-      {rentOrSell === "sell" ? (
-        <DisplaySaleListings
-          data={forSaleData}
-          forSaleLoading={forSaleLoading}
-        />
-      ) : (
-        <DisplayRentalListings
-          data={forRentData}
-          forRentLoading={forRentLoading}
-        />
-      )}
-      <Footer classNames="bg-gray-400 h-12 w-full border-t-4 font-suez-one text-white text-center pt-1" />
+      <div className="pb-12">
+        {rentOrSell === "sell" ? (
+          <DisplaySaleListings
+            data={forSaleData}
+            forSaleLoading={forSaleLoading}
+          />
+        ) : (
+          <DisplayRentalListings
+            data={forRentData}
+            forRentLoading={forRentLoading}
+          />
+        )}
+      </div>
+      <Footer />
     </div>
   );
 }
