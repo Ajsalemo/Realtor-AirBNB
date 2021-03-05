@@ -3,6 +3,12 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Field, Form, Formik } from "formik";
 
 export default function RealtorSearchbar() {
+  const handleOnKeyUp = (values) => {
+    // If the search query is less than 2 characters in length, don't execute the graphql query to prevent uneeded calls
+    if (values.location.length < 2) return;
+    console.log(values.location);   
+  };
+
   return (
     <div className="bg-gray-200">
       <Formik
@@ -15,12 +21,13 @@ export default function RealtorSearchbar() {
           resetForm();
         }}
       >
-        {({ handleSubmit }) => (
+        {({ handleSubmit, values }) => (
           <Form className="flex w-5/6 md:w-1/2 py-1 mx-auto">
-            <Field 
+            <Field
               name="location"
               placeholder="Address, School, City, ZIP or Neighborhood"
               className="w-full"
+              onKeyUp={() => handleOnKeyUp(values)}
             />
             <button type="submit" onClick={handleSubmit}>
               <FontAwesomeLib
