@@ -1,21 +1,7 @@
+import filterByAreaType from "@helpers/helpers";
 import { Link } from "react-router-dom";
 
 export default function DisplaySuggestions({ data, isForRent, isForSale }) {
-  const filterByAreaType = (searchTerm) => {
-    // Switch statement to filter output responses by area type // ex., city, address or neighborhood
-    switch (searchTerm && searchTerm.area_type.toLowerCase()) {
-      case "neighborhood":
-        return `${searchTerm.neighborhood} - ${searchTerm.city} ${searchTerm.state_code}, ${searchTerm.country}`;
-      case "address":
-        if (searchTerm.full_address > 0) return `${searchTerm.full_address[0]}`;
-        return `${searchTerm.line} ${searchTerm.city}, ${searchTerm.state_code} ${searchTerm.postal_code}`;
-      case "city":
-        return `${searchTerm.city}, ${searchTerm.state_code} ${searchTerm.country}`;
-      default:
-        break;
-    }
-  };
-
   return (
     <div className="pb-12">
       <h2 className="transition-opacity duration-300 ease-in-out font-suez-one text-center text-2xl sm:text-3xl md:4xl h-12">
