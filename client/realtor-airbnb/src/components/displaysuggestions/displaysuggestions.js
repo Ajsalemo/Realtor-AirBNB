@@ -18,7 +18,7 @@ export default function DisplaySuggestions({ data, isForRent, isForSale }) {
 
   return (
     <div className="pb-12">
-      <h2 className="transition-opacity duration-300 ease-in-out font-suez-one text-center text-2xl sm:text-3xl md:4xl">
+      <h2 className="transition-opacity duration-300 ease-in-out font-suez-one text-center text-2xl sm:text-3xl md:4xl h-12">
         {data && data.autoCompleteQuery.autocomplete.length > 0
           ? "This is what we have found.."
           : data && data.autoCompleteQuery.autocomplete.length <= 0
