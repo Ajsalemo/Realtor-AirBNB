@@ -1,4 +1,4 @@
-export default function filterByAreaType(searchTerm) {
+export default function filterByAreaTypeDisplay(searchTerm) {
   // Switch statement to filter output responses by area type // ex., city, address or neighborhood
   switch (searchTerm && searchTerm.area_type.toLowerCase()) {
     case "neighborhood":

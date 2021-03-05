@@ -1,4 +1,4 @@
-import filterByAreaType from "@helpers/helpers";
+import filterByAreaTypeDisplay from "@helpers/filterByAreaTypeDisplay";
 import { Link } from "react-router-dom";
 
 export default function DisplaySuggestions({ data, isForRent, isForSale }) {
@@ -26,7 +26,7 @@ export default function DisplaySuggestions({ data, isForRent, isForSale }) {
                     }`}
                     className="font-suez-one flex-grow"
                   >
-                    {filterByAreaType(loc)}
+                    {filterByAreaTypeDisplay(loc)}
                   </Link>
                 </li>
               ))}
