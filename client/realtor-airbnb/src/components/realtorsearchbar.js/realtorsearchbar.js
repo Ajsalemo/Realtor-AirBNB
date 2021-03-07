@@ -3,13 +3,20 @@ import { AUTO_COMPLETE_QUERY } from "@apollographql_queries/autocomplete";
 import FontAwesomeLib from "@components/fontawesomelib/fontawesomelib";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Field, Form, Formik } from "formik";
+import filterByAreaTypeData from "helpers/filterByAreaTypeData";
 import { useState } from "react";
 
 export default function RealtorSearchbar() {
-  const [realtorAutoCompletedValues, setRealtorAutoCompletedValues] = useState([]);
-  const [getRealtorSearchAutocompleteQuery, { loading: realtorSearchAutoCompleteLoading, data: realtorSearchAutoCompleteData }] = useLazyQuery(
-    AUTO_COMPLETE_QUERY
+  const [realtorAutoCompletedValues, setRealtorAutoCompletedValues] = useState(
+    []
   );
+  const [
+    getRealtorSearchAutocompleteQuery,
+    {
+      // loading: realtorSearchAutoCompleteLoading,
+      data: realtorSearchAutoCompleteData,
+    },
+  ] = useLazyQuery(AUTO_COMPLETE_QUERY);
 
   const handleOnKeyUp = async (values) => {
     // If the search query is less than 2 characters in length, don't execute the graphql query to prevent uneeded calls
@@ -19,24 +26,17 @@ export default function RealtorSearchbar() {
       variables: { location: values.location },
     });
 
-    // TODO - Move this into its own 'helper' function under @helpers
     // Logic - this checks for an existent value upon running the 'onKeyUp' handleOnKeyUp query to the Realtor API
     // Upon doing so, it loops over the result and checks for a certain 'area_type'
     // If it matches, it's placed into the useState value(s) to be returned at a later time
-    if (realtorSearchAutoCompleteData && realtorSearchAutoCompleteData.autoCompleteQuery) {
-      const { autocomplete } = realtorSearchAutoCompleteData.autoCompleteQuery;
-      console.log(realtorSearchAutoCompleteData.autoCompleteQuery.autocomplete)
-      for (let i = 0; i < autocomplete.length; i++) {
-        if (autocomplete[i].area_type === "neighborhood" || autocomplete[i].area_type === "address" || autocomplete[i].area_type === "city") {
-          console.log(autocomplete[i])
-          setRealtorAutoCompletedValues(autocomplete[i])
-        }
-      }
-    }
+    filterByAreaTypeData(
+      realtorSearchAutoCompleteData,
+      setRealtorAutoCompletedValues
+    );
   };
   // Log the current stateful data from the autocomplete queries
-  console.log(realtorAutoCompletedValues)
-  
+  console.log(realtorAutoCompletedValues);
+
   return (
     <div className="bg-gray-200">
       <Formik
