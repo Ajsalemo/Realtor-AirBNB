@@ -1,6 +1,11 @@
 import filterByAreaTypeDisplay from "@helpers/filterByAreaTypeDisplay";
 
-export default function Autocomplete({ realtorAutoCompletedValues }) {
+export default function Autocomplete({
+  realtorAutoCompletedValues,
+  setFieldValue,
+  setCityValue,
+  setStateCodeValue
+}) {
   return (
     <div
       className={
@@ -11,7 +16,17 @@ export default function Autocomplete({ realtorAutoCompletedValues }) {
     >
       <ul className="p-2">
         {realtorAutoCompletedValues.map((autoCompletedValues) => (
-          <li className="text-white">
+          <li
+            className="text-white cursor-pointer"
+            onClick={() => {
+              setFieldValue(
+                "location",
+                filterByAreaTypeDisplay(autoCompletedValues)
+              );
+              setCityValue(autoCompletedValues.city);
+              setStateCodeValue(autoCompletedValues.state_code)
+            }}
+          >
             {filterByAreaTypeDisplay(autoCompletedValues)}
           </li>
         ))}

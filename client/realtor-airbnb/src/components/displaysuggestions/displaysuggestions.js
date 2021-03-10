@@ -1,7 +1,7 @@
 import filterByAreaTypeDisplay from "@helpers/filterByAreaTypeDisplay";
 import { Link } from "react-router-dom";
 
-export default function DisplaySuggestions({ data, isForRent, isForSale }) {
+export default function DisplaySuggestions({ data, isForRent }) {
   return (
     <div className="pb-12">
       <h2 className="transition-opacity duration-300 ease-in-out font-suez-one text-center text-2xl sm:text-3xl md:4xl h-12">

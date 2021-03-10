@@ -1,5 +1,6 @@
 import { useLazyQuery } from "@apollo/client";
 import { AUTO_COMPLETE_QUERY } from "@apollographql_queries/autocomplete";
+import { REALTOR_FORSALE_QUERY } from "@apollographql_queries/realtorforsalequery";
 import AutoComplete from "@components/autocomplete/autocomplete";
 import FontAwesomeLib from "@components/fontawesomelib/fontawesomelib";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -11,6 +12,21 @@ export default function RealtorSearchbar() {
   const [realtorAutoCompletedValues, setRealtorAutoCompletedValues] = useState(
     []
   );
+  // State_code stateful to be passed into the onSubmit function when submitting the form
+  const [stateCodeValue, setStateCodeValue] = useState(null);
+  // City stateful value to be passed into the onSubmit function when submitting the form
+  const [cityValue, setCityValue] = useState(null);
+
+  // Query to get property for sale listings
+  const [
+    getRealtorSearchbarQuery,
+    {
+      // loading: realtorSearchbarQueryLoading,
+      data: realtorSearchbarQueryData,
+    },
+  ] = useLazyQuery(REALTOR_FORSALE_QUERY);
+
+  // Autocomplete query to get needed information to pass into the for sale query
   const [
     getRealtorSearchAutocompleteQuery,
     {
@@ -34,20 +50,28 @@ export default function RealtorSearchbar() {
       setRealtorAutoCompletedValues
     );
   };
-  console.log(realtorAutoCompletedValues)
+  console.log(realtorSearchbarQueryData)
   return (
     <div className="bg-gray-200">
       <Formik
         initialValues={{
           location: "",
         }}
-        onSubmit={async (values, { resetForm }) => {
-          console.log(values);
-          // Reset the form after form submission
-          resetForm();
+        onSubmit={async (values) => {
+          // If the city and state_code arguments are not null then this query can be executed
+          if (cityValue !== null && stateCodeValue !== null) {
+            await getRealtorSearchbarQuery({
+              variables: {
+                city: cityValue,
+                limit: 20, // Temporarily set to a hardcoded value
+                offset: 0, // Temporarily set to a hardcoded value
+                state_code: stateCodeValue,
+              },
+            });
+          }
         }}
       >
-        {({ handleSubmit, values }) => (
+        {({ handleSubmit, values, setFieldValue }) => (
           <div className="relative">
             <Form className="flex w-5/6 md:w-1/2 py-1 mx-auto">
               <Field
@@ -66,6 +90,9 @@ export default function RealtorSearchbar() {
             </Form>
             <AutoComplete
               realtorAutoCompletedValues={realtorAutoCompletedValues}
+              setFieldValue={setFieldValue}
+              setStateCodeValue={setStateCodeValue}
+              setCityValue={setCityValue}
             />
           </div>
         )}
