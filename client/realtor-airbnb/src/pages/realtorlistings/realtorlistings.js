@@ -10,7 +10,17 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 export default function RealtorListings() {
+  // --------------------------------- URL parameter values -------------------------------- //
+  // -------------------------------------------------------------------------------------- //
+
   const { city, state_code, limit, offset, rentOrSell } = useParams();
+  
+  // -------------------------------------------------------------------------------------- //
+  // -------------------------------------------------------------------------------------- //
+
+  // ----------------------------- Apollo/GraphQL queries ---------------------------------- //
+  // -------------------------------------------------------------------------------------- //
+
   const [
     getRealtorForsaleQuery,
     { loading: forSaleLoading, data: forSaleData },
@@ -20,6 +30,9 @@ export default function RealtorListings() {
     getRealtorForrentQuery,
     { loading: forRentLoading, data: forRentData },
   ] = useLazyQuery(REALTOR_FORRENT_QUERY);
+
+  // -------------------------------------------------------------------------------------- //
+  // -------------------------------------------------------------------------------------- //
 
   useEffect(() => {
     if (rentOrSell === "sell") {
