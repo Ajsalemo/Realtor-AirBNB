@@ -1,6 +1,6 @@
-export default function filterByAreaTypeData(
+export default async function filterByAreaTypeData(
   data,
-  setRealtorAutoCompletedValues
+  setAutoCompleteSearchValues
 ) {
   const autoCompleteArray = [];
   // Logic - this checks for an existent value upon running the 'onKeyUp' handleOnKeyUp query to the Realtor API
@@ -16,7 +16,8 @@ export default function filterByAreaTypeData(
         autocomplete[i].area_type === "city"
       ) {
         autoCompleteArray.push(autocomplete[i]);
-        setRealtorAutoCompletedValues(autoCompleteArray);
+        setAutoCompleteSearchValues(autoCompleteArray);
+        console.log(autoCompleteArray)
       }
     }
   }

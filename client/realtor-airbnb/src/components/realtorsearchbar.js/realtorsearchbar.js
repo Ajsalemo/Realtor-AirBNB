@@ -4,19 +4,18 @@ import { REALTOR_FORSALE_QUERY } from "@apollographql_queries/realtorforsalequer
 import FontAwesomeLib from "@components/fontawesomelib/fontawesomelib";
 import { faSearch, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { Field, Form, Formik } from "formik";
-import filterByAreaTypeData from "helpers/filterByAreaTypeData";
 import { Fragment, useState } from "react";
+import filterByAreaTypeData from "@helpers/filterByAreaTypeData"
 
 export default function RealtorSearchbar() {
   const [autoCompleteSearchValues, setAutoCompleteSearchValues] = useState(
     null
   );
+  const [isError, setIsError] = useState(false);
   // Query to get property for sale listings
   const [
     getRealtorSearchbarQuery,
-    { loading: realtorSearchbarQueryLoading, 
-      // data: realtorSearchbarQueryData 
-    },
+    { loading: realtorSearchbarQueryLoading, data: realtorSearchbarQueryData },
   ] = useLazyQuery(REALTOR_FORSALE_QUERY);
 
   // Autocomplete query to get needed information to pass into the for sale query
@@ -35,34 +34,20 @@ export default function RealtorSearchbar() {
           initialValues={{
             location: "",
           }}
-          onSubmit={(values) => {
+          onSubmit={async (values) => {
+            // Set errors to false initially
+            setIsError(false);
             try {
               // Get the autocomplete values to plug in 'city' and 'state_code' into the property listing query
-              getRealtorSearchAutocompleteQuery({
+              await getRealtorSearchAutocompleteQuery({
                 variables: {
                   location: values.location,
                 },
               });
-
-              // Wait for the autocomplete query to return a result before executing the following functions
-              if (!realtorSearchAutoCompleteLoading) {
-                // When a result is returned from the autocomplete query, filter out unneeded 'area_type' attributes
-                filterByAreaTypeData(
-                  realtorSearchAutoCompleteData,
-                  setAutoCompleteSearchValues
-                );
-                //  Plug in the 'city' and 'state_code' from the autocomplete result into this property listing query
-                getRealtorSearchbarQuery({
-                  variables: {
-                    city: autoCompleteSearchValues[0].city,
-                    limit: 20, // Temporarily set to a hardcoded value
-                    offset: 0, // Temporarily set to a hardcoded value
-                    state_code: autoCompleteSearchValues[0].state_code,
-                  },
-                });
-              }
+              // Filter the 'area_type' property
+              await filterByAreaTypeData(realtorSearchAutoCompleteData, setAutoCompleteSearchValues)
             } catch (error) {
-              console.log(error);
+              setIsError(true);
             }
           }}
         >
@@ -110,7 +95,11 @@ export default function RealtorSearchbar() {
         </Formik>
       </div>
       <div className="text-center">
-        <span>Error placeholder</span>
+        {isError && (
+          <span className="text-red-500">
+            An error has occurred. Please try again.
+          </span>
+        )}
       </div>
     </Fragment>
   );
