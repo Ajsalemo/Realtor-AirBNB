@@ -5,6 +5,8 @@ import { faSearch, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { Field, Form, Formik } from "formik";
 import { Fragment, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { realtorSearchbarMinPrice } from "@helpers/realtorSearchbarMinPrice";
+import { realtorSearchbarMaxPrice } from "@helpers/realtorSearchbarMaxPrice";
 
 export default function RealtorSearchbar() {
   const history = useHistory();
@@ -43,6 +45,7 @@ export default function RealtorSearchbar() {
             location: "",
           }}
           onSubmit={async (values) => {
+            console.log(values)
             // Set errors to false initially
             setIsError(false);
             try {
@@ -52,7 +55,6 @@ export default function RealtorSearchbar() {
                 },
               });
             } catch (error) {
-              console.log(error);
               setIsError(true);
             }
           }}
@@ -81,6 +83,28 @@ export default function RealtorSearchbar() {
                     }
                   />
                 </button>
+                <div className="flex pl-2">
+                  <Field name="min_price" as="select" className="h-full">
+                    <option selected disabled>
+                      Min Price
+                    </option>
+                    {realtorSearchbarMinPrice.map((minPrice) => (
+                      <option value={minPrice.value} key={minPrice.value}>
+                        {minPrice.display}
+                      </option>
+                    ))}
+                  </Field>
+                  <Field name="max_price" as="select" className="h-full">
+                    <option selected disabled>
+                      Max Price
+                    </option>
+                    {realtorSearchbarMaxPrice.map((minPrice) => (
+                      <option value={minPrice.value} key={minPrice.value}>
+                        {minPrice.display}
+                      </option>
+                    ))}
+                  </Field>
+                </div>
               </Form>
             </div>
           )}
