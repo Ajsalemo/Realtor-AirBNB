@@ -3,6 +3,7 @@ import { AUTO_COMPLETE_QUERY } from "@apollographql_queries/autocomplete";
 import FontAwesomeLib from "@components/fontawesomelib/fontawesomelib";
 import { faSearch, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { realtorSearchbarBathMin } from "@helpers/form-values/realtorSearchbarBathMin";
+import { realtorSearchbarBedMin } from "@helpers/form-values/realtorSearchbarBedMin";
 import { realtorSearchbarMaxPrice } from "@helpers/form-values/realtorSearchbarMaxPrice";
 import { realtorSearchbarMinPrice } from "@helpers/form-values/realtorSearchbarMinPrice";
 import { realtorSearchBarPropType } from "@helpers/form-values/realtorSearchBarPropType";
@@ -112,6 +113,16 @@ export default function RealtorSearchbar() {
                       Property Type
                     </option>
                     {realtorSearchBarPropType.map((minPrice) => (
+                      <option value={minPrice.value} key={minPrice.key}>
+                        {minPrice.display}
+                      </option>
+                    ))}
+                  </Field>
+                  <Field name="beds_min" as="select" className="h-full ml-2">
+                    <option selected value="Property Type" disabled>
+                      Beds
+                    </option>
+                    {realtorSearchbarBedMin.map((minPrice) => (
                       <option value={minPrice.value} key={minPrice.key}>
                         {minPrice.display}
                       </option>
