@@ -2,11 +2,13 @@ import { useLazyQuery } from "@apollo/client";
 import { AUTO_COMPLETE_QUERY } from "@apollographql_queries/autocomplete";
 import FontAwesomeLib from "@components/fontawesomelib/fontawesomelib";
 import { faSearch, faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { realtorSearchbarBathMin } from "@helpers/form-values/realtorSearchbarBathMin";
+import { realtorSearchbarMaxPrice } from "@helpers/form-values/realtorSearchbarMaxPrice";
+import { realtorSearchbarMinPrice } from "@helpers/form-values/realtorSearchbarMinPrice";
+import { realtorSearchBarPropType } from "@helpers/form-values/realtorSearchBarPropType";
 import { Field, Form, Formik } from "formik";
 import { Fragment, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { realtorSearchbarMinPrice } from "@helpers/realtorSearchbarMinPrice";
-import { realtorSearchbarMaxPrice } from "@helpers/realtorSearchbarMaxPrice";
 
 export default function RealtorSearchbar() {
   const history = useHistory();
@@ -45,7 +47,7 @@ export default function RealtorSearchbar() {
             location: "",
           }}
           onSubmit={async (values) => {
-            console.log(values)
+            console.log(values);
             // Set errors to false initially
             setIsError(false);
             try {
@@ -61,7 +63,7 @@ export default function RealtorSearchbar() {
         >
           {({ handleSubmit }) => (
             <div className="relative">
-              <Form className="flex w-5/6 md:w-1/2 py-1 mx-auto">
+              <Form className="flex w-5/6 md:w-1/2 py-1 pl-2">
                 <Field
                   name="location"
                   placeholder="Address, School, City, ZIP or Neighborhood"
@@ -84,22 +86,43 @@ export default function RealtorSearchbar() {
                   />
                 </button>
                 <div className="flex pl-2">
-                  <Field name="min_price" as="select" className="h-full">
-                    <option selected disabled>
+                  {/* TODO - abstract these Field components into it's own single component */}
+                  <Field name="min_price" as="select" className="h-full ml-2">
+                    <option selected value="Min Price" disabled>
                       Min Price
                     </option>
                     {realtorSearchbarMinPrice.map((minPrice) => (
-                      <option value={minPrice.value} key={minPrice.value}>
+                      <option value={minPrice.value} key={minPrice.key}>
                         {minPrice.display}
                       </option>
                     ))}
                   </Field>
-                  <Field name="max_price" as="select" className="h-full">
-                    <option selected disabled>
+                  <Field name="max_price" as="select" className="h-full ml-2">
+                    <option selected value="Max Price" disabled>
                       Max Price
                     </option>
                     {realtorSearchbarMaxPrice.map((minPrice) => (
-                      <option value={minPrice.value} key={minPrice.value}>
+                      <option value={minPrice.value} key={minPrice.keu}>
+                        {minPrice.display}
+                      </option>
+                    ))}
+                  </Field>
+                  <Field name="prop_type" as="select" className="h-full ml-2">
+                    <option selected value="Property Type" disabled>
+                      Property Type
+                    </option>
+                    {realtorSearchBarPropType.map((minPrice) => (
+                      <option value={minPrice.value} key={minPrice.key}>
+                        {minPrice.display}
+                      </option>
+                    ))}
+                  </Field>
+                  <Field name="baths_min" as="select" className="h-full ml-2">
+                    <option selected value="Property Type" disabled>
+                      Baths
+                    </option>
+                    {realtorSearchbarBathMin.map((minPrice) => (
+                      <option value={minPrice.value} key={minPrice.key}>
                         {minPrice.display}
                       </option>
                     ))}

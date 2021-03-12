@@ -1,4 +1,4 @@
-import filterByAreaTypeDisplay from "@helpers/filterByAreaTypeDisplay";
+import filterByAreaTypeDisplay from "@helpers/functions/filterByAreaTypeDisplay";
 import { Link } from "react-router-dom";
 
 export default function DisplaySuggestions({ data, isForRent }) {
