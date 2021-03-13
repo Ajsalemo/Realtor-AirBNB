@@ -1,8 +1,8 @@
 import { ApolloProvider } from "@apollo/client";
-import RouteContainer from "@components/routecontainer/routecontainer";
+import RouteContainer from "@components/routeContainer/routeContainer";
 import React from "react";
 import ReactDOM from "react-dom";
-import { client } from "./apollographql/client/apolloclient";
+import { client } from "./apollographql/client/apolloClient";
 // Tailwind styles
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";

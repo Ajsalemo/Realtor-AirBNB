@@ -1,11 +1,11 @@
 import { useLazyQuery } from "@apollo/client";
-import { REALTOR_FORRENT_QUERY } from "@apollographql_queries/realtorforrentquery";
-import { REALTOR_FORSALE_QUERY } from "@apollographql_queries/realtorforsalequery";
-import DisplayRentalListings from "@components/displayrentallistings/displayrentallistings";
-import DisplaySaleListings from "@components/displaysalelistings/displaysalelistings";
+import { REALTOR_FORRENT_QUERY } from "@apollographql_queries/realtorForRentQuery";
+import { REALTOR_FORSALE_QUERY } from "@apollographql_queries/realtorForSaleQuery";
+import DisplayRentalListings from "@components/displayRentalListings/displayRentalListings";
+import DisplaySaleListings from "@components/displaySaleListings/displaySaleListings";
 import Footer from "@components/footer/footer";
 import Navbar from "@components/navbar/navbar";
-import SubSearchbar from "@components/realtorsearchbar.js/realtorsearchbar";
+import SubSearchbar from "@components/realtorSearchbar/realtorSearchbar";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
