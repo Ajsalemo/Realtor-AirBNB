@@ -10,16 +10,18 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 export default function RealtorListings() {
-  // --------------------------------- URL parameter values -------------------------------- //
-  // -------------------------------------------------------------------------------------- //
-
-  const { city, state_code, limit, offset, rentOrSell } = useParams();
-  
-  // -------------------------------------------------------------------------------------- //
-  // -------------------------------------------------------------------------------------- //
-
-  // ----------------------------- Apollo/GraphQL queries ---------------------------------- //
-  // -------------------------------------------------------------------------------------- //
+  const {
+    city,
+    state_code,
+    limit,
+    offset,
+    rentOrSell,
+    optPriceMin,
+    optPriceMax,
+    optPropType,
+    optBedsMin,
+    optBathsMin,
+  } = useParams();
 
   const [
     getRealtorForsaleQuery,
@@ -31,9 +33,6 @@ export default function RealtorListings() {
     { loading: forRentLoading, data: forRentData },
   ] = useLazyQuery(REALTOR_FORRENT_QUERY);
 
-  // -------------------------------------------------------------------------------------- //
-  // -------------------------------------------------------------------------------------- //
-
   useEffect(() => {
     if (rentOrSell === "sell") {
       getRealtorForsaleQuery({
@@ -42,6 +41,11 @@ export default function RealtorListings() {
           limit: limit,
           offset: offset,
           state_code: state_code,
+          price_min: optPriceMin,
+          price_max: optPriceMax,
+          prop_type: optPropType,
+          beds_min: optBedsMin,
+          baths_min: optBathsMin,
         },
       });
     } else {
@@ -61,6 +65,11 @@ export default function RealtorListings() {
     getRealtorForsaleQuery,
     limit,
     offset,
+    optBathsMin,
+    optBedsMin,
+    optPriceMax,
+    optPriceMin,
+    optPropType,
     rentOrSell,
     state_code,
   ]);

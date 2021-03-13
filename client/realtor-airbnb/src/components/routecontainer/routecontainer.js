@@ -10,7 +10,7 @@ export default function RouteContainer() {
       <Route path="/realtor-dashboard" exact component={RealtorDashboard} />
       <Route
         // the '?' symbol denotes optional paramters on the route
-        path="/listings/:city/:state_code/:limit/:offset/:rentOrSell/:opt_min_price?/:opt_max_price?/:opt_prop_type?/:opt_beds?/:opt_baths?"
+        path="/listings/:city/:state_code/:limit/:offset/:rentOrSell/:optPriceMin?/:optPriceMax?/:optPropType?/:optBedsMin?/:optBathsMin?"
         component={RealtorListings}
       />
     </Router>

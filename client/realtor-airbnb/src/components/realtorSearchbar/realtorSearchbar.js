@@ -10,6 +10,7 @@ import { useHistory } from "react-router-dom";
 export default function RealtorSearchbar() {
   const history = useHistory();
   const [isError, setIsError] = useState(false);
+  const [optionalURLValues, setOptionalURLValues] = useState("");
   const [dataForNextPage, setDataForNextPage] = useState([]);
   // Autocomplete query to get needed information to pass into the for sale query
   const [getRealtorSearchAutocompleteQuery, { loading, data }] = useLazyQuery(
@@ -31,11 +32,22 @@ export default function RealtorSearchbar() {
         }
       }
       history.push(
-        `/listings/${dataForNextPage.city}/${dataForNextPage.state_code}/20/0/sell`
+        `/listings/${dataForNextPage.city}/${dataForNextPage.state_code}/20/0/sell/${optionalURLValues.min_price}/${optionalURLValues.max_price}/${optionalURLValues.prop_type}/${optionalURLValues.beds_min}/${optionalURLValues.baths_min}`
       );
     }
-  }, [data, dataForNextPage, history, loading]);
-
+  }, [
+    data,
+    dataForNextPage,
+    history,
+    loading,
+    optionalURLValues,
+    optionalURLValues.baths_min,
+    optionalURLValues.beds_min,
+    optionalURLValues.max_price,
+    optionalURLValues.min_price,
+    optionalURLValues.prop_type,
+  ]);
+  console.log(optionalURLValues)
   return (
     <>
       <div className="bg-gray-200">
@@ -47,6 +59,7 @@ export default function RealtorSearchbar() {
             console.log(values);
             // Set errors to false initially
             setIsError(false);
+            setOptionalURLValues(values);
             try {
               await getRealtorSearchAutocompleteQuery({
                 variables: {
