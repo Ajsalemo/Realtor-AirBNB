@@ -1,14 +1,10 @@
 import { useLazyQuery } from "@apollo/client";
 import { AUTO_COMPLETE_QUERY } from "@apollographql_queries/autoComplete";
 import FontAwesomeLib from "@components/fontAwesomeLib/fontAwesomeLib";
+import RealtorSearchbarSelect from "@components/realtorSearchbarSelect/realtorSearchbarSelect";
 import { faSearch, faSpinner } from "@fortawesome/free-solid-svg-icons";
-import { realtorSearchbarBathMin } from "@helpers/formValues/realtorSearchbarBathMin";
-import { realtorSearchbarBedMin } from "@helpers/formValues/realtorSearchbarBedMin";
-import { realtorSearchbarMaxPrice } from "@helpers/formValues/realtorSearchbarMaxPrice";
-import { realtorSearchbarMinPrice } from "@helpers/formValues/realtorSearchbarMinPrice";
-import { realtorSearchBarPropType } from "@helpers/formValues/realtorSearchBarPropType";
 import { Field, Form, Formik } from "formik";
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 export default function RealtorSearchbar() {
@@ -41,7 +37,7 @@ export default function RealtorSearchbar() {
   }, [data, dataForNextPage, history, loading]);
 
   return (
-    <Fragment>
+    <>
       <div className="bg-gray-200">
         <Formik
           initialValues={{
@@ -87,57 +83,8 @@ export default function RealtorSearchbar() {
                   />
                 </button>
                 <div className="flex pl-2">
-                  {/* TODO - abstract these Field components into it's own single component */}
-                  <Field name="min_price" as="select" className="h-full ml-2">
-                    <option selected value="Min Price" disabled>
-                      Min Price
-                    </option>
-                    {realtorSearchbarMinPrice.map((minPrice) => (
-                      <option value={minPrice.value} key={minPrice.key}>
-                        {minPrice.display}
-                      </option>
-                    ))}
-                  </Field>
-                  <Field name="max_price" as="select" className="h-full ml-2">
-                    <option selected value="Max Price" disabled>
-                      Max Price
-                    </option>
-                    {realtorSearchbarMaxPrice.map((minPrice) => (
-                      <option value={minPrice.value} key={minPrice.keu}>
-                        {minPrice.display}
-                      </option>
-                    ))}
-                  </Field>
-                  <Field name="prop_type" as="select" className="h-full ml-2">
-                    <option selected value="Property Type" disabled>
-                      Property Type
-                    </option>
-                    {realtorSearchBarPropType.map((minPrice) => (
-                      <option value={minPrice.value} key={minPrice.key}>
-                        {minPrice.display}
-                      </option>
-                    ))}
-                  </Field>
-                  <Field name="beds_min" as="select" className="h-full ml-2">
-                    <option selected value="Property Type" disabled>
-                      Beds
-                    </option>
-                    {realtorSearchbarBedMin.map((minPrice) => (
-                      <option value={minPrice.value} key={minPrice.key}>
-                        {minPrice.display}
-                      </option>
-                    ))}
-                  </Field>
-                  <Field name="baths_min" as="select" className="h-full ml-2">
-                    <option selected value="Property Type" disabled>
-                      Baths
-                    </option>
-                    {realtorSearchbarBathMin.map((minPrice) => (
-                      <option value={minPrice.value} key={minPrice.key}>
-                        {minPrice.display}
-                      </option>
-                    ))}
-                  </Field>
+                  {/* Select fields for the Search form */}
+                  <RealtorSearchbarSelect />
                 </div>
               </Form>
             </div>
@@ -151,6 +98,6 @@ export default function RealtorSearchbar() {
           </span>
         )}
       </div>
-    </Fragment>
+    </>
   );
 }

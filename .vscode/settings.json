@@ -1,4 +1,4 @@
 {
-    "java.configuration.updateBuildConfiguration": "automatic",
-    "javascript.updateImportsOnFileMove.enabled": "always"
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "javascript.updateImportsOnFileMove.enabled": "always",
 }
