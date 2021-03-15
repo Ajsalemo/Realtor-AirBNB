@@ -1,6 +1,6 @@
 import Footer from "@components/footer/footer";
-import LandingNavigation from "@components/landingNavigation/landingNavigation";
-import LazyLoadImages from "@components/lazyLoadImages/lazyLoadImages";
+import LandingNavigation from "@components/landingnavigation/landingNavigation";
+import LazyLoadImages from "@components/lazyloadimages/lazyLoadImages";
 import Navbar from "@components/navbar/navbar";
 import LandingBackground from "@images/backgrounds/landingbackground.jpeg";
 import "react-lazy-load-image-component/src/effects/blur.css";

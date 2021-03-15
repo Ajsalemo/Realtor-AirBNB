@@ -1,4 +1,4 @@
-import LazyLoadImages from "@components/lazyLoadImages/lazyLoadImages";
+import LazyLoadImages from "@components/lazyloadimages/lazyLoadImages";
 
 export default function DisplaySaleListings({ data, forSaleLoading }) {
   if (forSaleLoading)
