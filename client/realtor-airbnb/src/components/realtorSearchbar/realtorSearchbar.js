@@ -1,8 +1,9 @@
 import { useLazyQuery } from "@apollo/client";
 import { AUTO_COMPLETE_QUERY } from "@apollographql_queries/autoComplete";
-import FontAwesomeLib from "@components/fontawesomelib/fontAwesomelib";
+import FontAwesomeLib from "@components/fontAwesomeLib/fontAwesomeLib";
 import RealtorSearchbarSelect from "@components/realtorSearchbarSelect/realtorSearchbarSelect";
 import { faSearch, faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { FormSchemaValidation } from "@helpers/formSchemaValidation/FormSchemaValidation";
 import { Field, Form, Formik } from "formik";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
@@ -47,7 +48,7 @@ export default function RealtorSearchbar() {
     optionalURLValues.min_price,
     optionalURLValues.prop_type,
   ]);
-  console.log(optionalURLValues)
+
   return (
     <>
       <div className="bg-gray-200">
@@ -55,8 +56,8 @@ export default function RealtorSearchbar() {
           initialValues={{
             location: "",
           }}
+          validationSchema={FormSchemaValidation}
           onSubmit={async (values) => {
-            console.log(values);
             // Set errors to false initially
             setIsError(false);
             setOptionalURLValues(values);

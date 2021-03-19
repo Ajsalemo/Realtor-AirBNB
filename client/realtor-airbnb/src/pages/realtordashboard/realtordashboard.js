@@ -1,11 +1,12 @@
 import { useLazyQuery } from "@apollo/client";
 import { AUTO_COMPLETE_QUERY } from "@apollographql_queries/autoComplete";
-import DisplaySuggestions from "@components/displaysuggestions/displaySuggestions";
-import FontAwesomeLib from "@components/fontawesomelib/fontAwesomelib";
+import DisplaySuggestions from "@components/displaySuggestions/displaySuggestions";
+import FontAwesomeLib from "@components/fontAwesomeLib/fontAwesomeLib";
 import Footer from "@components/footer/footer";
-import LazyLoadImages from "@components/lazyloadimages/lazyLoadImages";
+import LazyLoadImages from "@components/lazyLoadImages/lazyLoadImages";
 import Navbar from "@components/navbar/navbar";
 import { faSearch, faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { FormSchemaValidation } from "@helpers/formSchemaValidation/FormSchemaValidation";
 import RealtorDashboardBackgroundImage from "@images/backgrounds/realtor_dashboard_background.jpg";
 import { Field, Form, Formik } from "formik";
 import { useState } from "react";
@@ -46,8 +47,8 @@ export default function RealtorDashboard() {
           <button
             className={
               isForSale
-                ? "transition duration-500 ease-in-out rounded-lg border-2 border-white py-1 px-6 my-1 font-suez-one bg-red-600 w-3/4 sm:w-1/2 mx-auto md:m-1 md:w-32"
-                : "rounded-lg border-2 border-white py-1 px-6 my-1 font-suez-one w-3/4 sm:w-1/2 mx-auto md:m-1 md:w-32"
+                ? "transition duration-500 ease-in-out rounded-lg border-2 border-white py-1 px-6 my-1 font-suez-one bg-red-600 w-3/4 sm:w-1/2 mx-auto md:m-1 md:w-40 max-h-10"
+                : "rounded-lg border-2 border-white py-1 px-6 my-1 font-suez-one w-3/4 sm:w-1/2 mx-auto md:m-1 md:w-40 max-h-10"
             }
             onClick={() => toggleSaleSearchMode()}
           >
@@ -56,8 +57,8 @@ export default function RealtorDashboard() {
           <button
             className={
               isForRent
-                ? "transition duration-500 ease-in-out rounded-lg border-2 border-white py-1 px-6 my-1 font-suez-one bg-red-600 w-3/4 sm:w-1/2 mx-auto md:m-1 md:w-32"
-                : "rounded-lg border-2 border-white py-1 px-6 my-1 font-suez-one w-3/4 sm:w-1/2 mx-auto md:m-1 md:w-32"
+                ? "transition duration-500 ease-in-out rounded-lg border-2 border-white py-1 px-6 my-1 font-suez-one bg-red-600 w-3/4 sm:w-1/2 mx-auto md:m-1 md:w-40 max-h-10"
+                : "rounded-lg border-2 border-white py-1 px-6 my-1 font-suez-one w-3/4 sm:w-1/2 mx-auto md:m-1 md:w-40 max-h-10"
             }
             onClick={() => toggleRentSearchMode()}
           >
@@ -67,6 +68,7 @@ export default function RealtorDashboard() {
             initialValues={{
               location: "",
             }}
+            validationSchema={FormSchemaValidation}
             onSubmit={async (values, { resetForm }) => {
               await getAutocompleteQuery({
                 variables: { location: values.location },
@@ -75,30 +77,38 @@ export default function RealtorDashboard() {
               resetForm();
             }}
           >
-            {({ handleSubmit }) => (
-              <Form className="flex bg-gray-400 w-5/6 md:w-1/2 my-2 mx-auto">
-                <Field
-                  name="location"
-                  placeholder="Address, School, City, ZIP or Neighborhood"
-                  className="w-full"
-                />
-                <button
-                  type="submit"
-                  onClick={handleSubmit}
-                  disabled={loading}
-                  className={!loading ? "cursor-pointer" : "cursor-default"}
-                >
-                  <FontAwesomeLib
-                    icon={!loading ? faSearch : faSpinner}
-                    size="2x"
-                    classNames={
-                      !loading
-                        ? "text-white ml-2"
-                        : "animate-spin text-red-600 ml-2 transition duration-400 ease-in-out"
-                    }
+            {({ handleSubmit, errors, touched }) => (
+              <div className="w-full text-center">
+                <Form className="flex bg-gray-400 w-5/6 md:w-1/2 my-2 mx-auto">
+                  <Field
+                    name="location"
+                    placeholder="Address, School, City, ZIP or Neighborhood"
+                    className="w-full"
                   />
-                </button>
-              </Form>
+                  <button
+                    type="submit"
+                    onClick={handleSubmit}
+                    disabled={loading}
+                    className={!loading ? "cursor-pointer" : "cursor-default"}
+                  >
+                    <FontAwesomeLib
+                      icon={!loading ? faSearch : faSpinner}
+                      size="2x"
+                      classNames={
+                        !loading
+                          ? "text-white ml-2"
+                          : "animate-spin text-red-600 ml-2 transition duration-400 ease-in-out"
+                      }
+                    />
+                  </button>
+                </Form>
+                {/* Display any errors with the form submission */}
+                {errors.location && touched.location ? (
+                  <span className="text-red-700 font-suez-one">
+                    {errors.location}
+                  </span>
+                ) : null}
+              </div>
             )}
           </Formik>
         </div>

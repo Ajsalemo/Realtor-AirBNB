@@ -1,6 +1,6 @@
 import Home from "@pages/home/home";
-import RealtorDashboard from "@pages/realtordashboard/realtorDashboard";
-import RealtorListings from "@pages/realtorlistings/realtorListings";
+import RealtorDashboard from "@pages/realtorDashboard/realtorDashboard";
+import RealtorListings from "@pages/realtorListings/realtorListings";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 export default function RouteContainer() {

@@ -1,5 +1,5 @@
-import FontAwesomeLib from "@components/fontawesomelib/fontAwesomelib";
-import NavDropdown from "@components/navdropdown/navDropdown";
+import FontAwesomeLib from "@components/fontAwesomeLib/fontAwesomeLib";
+import NavDropdown from "@components/navDropdown/navDropdown";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { Link } from "react-router-dom";
