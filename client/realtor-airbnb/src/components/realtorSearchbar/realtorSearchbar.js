@@ -72,7 +72,7 @@ export default function RealtorSearchbar() {
             }
           }}
         >
-          {({ handleSubmit }) => (
+          {({ handleSubmit, errors, touched }) => (
             <div className="relative">
               <Form className="flex w-5/6 md:w-1/2 py-1 pl-2">
                 <Field
@@ -101,10 +101,17 @@ export default function RealtorSearchbar() {
                   <RealtorSearchbarSelect />
                 </div>
               </Form>
+              {/* Display any errors with the form submission */}
+              {errors.location && touched.location ? (
+                <span className="text-red-700 font-suez-one pl-2">
+                  {errors.location}
+                </span>
+              ) : null}
             </div>
           )}
         </Formik>
       </div>
+      {/* Display non-form validation related errors - i.e, upstream not responsive/down */}
       <div className="text-center">
         {isError && (
           <span className="text-red-500">

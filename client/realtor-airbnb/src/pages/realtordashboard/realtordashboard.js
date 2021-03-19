@@ -15,7 +15,7 @@ export default function RealtorDashboard() {
   const [getAutocompleteQuery, { loading, data }] = useLazyQuery(
     AUTO_COMPLETE_QUERY
   );
-
+  const [isError, setIsError] = useState(false);
   const [isForSale, setIsForSale] = useState(true);
   const [isForRent, setIsForRent] = useState(false);
   // Functions to toggle the search mode state between looking for homes for rent or homes for sale
@@ -70,11 +70,16 @@ export default function RealtorDashboard() {
             }}
             validationSchema={FormSchemaValidation}
             onSubmit={async (values, { resetForm }) => {
-              await getAutocompleteQuery({
-                variables: { location: values.location },
-              });
-              // Reset the form after form submission
-              resetForm();
+              setIsError(false);
+              try {
+                await getAutocompleteQuery({
+                  variables: { location: values.location },
+                });
+                // Reset the form after form submission
+                resetForm();
+              } catch (error) {
+                setIsError(true);
+              }
             }}
           >
             {({ handleSubmit, errors, touched }) => (
@@ -111,6 +116,14 @@ export default function RealtorDashboard() {
               </div>
             )}
           </Formik>
+        </div>
+        {/* Display non-form validation related errors - i.e, upstream not responsive/down */}
+        <div className="text-center">
+          {isError && (
+            <span className="text-red-500">
+              An error has occurred. Please try again.
+            </span>
+          )}
         </div>
         <DisplaySuggestions
           data={data}
