@@ -23,7 +23,7 @@ export default function RealtorSearchbarSelect() {
           Max Price
         </option>
         {realtorSearchbarMaxPrice.map((minPrice) => (
-          <option value={minPrice.value} key={minPrice.keu}>
+          <option value={minPrice.value} key={minPrice.key}>
             {minPrice.display}
           </option>
         ))}

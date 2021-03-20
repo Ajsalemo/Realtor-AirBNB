@@ -3,18 +3,19 @@ import { AUTO_COMPLETE_QUERY } from "@apollographql_queries/autoComplete";
 import DisplaySuggestions from "@components/displaysuggestions/displaySuggestions";
 import FontAwesomeLib from "@components/fontawesomelib/fontAwesomeLib";
 import Footer from "@components/footer/footer";
-import LazyLoadImages from "@components/lazyLoadImages/lazyLoadImages";
+import LazyLoadImages from "@components/lazyloadimages/lazyLoadImages";
 import Navbar from "@components/navbar/navbar";
-import { faSearch, faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import { FormSchemaValidation } from "@helpers/formSchemaValidation/FormSchemaValidation";
 import RealtorDashboardBackgroundImage from "@images/backgrounds/realtor_dashboard_background.jpg";
 import { Field, Form, Formik } from "formik";
 import { useState } from "react";
 
 export default function RealtorDashboard() {
-  const [getAutocompleteQuery, { loading, data }] = useLazyQuery(
-    AUTO_COMPLETE_QUERY
-  );
+  const [
+    getAutocompleteQuery,
+    { loading, error: apolloGraphqlError, data },
+  ] = useLazyQuery(AUTO_COMPLETE_QUERY);
   const [isError, setIsError] = useState(false);
   const [isForSale, setIsForSale] = useState(true);
   const [isForRent, setIsForRent] = useState(false);
@@ -72,6 +73,10 @@ export default function RealtorDashboard() {
             onSubmit={async (values, { resetForm }) => {
               setIsError(false);
               try {
+                // If a Apollo/GraphQL error occurs when submitting, set the error state to true to display there is an issue
+                if (apolloGraphqlError) {
+                  setIsError(true);
+                }
                 await getAutocompleteQuery({
                   variables: { location: values.location },
                 });
@@ -107,7 +112,7 @@ export default function RealtorDashboard() {
                         }
                       >
                         <FontAwesomeLib
-                          icon={!loading ? faSearch : faSpinner}
+                          icon={!loading ? faSearch : faCircleNotch}
                           size="2x"
                           classNames={
                             !loading && errors.location && touched.location

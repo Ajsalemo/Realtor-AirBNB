@@ -1,11 +1,21 @@
-import LazyLoadImages from "@components/lazyLoadImages/lazyLoadImages";
+import FontAwesomeLib from "@components/fontawesomelib/fontAwesomeLib";
+import LazyLoadImages from "@components/lazyloadimages/lazyLoadImages";
+import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 
 export default function DisplaySaleListings({ data, forSaleLoading }) {
   if (forSaleLoading)
     return (
-      <div className="h-screen flex justify-center items-center">Loading..</div>
+      <div className="h-screen flex justify-center items-center">
+        {" "}
+        <FontAwesomeLib
+          icon={faCircleNotch}
+          size="2x"
+          classNames={"animate-spin text-blue-600 mr-2"}
+        />
+        Loading..
+      </div>
     );
-    
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 py-8">
       {data &&
@@ -23,7 +33,9 @@ export default function DisplaySaleListings({ data, forSaleLoading }) {
             />
             {/* Show the price of the property if it exists */}
             {property.price ? (
-              <span className="font-suez-one text-lg sm:text-xl md:text-2xl">${property.price}</span>
+              <span className="font-suez-one text-lg sm:text-xl md:text-2xl">
+                ${property.price}
+              </span>
             ) : null}
             <div className="flex">
               {/* Show how many bedrooms of the property if it exists */}

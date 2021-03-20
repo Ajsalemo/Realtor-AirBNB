@@ -18,7 +18,7 @@ module.exports = {
       width: {
         'ft': 'fit-content'
       }
-    },
+    }
   },
   variants: {
     extend: {},
