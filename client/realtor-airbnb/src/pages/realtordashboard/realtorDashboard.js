@@ -1,7 +1,7 @@
 import { useLazyQuery } from "@apollo/client";
 import { AUTO_COMPLETE_QUERY } from "@apollographql_queries/autoComplete";
-import DisplaySuggestions from "@components/displaySuggestions/displaySuggestions";
-import FontAwesomeLib from "@components/fontAwesomeLib/fontAwesomeLib";
+import DisplaySuggestions from "@components/displaysuggestions/displaySuggestions";
+import FontAwesomeLib from "@components/fontawesomelib/fontAwesomeLib";
 import Footer from "@components/footer/footer";
 import LazyLoadImages from "@components/lazyLoadImages/lazyLoadImages";
 import Navbar from "@components/navbar/navbar";
@@ -95,18 +95,26 @@ export default function RealtorDashboard() {
                       <button
                         type="submit"
                         onClick={handleSubmit}
-                        disabled={loading}
+                        disabled={
+                          loading || (errors.location && touched.location)
+                        }
                         className={
-                          !loading ? "cursor-pointer" : "cursor-default"
+                          !loading && errors.location && touched.location
+                            ? "cursor-default"
+                            : loading
+                            ? "cursor-pointer"
+                            : "cursor-pointer"
                         }
                       >
                         <FontAwesomeLib
                           icon={!loading ? faSearch : faSpinner}
                           size="2x"
                           classNames={
-                            !loading
-                              ? "text-white ml-2"
-                              : "animate-spin text-red-600 ml-2 transition duration-400 ease-in-out"
+                            !loading && errors.location && touched.location
+                              ? "text-red-600 ml-2"
+                              : loading
+                              ? "animate-spin text-red-600 ml-2 transition duration-400 ease-in-out"
+                              : "text-white ml-2"
                           }
                         />
                       </button>

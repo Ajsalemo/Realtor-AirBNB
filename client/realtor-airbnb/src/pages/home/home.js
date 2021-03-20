@@ -1,5 +1,5 @@
 import Footer from "@components/footer/footer";
-import LandingNavigation from "@components/landingNavigation/landingNavigation";
+import LandingNavigation from "@components/landingnavigation/landingNavigation";
 import LazyLoadImages from "@components/lazyLoadImages/lazyLoadImages";
 import Navbar from "@components/navbar/navbar";
 import LandingBackground from "@images/backgrounds/landingbackground.jpeg";

@@ -1,5 +1,5 @@
 import { ApolloProvider } from "@apollo/client";
-import RouteContainer from "@components/routeContainer/routeContainer";
+import RouteContainer from "@components/routecontainer/routeContainer";
 import React from "react";
 import ReactDOM from "react-dom";
 import { client } from "./apollographql/client/apolloClient";
