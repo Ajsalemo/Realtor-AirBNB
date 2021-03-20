@@ -83,36 +83,42 @@ export default function RealtorDashboard() {
             }}
           >
             {({ handleSubmit, errors, touched }) => (
-              <div className="w-full text-center">
-                <Form className="flex bg-gray-400 w-5/6 md:w-1/2 my-2 mx-auto">
-                  <Field
-                    name="location"
-                    placeholder="Address, School, City, ZIP or Neighborhood"
-                    className="w-full"
-                  />
-                  <button
-                    type="submit"
-                    onClick={handleSubmit}
-                    disabled={loading}
-                    className={!loading ? "cursor-pointer" : "cursor-default"}
-                  >
-                    <FontAwesomeLib
-                      icon={!loading ? faSearch : faSpinner}
-                      size="2x"
-                      classNames={
-                        !loading
-                          ? "text-white ml-2"
-                          : "animate-spin text-red-600 ml-2 transition duration-400 ease-in-out"
-                      }
-                    />
-                  </button>
+              <div className="w-full text-center md:text-left">
+                <Form className="bg-gray-400 w-full">
+                  <div className="flex-col w-5/6 md:w-1/2 my-2 mx-auto">
+                    <div className="flex">
+                      <Field
+                        name="location"
+                        placeholder="Address, School, City, ZIP or Neighborhood"
+                        className="w-full"
+                      />
+                      <button
+                        type="submit"
+                        onClick={handleSubmit}
+                        disabled={loading}
+                        className={
+                          !loading ? "cursor-pointer" : "cursor-default"
+                        }
+                      >
+                        <FontAwesomeLib
+                          icon={!loading ? faSearch : faSpinner}
+                          size="2x"
+                          classNames={
+                            !loading
+                              ? "text-white ml-2"
+                              : "animate-spin text-red-600 ml-2 transition duration-400 ease-in-out"
+                          }
+                        />
+                      </button>
+                    </div>
+                    {/* Display any errors with the form submission */}
+                    {errors.location && touched.location ? (
+                      <span className="text-red-700 font-suez-one">
+                        {errors.location}
+                      </span>
+                    ) : null}
+                  </div>
                 </Form>
-                {/* Display any errors with the form submission */}
-                {errors.location && touched.location ? (
-                  <span className="text-red-700 font-suez-one">
-                    {errors.location}
-                  </span>
-                ) : null}
               </div>
             )}
           </Formik>
