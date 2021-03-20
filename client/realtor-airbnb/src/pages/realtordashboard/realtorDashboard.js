@@ -5,7 +5,7 @@ import FontAwesomeLib from "@components/fontawesomelib/fontAwesomeLib";
 import Footer from "@components/footer/footer";
 import LazyLoadImages from "@components/lazyloadimages/lazyLoadImages";
 import Navbar from "@components/navbar/navbar";
-import { faSearch, faCircleNotch } from "@fortawesome/free-solid-svg-icons";
+import { faCircleNotch, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FormSchemaValidation } from "@helpers/formSchemaValidation/FormSchemaValidation";
 import RealtorDashboardBackgroundImage from "@images/backgrounds/realtor_dashboard_background.jpg";
 import { Field, Form, Formik } from "formik";
@@ -44,12 +44,12 @@ export default function RealtorDashboard() {
           src={RealtorDashboardBackgroundImage}
           classNames="object-center object-cover w-full sm:h-96"
         />
-        <div className="flex flex-col justify-center md:flex-row bg-gray-400 border-b-4 border-t-4 border-white">
+        <div className="flex flex-col justify-center md:flex-row bg-primary border-b-4 border-t-4 border-white">
           <button
             className={
               isForSale
-                ? "transition duration-500 ease-in-out rounded-lg border-2 border-white py-1 px-6 my-1 font-suez-one bg-red-600 w-3/4 sm:w-1/2 mx-auto md:m-1 md:w-40 max-h-10"
-                : "rounded-lg border-2 border-white py-1 px-6 my-1 font-suez-one w-3/4 sm:w-1/2 mx-auto md:m-1 md:w-40 max-h-10"
+                ? "text-white transition duration-500 ease-in-out rounded-lg border-2 border-white py-1 px-6 my-1 font-suez-one bg-red-600 w-3/4 sm:w-1/2 mx-auto md:m-1 md:w-40 max-h-10"
+                : "text-white rounded-lg border-2 border-white py-1 px-6 my-1 font-suez-one w-3/4 sm:w-1/2 mx-auto md:m-1 md:w-40 max-h-10"
             }
             onClick={() => toggleSaleSearchMode()}
           >
@@ -58,8 +58,8 @@ export default function RealtorDashboard() {
           <button
             className={
               isForRent
-                ? "transition duration-500 ease-in-out rounded-lg border-2 border-white py-1 px-6 my-1 font-suez-one bg-red-600 w-3/4 sm:w-1/2 mx-auto md:m-1 md:w-40 max-h-10"
-                : "rounded-lg border-2 border-white py-1 px-6 my-1 font-suez-one w-3/4 sm:w-1/2 mx-auto md:m-1 md:w-40 max-h-10"
+                ? "text-white transition duration-500 ease-in-out rounded-lg border-2 border-white py-1 px-6 my-1 font-suez-one bg-red-600 w-3/4 sm:w-1/2 mx-auto md:m-1 md:w-40 max-h-10"
+                : "text-white rounded-lg border-2 border-white py-1 px-6 my-1 font-suez-one w-3/4 sm:w-1/2 mx-auto md:m-1 md:w-40 max-h-10"
             }
             onClick={() => toggleRentSearchMode()}
           >
@@ -89,7 +89,7 @@ export default function RealtorDashboard() {
           >
             {({ handleSubmit, errors, touched }) => (
               <div className="w-full text-center md:text-left">
-                <Form className="bg-gray-400 w-full">
+                <Form className="bg-primary w-full">
                   <div className="flex-col w-5/6 md:w-1/2 my-2 mx-auto">
                     <div className="flex">
                       <Field

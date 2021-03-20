@@ -12,7 +12,7 @@ export default function DisplaySuggestions({ data, isForRent }) {
           : null}
       </h2>
       <div className="flex flex-col items-center md:justify-center md:flex-row">
-        <div className="bg-gray-400 w-1/2 sm:1/4 font-suez-one p-1 text-center mt-2 rounded h-32 sm:h-48 flex flex-col justify-center bg-realtor-dashboard-one bg-center mx-1">
+        <div className="bg-primary w-1/2 sm:1/4 font-suez-one p-1 text-center mt-2 rounded h-32 sm:h-48 flex flex-col justify-center bg-realtor-dashboard-one bg-center mx-1">
           <span className="bg-white">Search for your next home.</span>
         </div>
         <div className="order-first md:order-none w-3/4 sm:1/4 rounded">
@@ -32,7 +32,7 @@ export default function DisplaySuggestions({ data, isForRent }) {
               ))}
           </ul>
         </div>
-        <div className="bg-gray-400 w-1/2 sm:1/4 font-suez-one p-1 text-center mt-2 rounded h-32 sm:h-48 flex flex-col justify-center bg-realtor-dashboard-two bg-center">
+        <div className="bg-primary w-1/2 sm:1/4 font-suez-one p-1 text-center mt-2 rounded h-32 sm:h-48 flex flex-col justify-center bg-realtor-dashboard-two bg-center">
           <span className="bg-white">
             Locate listings by searching for addresses, cities, zip codes or
             neighborhoods.

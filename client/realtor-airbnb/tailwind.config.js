@@ -3,6 +3,9 @@ module.exports = {
   darkMode: false,
   theme: {
     extend: {
+      backgroundColor: (theme) => ({
+        primary: '#111827',
+      }),
       inset: {
         "1/10": "10%",
       },
@@ -16,9 +19,9 @@ module.exports = {
           "url('@images/realtordashboard/landingpagebackground2.jpg')",
       }),
       width: {
-        'ft': 'fit-content'
-      }
-    }
+        ft: "fit-content",
+      },
+    },
   },
   variants: {
     extend: {},
