@@ -1,7 +1,7 @@
 import FontAwesomeLib from "@components/fontawesomelib/fontAwesomeLib";
 import LazyLoadImages from "@components/lazyloadimages/lazyLoadImages";
+import ScrollMarker from "@components/scrollmarker/scrollMarker";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
-import ScrollMarker from "@components/scrollmarker/scrollMarker"
 
 export default function DisplaySaleListings({ data, forSaleLoading }) {
   if (forSaleLoading)
@@ -18,7 +18,7 @@ export default function DisplaySaleListings({ data, forSaleLoading }) {
     );
 
   return (
-    <div>
+    <div className="pt-48 md:pt-24">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 py-8">
         {data &&
           data.RealtorForSaleQuery.properties.map((property) => (

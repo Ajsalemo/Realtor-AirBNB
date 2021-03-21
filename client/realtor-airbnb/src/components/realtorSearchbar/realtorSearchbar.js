@@ -22,6 +22,7 @@ export default function RealtorSearchbar() {
   // useEffect is used here to listen to these changes and then use the 'history' hook to push to the /listings page which is set up to take in the parameterized data for processing
   // These changes only happen when the onSubmit function is fired, and not on page load - which is useful for a way to pull in fresh data when using this searchbar component
   useEffect(() => {
+    
     if (data && !loading) {
       const { autocomplete } = data.autoCompleteQuery;
       for (let i = 0; i < autocomplete.length; i++) {

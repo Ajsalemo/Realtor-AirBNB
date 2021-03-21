@@ -5,7 +5,7 @@ import DisplayRentalListings from "@components/displayrentallistings/displayRent
 import DisplaySaleListings from "@components/displaysalelistings/displaySaleListings";
 import Footer from "@components/footer/footer";
 import Navbar from "@components/navbar/navbar";
-import SubSearchbar from "@components/realtorsearchbar/realtorSearchbar";
+import RealtorSearchbar from "@components/realtorsearchbar/realtorSearchbar";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
@@ -58,7 +58,6 @@ export default function RealtorListings() {
         },
       });
     }
-    return <div>An error has occurred.</div>;
   }, [
     city,
     getRealtorForrentQuery,
@@ -76,8 +75,10 @@ export default function RealtorListings() {
 
   return (
     <div className="min-h-screen relative">
-      <Navbar />
-      <SubSearchbar />
+      <div className={"fixed w-full z-10"}>
+        <Navbar />
+        <RealtorSearchbar />
+      </div>
       {/* 
         Splitting the Rent and Sale listings into their own components for easier component management
         The returned API's share mostly the same properties but vary just enough to warrant a splitting of components
