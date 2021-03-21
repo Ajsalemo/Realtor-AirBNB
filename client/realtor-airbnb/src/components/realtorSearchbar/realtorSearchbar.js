@@ -34,7 +34,7 @@ export default function RealtorSearchbar() {
         }
       }
       history.push(
-        `/listings/${dataForNextPage.city}/${dataForNextPage.state_code}/20/0/sell/${optionalURLValues.min_price}/${optionalURLValues.max_price}/${optionalURLValues.prop_type}/${optionalURLValues.beds_min}/${optionalURLValues.baths_min}`
+        `/listings/${dataForNextPage.city}/${dataForNextPage.state_code}/10000/0/sell/${optionalURLValues.min_price}/${optionalURLValues.max_price}/${optionalURLValues.prop_type}/${optionalURLValues.beds_min}/${optionalURLValues.baths_min}`
       );
     }
   }, [
@@ -81,7 +81,7 @@ export default function RealtorSearchbar() {
           {({ handleSubmit, errors, touched }) => (
             <div className="relative">
               <Form className="flex flex-col py-1 px-2 md:flex-row">
-                <div className="flex pb-2 md:w-1/2">
+                <div className="flex pb-2 md:pb-0 md:w-1/2">
                   <Field
                     name="location"
                     placeholder="Address, School, City, ZIP or Neighborhood"

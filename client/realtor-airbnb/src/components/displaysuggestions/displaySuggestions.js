@@ -21,7 +21,7 @@ export default function DisplaySuggestions({ data, isForRent }) {
               data.autoCompleteQuery.autocomplete.map((loc) => (
                 <li key={loc.slug_id}>
                   <Link
-                    to={`/listings/${loc.city}/${loc.state_code}/20/0/${
+                    to={`/listings/${loc.city}/${loc.state_code}/10000/0/${
                       isForRent ? "rent" : "sell"
                     }`}
                     className="font-suez-one flex-grow"

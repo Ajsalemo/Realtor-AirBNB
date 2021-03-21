@@ -45,6 +45,7 @@ export const REALTOR_FORSALE_QUERY = gql`
           state_code
           time_zone
         }
+        page_no
         price
         baths_full
         baths
