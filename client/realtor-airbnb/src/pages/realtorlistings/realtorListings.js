@@ -75,7 +75,7 @@ export default function RealtorListings() {
 
   return (
     <div className="min-h-screen relative">
-      <div className={"fixed w-full z-10"}>
+      <div className="fixed w-full z-10">
         <Navbar />
         <RealtorSearchbar />
       </div>

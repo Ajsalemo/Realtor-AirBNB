@@ -14,7 +14,7 @@ export default function RouteContainer() {
         path="/listings/:city/:state_code/:limit/:offset/:rentOrSell/:optPriceMin?/:optPriceMax?/:optPropType?/:optBedsMin?/:optBathsMin?"
         component={RealtorListings}
       />
-      <Route path="/detail/:id" component={RealtorListingsDetail} />
+      <Route path="/detail/:property_id" component={RealtorListingsDetail} />
     </Router>
   );
 }
