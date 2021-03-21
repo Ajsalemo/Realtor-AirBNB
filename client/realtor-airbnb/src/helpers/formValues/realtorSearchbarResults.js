@@ -8,31 +8,31 @@ export const realtorSearchbarResults = [
   {
     value: "10",
     display: "10",
-    key: "rsr0",
+    key: "rsr1",
   },
   {
     value: "25",
     display: "25",
-    key: "rsr1",
+    key: "rsr2",
   },
   {
     value: "50",
     display: "50",
-    key: "rsr2",
+    key: "rsr3",
   },
   {
     value: "100",
     display: "100",
-    key: "rsr3",
+    key: "rsr4",
   },
   {
     value: "300",
     display: "300",
-    key: "rsr4",
+    key: "rsr5",
   },
   {
     value: "500",
     display: "500",
-    key: "rsr5",
+    key: "rsr6",
   },
 ];
