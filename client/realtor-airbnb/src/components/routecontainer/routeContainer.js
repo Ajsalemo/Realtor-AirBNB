@@ -1,6 +1,7 @@
 import Home from "@pages/home/home";
 import RealtorDashboard from "@pages/realtordashboard/realtorDashboard";
 import RealtorListings from "@pages/realtorlistings/realtorListings";
+import RealtorListingsDetail from "@pages/realtorlistingsdetail/realtorListingsDetail";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 export default function RouteContainer() {
@@ -13,6 +14,7 @@ export default function RouteContainer() {
         path="/listings/:city/:state_code/:limit/:offset/:rentOrSell/:optPriceMin?/:optPriceMax?/:optPropType?/:optBedsMin?/:optBathsMin?"
         component={RealtorListings}
       />
+      <Route path="/detail/:id" component={RealtorListingsDetail} />
     </Router>
   );
 }
