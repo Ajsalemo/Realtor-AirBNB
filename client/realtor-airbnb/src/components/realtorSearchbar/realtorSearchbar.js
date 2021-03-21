@@ -43,7 +43,7 @@ export default function RealtorSearchbar() {
         }
       }
       history.push(
-        `/listings/${dataForNextPage.city}/${dataForNextPage.state_code}/10000/0/sell/${optionalURLValues.min_price}/${optionalURLValues.max_price}/${optionalURLValues.prop_type}/${optionalURLValues.beds_min}/${optionalURLValues.baths_min}`
+        `/listings/${dataForNextPage.city}/${dataForNextPage.state_code}/${optionalURLValues.results}/0/sell/${optionalURLValues.min_price}/${optionalURLValues.max_price}/${optionalURLValues.prop_type}/${optionalURLValues.beds_min}/${optionalURLValues.baths_min}`
       );
     }
   }, [

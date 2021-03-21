@@ -2,7 +2,8 @@ import { realtorSearchbarBathMin } from "@helpers/formValues/realtorSearchbarBat
 import { realtorSearchbarBedMin } from "@helpers/formValues/realtorSearchbarBedMin";
 import { realtorSearchbarMaxPrice } from "@helpers/formValues/realtorSearchbarMaxPrice";
 import { realtorSearchbarMinPrice } from "@helpers/formValues/realtorSearchbarMinPrice";
-import { realtorSearchBarPropType } from "@helpers/formValues/realtorSearchBarPropType";
+import { realtorSearchbarPropType } from "@helpers/formValues/realtorSearchbarPropType";
+import { realtorSearchbarResults } from "@helpers/formValues/realtorSearchbarResults";
 import { Field } from "formik";
 
 export default function RealtorSearchbarSelect() {
@@ -32,7 +33,7 @@ export default function RealtorSearchbarSelect() {
         <option selected value="Property Type" disabled>
           Property Type
         </option>
-        {realtorSearchBarPropType.map((minPrice) => (
+        {realtorSearchbarPropType.map((minPrice) => (
           <option value={minPrice.value} key={minPrice.key}>
             {minPrice.display}
           </option>
@@ -53,6 +54,17 @@ export default function RealtorSearchbarSelect() {
           Baths
         </option>
         {realtorSearchbarBathMin.map((minPrice) => (
+          <option value={minPrice.value} key={minPrice.key}>
+            {minPrice.display}
+          </option>
+        ))}
+      </Field>
+      <Field name="results" as="select" className="h-full ml-2">
+        {/* If no 'results' value is chosen, then it will default to 10,000 (arbitrary number, equivalent to no limit) */}
+        <option selected value="10000" disabled>
+          Results
+        </option>
+        {realtorSearchbarResults.map((minPrice) => (
           <option value={minPrice.value} key={minPrice.key}>
             {minPrice.display}
           </option>

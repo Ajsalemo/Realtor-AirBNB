@@ -1,5 +1,5 @@
 // Property types to be displayed in the 'realtorsearchbar.js' search form
-export const realtorSearchBarPropType = [
+export const realtorSearchbarPropType = [
   {
     value: "single_family",
     display: "Single Family",
