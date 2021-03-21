@@ -7,6 +7,16 @@ export default function ScrollMarker() {
   const isBrowser = typeof window !== "undefined";
   const [scrollMarkerTopPosition, setScrollMarkerTopPosition] = useState(null);
 
+  // Smooth scroll to top on click
+  const scrollToTop = () => {
+    if (isBrowser) {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+  };
+
   useEffect(() => {
     if (isBrowser) {
       const onScroll = () => {
@@ -19,12 +29,14 @@ export default function ScrollMarker() {
   }, [scrollMarkerTopPosition, isBrowser]);
 
   return scrollMarkerTopPosition && scrollMarkerTopPosition > 100 ? (
-    <FontAwesomeLib
-      icon={faArrowUp}
-      size="2x"
-      classNames={
-        "animate-bounce text-white fixed bottom-0 pl-2 pb-2 cursor-pointer"
-      }
-    />
+    <button onClick={() => scrollToTop()}>
+      <FontAwesomeLib
+        icon={faArrowUp}
+        size="2x"
+        classNames={
+          "animate-bounce text-white fixed bottom-0 ml-2 mb-2 cursor-pointer bg-gray-400 rounded p-1 hover:bg-blue-500 transition duration-500 ease-in-out"
+        }
+      />
+    </button>
   ) : null;
 }

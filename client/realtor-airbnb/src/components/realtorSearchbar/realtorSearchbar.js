@@ -10,6 +10,8 @@ import { useHistory } from "react-router-dom";
 
 export default function RealtorSearchbar() {
   const history = useHistory();
+  // Check if the 'window' object is available
+  const isBrowser = typeof window !== "undefined";
   const [isError, setIsError] = useState(false);
   const [optionalURLValues, setOptionalURLValues] = useState("");
   const [dataForNextPage, setDataForNextPage] = useState([]);
@@ -22,7 +24,13 @@ export default function RealtorSearchbar() {
   // useEffect is used here to listen to these changes and then use the 'history' hook to push to the /listings page which is set up to take in the parameterized data for processing
   // These changes only happen when the onSubmit function is fired, and not on page load - which is useful for a way to pull in fresh data when using this searchbar component
   useEffect(() => {
-    
+    // Start at the top of the page for new search queries
+    if (isBrowser) {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
     if (data && !loading) {
       const { autocomplete } = data.autoCompleteQuery;
       for (let i = 0; i < autocomplete.length; i++) {
@@ -42,6 +50,7 @@ export default function RealtorSearchbar() {
     data,
     dataForNextPage,
     history,
+    isBrowser,
     loading,
     optionalURLValues,
     optionalURLValues.baths_min,
