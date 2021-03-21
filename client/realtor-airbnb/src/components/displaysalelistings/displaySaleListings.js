@@ -5,7 +5,7 @@ import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 export default function DisplaySaleListings({ data, forSaleLoading }) {
   if (forSaleLoading)
     return (
-      <div className="h-screen flex justify-center items-center">
+      <div className="h-screen flex justify-center items-center text-white">
         {" "}
         <FontAwesomeLib
           icon={faCircleNotch}
@@ -40,21 +40,18 @@ export default function DisplaySaleListings({ data, forSaleLoading }) {
             <div className="flex">
               {/* Show how many bedrooms of the property if it exists */}
               {property.beds ? (
-                <span className="font-suez-one">
-                  {property.beds} <b>bed</b>
-                </span>
+                <span className="font-suez-one">{property.beds} bed</span>
               ) : null}
               {/* Show how many bathrooms of the property if it exists */}
               {property.baths ? (
                 <span className="font-suez-one pl-6">
-                  {property.baths} <b>baths</b>
+                  {property.baths} baths
                 </span>
               ) : null}
               {/* Show the square footage of the property if it exists */}
               {property.building_size ? (
                 <span className="font-suez-one pl-6">
-                  {property.building_size.size}
-                  <b>sqft</b>
+                  {property.building_size.size} sqft
                 </span>
               ) : null}
             </div>

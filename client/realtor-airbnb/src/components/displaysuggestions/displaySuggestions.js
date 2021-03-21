@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function DisplaySuggestions({ data, isForRent }) {
   return (
     <div className="pb-12">
-      <h2 className="transition-opacity duration-300 ease-in-out font-suez-one text-center text-2xl sm:text-3xl md:4xl h-12">
+      <h2 className="flex justify-center items-center transition-opacity duration-300 ease-in-out font-suez-one text-2xl sm:text-3xl md:4xl h-12">
         {data && data.autoCompleteQuery.autocomplete.length > 0
           ? "This is what we have found.."
           : data && data.autoCompleteQuery.autocomplete.length <= 0
@@ -13,9 +13,9 @@ export default function DisplaySuggestions({ data, isForRent }) {
       </h2>
       <div className="flex flex-col items-center md:justify-center md:flex-row">
         <div className="bg-primary w-1/2 sm:1/4 font-suez-one p-1 text-center mt-2 rounded h-32 sm:h-48 flex flex-col justify-center bg-realtor-dashboard-one bg-center mx-1">
-          <span className="bg-white">Search for your next home.</span>
+          <span className="bg-white text-black">Search for your next home.</span>
         </div>
-        <div className="order-first md:order-none w-3/4 sm:1/4 rounded">
+        <div className="py-12 order-first md:order-none w-3/4 sm:1/4 rounded">
           <ul className="text-center">
             {data &&
               data.autoCompleteQuery.autocomplete.map((loc) => (
@@ -33,7 +33,7 @@ export default function DisplaySuggestions({ data, isForRent }) {
           </ul>
         </div>
         <div className="bg-primary w-1/2 sm:1/4 font-suez-one p-1 text-center mt-2 rounded h-32 sm:h-48 flex flex-col justify-center bg-realtor-dashboard-two bg-center">
-          <span className="bg-white">
+          <span className="bg-white text-black">
             Locate listings by searching for addresses, cities, zip codes or
             neighborhoods.
           </span>

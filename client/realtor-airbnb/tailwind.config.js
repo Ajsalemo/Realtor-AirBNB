@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       backgroundColor: (theme) => ({
         primary: '#111827',
+        secondary: '#374151'
       }),
       inset: {
         "1/10": "10%",

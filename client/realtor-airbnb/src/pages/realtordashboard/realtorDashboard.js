@@ -37,14 +37,14 @@ export default function RealtorDashboard() {
   };
 
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen relative bg-secondary text-white">
       <Navbar />
       <div className="pb-12">
         <LazyLoadImages
           src={RealtorDashboardBackgroundImage}
           classNames="object-center object-cover w-full sm:h-96"
         />
-        <div className="flex flex-col justify-center md:flex-row bg-primary border-b-4 border-t-4 border-white">
+        <div className="flex flex-col justify-center md:flex-row bg-primary border-b-2 border-t-2 border-white">
           <button
             className={
               isForSale

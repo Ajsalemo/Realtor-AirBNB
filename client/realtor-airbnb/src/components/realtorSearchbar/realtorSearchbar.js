@@ -52,7 +52,7 @@ export default function RealtorSearchbar() {
 
   return (
     <>
-      <div className="bg-gray-200">
+      <div className="bg-secondary border-b-2 border-white">
         <Formik
           initialValues={{
             location: "",

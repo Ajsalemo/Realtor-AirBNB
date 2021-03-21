@@ -82,7 +82,7 @@ export default function RealtorListings() {
         Splitting the Rent and Sale listings into their own components for easier component management
         The returned API's share mostly the same properties but vary just enough to warrant a splitting of components
       */}
-      <div className="pb-12">
+      <div className="pb-12 bg-primary text-gray-300">
         {rentOrSell === "sell" ? (
           <DisplaySaleListings
             data={forSaleData}
