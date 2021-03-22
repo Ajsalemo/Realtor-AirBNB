@@ -25,14 +25,16 @@ export default function DisplaySaleListings({ data, forSaleLoading }) {
           data.RealtorForSaleQuery.properties.map((property) => (
             // If the thumbnail is missing for the property - hide the result
             <div
-              className={
-                !property.thumbnail
-                  ? "hidden"
-                  : "flex"
-              }
+              className={!property.thumbnail ? "hidden" : "flex"}
               key={property.property_id}
             >
-              <Link to={`/detail/${property.property_id}`} className="flex flex-col w-ft mx-auto px-1">
+              <Link
+                to={{
+                  pathname: `/detail/${property.property_id}`,
+                  state: { thumbnail: property.thumbnail },
+                }}
+                className="flex flex-col w-ft mx-auto px-1"
+              >
                 <LazyLoadImages
                   src={property.thumbnail}
                   classNames="rounded-lg mx-auto"

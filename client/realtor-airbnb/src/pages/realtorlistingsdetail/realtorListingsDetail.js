@@ -8,9 +8,11 @@ import ScrollMarker from "@components/scrollmarker/scrollMarker";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
 import { useParams } from "react-router";
+import LazyLoadImages from "@components/lazyloadimages/lazyLoadImages";
 
-export default function RealtorListingsDetail() {
+export default function RealtorListingsDetail(state) {
   const { property_id } = useParams();
+  const { thumbnail } = state.location.state;
   const [getRealtorForSaleDetail, { loading, data }] = useLazyQuery(
     REALTOR_FORSALE_DETAIL
   );
@@ -24,7 +26,7 @@ export default function RealtorListingsDetail() {
     });
   }, [getRealtorForSaleDetail, property_id]);
   console.log(data);
-
+  
   if (loading)
     return (
       <div className="h-screen flex justify-center items-center text-white bg-primary">
@@ -44,7 +46,14 @@ export default function RealtorListingsDetail() {
         <Navbar />
         <RealtorSearchbar />
       </div>
-      <div className="bg-primary text-white">New page.</div>
+      <div className="bg-primary text-white pt-48 md:pt-24">
+        <div className="text-center">
+          <LazyLoadImages
+            src={thumbnail}
+            classNames="rounded-lg"
+          />
+        </div>
+      </div>
       <ScrollMarker />
       <Footer />
     </div>

@@ -8,7 +8,27 @@ export const REALTOR_FORSALE_DETAIL = gql`
         path: "/properties/v2/detail?property_id={args.property_id}"
       ) {
       properties {
+        agents
+        broker {
+          name
+          phone1 {
+            number
+          }
+        }
+        year_built
+        beds
+        description
+        baths_full
+        stories
         address
+        cooling
+        heating
+        lot_size
+        photos
+        price
+        schools
+        sold_history
+        tax_history
       }
     }
   }
