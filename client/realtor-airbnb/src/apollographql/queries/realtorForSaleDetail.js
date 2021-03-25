@@ -15,6 +15,13 @@ export const REALTOR_FORSALE_DETAIL = gql`
             number
           }
         }
+        address {
+          city
+          county
+          state
+          postal_code
+          line
+        }
         year_built
         beds
         description

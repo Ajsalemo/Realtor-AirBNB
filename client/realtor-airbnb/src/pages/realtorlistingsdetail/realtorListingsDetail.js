@@ -2,13 +2,14 @@ import { useLazyQuery } from "@apollo/client";
 import { REALTOR_FORSALE_DETAIL } from "@apollographql_queries/realtorForSaleDetail";
 import FontAwesomeLib from "@components/fontawesomelib/fontAwesomeLib";
 import Footer from "@components/footer/footer";
+import LazyLoadImages from "@components/lazyloadimages/lazyLoadImages";
 import Navbar from "@components/navbar/navbar";
 import RealtorSearchbar from "@components/realtorsearchbar/realtorSearchbar";
+import SalePropertyDetail from "@components/salepropertydetail/salePropertyDetail";
 import ScrollMarker from "@components/scrollmarker/scrollMarker";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
 import { useParams } from "react-router";
-import LazyLoadImages from "@components/lazyloadimages/lazyLoadImages";
 
 export default function RealtorListingsDetail(state) {
   const { property_id } = useParams();
@@ -25,8 +26,7 @@ export default function RealtorListingsDetail(state) {
       },
     });
   }, [getRealtorForSaleDetail, property_id]);
-  console.log(data);
-  
+
   if (loading)
     return (
       <div className="h-screen flex justify-center items-center text-white bg-primary">
@@ -47,10 +47,10 @@ export default function RealtorListingsDetail(state) {
         <RealtorSearchbar />
       </div>
       <div className="bg-primary text-white pt-48 md:pt-24">
-        <div className="text-center">
-          <LazyLoadImages
-            src={thumbnail}
-            classNames="rounded-lg"
+        <div className="flex flex-col w-ft mx-auto px-1">
+          <LazyLoadImages src={thumbnail} classNames="rounded-lg" />
+          <SalePropertyDetail
+            property={data.realtorForSaleDetail.properties[0]}
           />
         </div>
       </div>
