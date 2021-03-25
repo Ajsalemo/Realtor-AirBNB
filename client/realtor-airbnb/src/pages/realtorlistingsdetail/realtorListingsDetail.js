@@ -5,11 +5,11 @@ import Footer from "@components/footer/footer";
 import LazyLoadImages from "@components/lazyloadimages/lazyLoadImages";
 import Navbar from "@components/navbar/navbar";
 import RealtorSearchbar from "@components/realtorsearchbar/realtorSearchbar";
-import SalePropertyDetail from "@components/salepropertydetail/salePropertyDetail";
 import ScrollMarker from "@components/scrollmarker/scrollMarker";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
 import { useParams } from "react-router";
+import SalePropertyDetail from "@components/salepropertydetail/salePropertyDetail"
 
 export default function RealtorListingsDetail(state) {
   const { property_id } = useParams();
@@ -39,7 +39,7 @@ export default function RealtorListingsDetail(state) {
         Loading..
       </div>
     );
-
+    
   return (
     <div className="min-h-screen relative bg-primary">
       <div className="fixed w-full z-10">
@@ -50,7 +50,7 @@ export default function RealtorListingsDetail(state) {
         <div className="flex flex-col w-ft mx-auto px-1">
           <LazyLoadImages src={thumbnail} classNames="rounded-lg" />
           <SalePropertyDetail
-            property={data.realtorForSaleDetail.properties[0]}
+            property={data && data.realtorForSaleDetail.properties[0]}
           />
         </div>
       </div>
