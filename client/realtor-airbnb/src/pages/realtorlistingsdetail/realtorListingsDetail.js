@@ -47,7 +47,7 @@ export default function RealtorListingsDetail(state) {
         <RealtorSearchbar />
       </div>
       <div className="bg-primary text-white pt-48 md:pt-24">
-        <div className="flex flex-col w-ft mx-auto px-1">
+        <div className="flex flex-col w-ft mx-auto px-1 pt-12">
           <LazyLoadImages src={thumbnail} classNames="rounded-lg" />
           <SalePropertyDetail
             property={data && data.realtorForSaleDetail.properties[0]}
