@@ -5,11 +5,11 @@ import Footer from "@components/footer/footer";
 import LazyLoadImages from "@components/lazyloadimages/lazyLoadImages";
 import Navbar from "@components/navbar/navbar";
 import RealtorSearchbar from "@components/realtorsearchbar/realtorSearchbar";
+import SalePropertyDetail from "@components/salepropertydetail/salePropertyDetail";
 import ScrollMarker from "@components/scrollmarker/scrollMarker";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
 import { useParams } from "react-router";
-import SalePropertyDetail from "@components/salepropertydetail/salePropertyDetail"
 
 export default function RealtorListingsDetail(state) {
   const { property_id } = useParams();
@@ -39,7 +39,7 @@ export default function RealtorListingsDetail(state) {
         Loading..
       </div>
     );
-    
+
   return (
     <div className="min-h-screen relative bg-primary">
       <div className="fixed w-full z-10">
@@ -48,6 +48,16 @@ export default function RealtorListingsDetail(state) {
       </div>
       <div className="bg-primary text-white pt-48 md:pt-24">
         <div className="flex flex-col w-ft mx-auto px-1 pt-12">
+          {data &&
+          data.realtorForSaleDetail.properties[0] &&
+          data.realtorForSaleDetail.properties[0].broker ? (
+            <div className="flex flex-col">
+              <span className="font-suez-one">Presented by: </span>
+              <span className="font-suez-one">
+                {data.realtorForSaleDetail.properties[0].broker.name}
+              </span>
+            </div>
+          ) : null}
           <LazyLoadImages src={thumbnail} classNames="rounded-lg" />
           <SalePropertyDetail
             property={data && data.realtorForSaleDetail.properties[0]}
