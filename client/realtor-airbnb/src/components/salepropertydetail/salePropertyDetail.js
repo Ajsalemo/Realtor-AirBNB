@@ -1,5 +1,4 @@
 export default function SalePropertyDetail({ property }) {
-  console.log(property);
   return (
     <>
       {/* Show the price of the property if it exists */}
