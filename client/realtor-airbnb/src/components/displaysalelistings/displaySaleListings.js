@@ -1,6 +1,6 @@
 import FontAwesomeLib from "@components/fontawesomelib/fontAwesomeLib";
 import LazyLoadImages from "@components/lazyloadimages/lazyLoadImages";
-import SalePropertyDetail from "@components/salepropertydetail/salePropertyDetail";
+import SalePropertyDetail from "@components/salepropertyupperdetail/salePropertyUpperDetail";
 import ScrollMarker from "@components/scrollmarker/scrollMarker";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";

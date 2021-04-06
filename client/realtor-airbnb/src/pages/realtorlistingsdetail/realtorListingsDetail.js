@@ -5,11 +5,12 @@ import Footer from "@components/footer/footer";
 import LazyLoadImages from "@components/lazyloadimages/lazyLoadImages";
 import Navbar from "@components/navbar/navbar";
 import RealtorSearchbar from "@components/realtorsearchbar/realtorSearchbar";
-import SalePropertyDetail from "@components/salepropertydetail/salePropertyDetail";
+import SalePropertyUpperDetail from "@components/salepropertyupperdetail/salePropertyUpperDetail";
 import ScrollMarker from "@components/scrollmarker/scrollMarker";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
 import { useParams } from "react-router";
+import SalePropertyLowerDetail from "@components/salepropertylowerdetail/salePropertyLowerDetail";
 
 export default function RealtorListingsDetail(state) {
   const { property_id } = useParams();
@@ -50,16 +51,18 @@ export default function RealtorListingsDetail(state) {
         <div className="flex flex-col w-ft mx-auto px-1 pt-12">
           {data &&
           data.realtorForSaleDetail.properties[0] &&
-          data.realtorForSaleDetail.properties[0].broker ? (
+          data.realtorForSaleDetail.properties[0].photo_attribution[0] ? (
             <div className="flex flex-col">
-              <span className="font-suez-one">Presented by: </span>
-              <span className="font-suez-one">
-                {data.realtorForSaleDetail.properties[0].broker.name}
+              <span className="font-suez-one text-sm">
+                {data.realtorForSaleDetail.properties[0].photo_attribution[0]}
               </span>
             </div>
           ) : null}
-          <LazyLoadImages src={thumbnail} classNames="rounded-lg" />
-          <SalePropertyDetail
+          <LazyLoadImages src={thumbnail} classNames="rounded-lg w-50" />
+          <SalePropertyUpperDetail
+            property={data && data.realtorForSaleDetail.properties[0]}
+          />
+          <SalePropertyLowerDetail
             property={data && data.realtorForSaleDetail.properties[0]}
           />
         </div>

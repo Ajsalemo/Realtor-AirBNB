@@ -1,4 +1,4 @@
-export default function SalePropertyDetail({ property }) {
+export default function SalePropertyUpperDetail({ property }) {
   return (
     <>
       {/* Show the price of the property if it exists */}

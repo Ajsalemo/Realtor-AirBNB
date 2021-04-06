@@ -25,14 +25,18 @@ export const REALTOR_FORSALE_DETAIL = gql`
         year_built
         beds
         description
+        baths
         baths_full
+        building_size
         stories
         address
         cooling
         heating
         lot_size
         photos
+        photo_attribution
         price
+        prop_type
         schools
         sold_history
         tax_history

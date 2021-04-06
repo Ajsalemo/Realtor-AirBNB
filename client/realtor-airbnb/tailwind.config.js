@@ -4,8 +4,8 @@ module.exports = {
   theme: {
     extend: {
       backgroundColor: (theme) => ({
-        primary: '#111827',
-        secondary: '#374151'
+        primary: "#111827",
+        secondary: "#374151",
       }),
       inset: {
         "1/10": "10%",
@@ -21,6 +21,7 @@ module.exports = {
       }),
       width: {
         ft: "fit-content",
+        50: "50rem",
       },
     },
   },
