@@ -37,6 +37,7 @@ export const REALTOR_FORSALE_DETAIL = gql`
         photo_attribution
         price
         prop_type
+        garage
         schools
         sold_history
         tax_history
