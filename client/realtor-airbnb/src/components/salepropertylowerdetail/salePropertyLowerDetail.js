@@ -1,7 +1,10 @@
+import houseLastSoldHelper from "@helpers/functions/houseLastSoldHelper";
 import pricePerSqFtCalc from "@helpers/functions/pricePerSqFtCalc";
 import propTypeHelper from "@helpers/functions/propTypeHelper";
+import { format, parseISO } from 'date-fns';
 
 export default function SalePropertyLowerDetail({ property }) {
+  const formatISODate = property && property.list_date ? format(parseISO(property.list_date), "MM/dd/yyyy") : null;
   return (
     <div className="grid grid-cols-3 gap-4 border-t-2 border-gray-500 pt-4 my-12">
       <div className="flex flex-col border-r-2 border-gray-500">
@@ -19,9 +22,12 @@ export default function SalePropertyLowerDetail({ property }) {
         ) : null}
       </div>
       <div className="flex flex-col border-r-2 border-gray-500">
-        {property && property.last_sold && property.last_sold.length > 0 ? (
+        {property &&
+        property.sold_history &&
+        property.sold_history.length > 0 ? (
           <div className="text-sm">
             <span className="text-gray-400">Last Sold</span>{" "}
+            {houseLastSoldHelper(property.sold_history)}
           </div>
         ) : null}
         {property &&
@@ -38,6 +44,12 @@ export default function SalePropertyLowerDetail({ property }) {
         {property && property.garage ? (
           <div className="text-sm">
             <span className="text-gray-400">Garage</span> {property.garage} Car
+          </div>
+        ) : null}
+        {property && property.list_date ? (
+          <div className="text-sm">
+            <span className="text-gray-400">List date </span>
+            {formatISODate}
           </div>
         ) : null}
       </div>

@@ -33,6 +33,7 @@ export const REALTOR_FORSALE_DETAIL = gql`
         cooling
         heating
         lot_size
+        list_date
         photos
         photo_attribution
         price
