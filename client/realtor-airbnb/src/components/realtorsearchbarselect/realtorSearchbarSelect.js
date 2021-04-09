@@ -9,8 +9,8 @@ import { Field } from "formik";
 export default function RealtorSearchbarSelect() {
   return (
     <>
-      <Field name="min_price" as="select" className="h-full ml-2">
-        <option selected value="Min Price" disabled>
+      <Field name="min_price" as="select" defaultValue="Min Price" className="h-full ml-2">
+        <option value="Min Price" disabled>
           Min Price
         </option>
         {realtorSearchbarMinPrice.map((minPrice) => (
@@ -19,8 +19,8 @@ export default function RealtorSearchbarSelect() {
           </option>
         ))}
       </Field>
-      <Field name="max_price" as="select" className="h-full ml-2">
-        <option selected value="Max Price" disabled>
+      <Field name="max_price" as="select" defaultValue="Max Price" className="h-full ml-2">
+        <option value="Max Price" disabled>
           Max Price
         </option>
         {realtorSearchbarMaxPrice.map((minPrice) => (
@@ -29,8 +29,8 @@ export default function RealtorSearchbarSelect() {
           </option>
         ))}
       </Field>
-      <Field name="prop_type" as="select" className="h-full ml-2">
-        <option selected value="Property Type" disabled>
+      <Field name="prop_type" as="select" defaultValue="Property Type" className="h-full ml-2">
+        <option value="Property Type" disabled>
           Property Type
         </option>
         {realtorSearchbarPropType.map((minPrice) => (
@@ -39,8 +39,8 @@ export default function RealtorSearchbarSelect() {
           </option>
         ))}
       </Field>
-      <Field name="beds_min" as="select" className="h-full ml-2">
-        <option selected value="Property Type" disabled>
+      <Field name="beds_min" as="select" defaultValue="Beds" className="h-full ml-2">
+        <option value="Beds" disabled>
           Beds
         </option>
         {realtorSearchbarBedMin.map((minPrice) => (
@@ -49,8 +49,8 @@ export default function RealtorSearchbarSelect() {
           </option>
         ))}
       </Field>
-      <Field name="baths_min" as="select" className="h-full ml-2">
-        <option selected value="Property Type" disabled>
+      <Field name="baths_min" as="select" defaultValue="Baths" className="h-full ml-2">
+        <option value="Baths" disabled>
           Baths
         </option>
         {realtorSearchbarBathMin.map((minPrice) => (
@@ -59,9 +59,9 @@ export default function RealtorSearchbarSelect() {
           </option>
         ))}
       </Field>
-      <Field name="results" as="select" className="h-full ml-2">
+      <Field name="results" as="select" defaultValue="10000"  className="h-full ml-2">
         {/* If no 'results' value is chosen, then it will default to 10,000 (arbitrary number, equivalent to no limit) */}
-        <option selected value="10000" disabled>
+        <option value="10000" disabled>
           Results
         </option>
         {realtorSearchbarResults.map((minPrice) => (

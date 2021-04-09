@@ -4,6 +4,7 @@ import propTypeHelper from "@helpers/functions/propTypeHelper";
 import { format, parseISO } from 'date-fns';
 
 export default function SalePropertyLowerDetail({ property }) {
+  // Format the list date of the property to Month/Day/Year
   const formatISODate = property && property.list_date ? format(parseISO(property.list_date), "MM/dd/yyyy") : null;
   return (
     <div className="grid grid-cols-3 gap-4 border-t-2 border-gray-500 pt-4 my-12">
