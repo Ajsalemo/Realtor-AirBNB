@@ -5,13 +5,13 @@ import Footer from "@components/footer/footer";
 import LazyLoadImages from "@components/lazyloadimages/lazyLoadImages";
 import Navbar from "@components/navbar/navbar";
 import RealtorSearchbar from "@components/realtorsearchbar/realtorSearchbar";
+import SalePropertyDetailMenu from "@components/salepropertydetailmenu/salePropertyDetailMenu";
+import SalePropertyLowerDetail from "@components/salepropertylowerdetail/salePropertyLowerDetail";
 import SalePropertyUpperDetail from "@components/salepropertyupperdetail/salePropertyUpperDetail";
 import ScrollMarker from "@components/scrollmarker/scrollMarker";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
 import { useParams } from "react-router";
-import SalePropertyLowerDetail from "@components/salepropertylowerdetail/salePropertyLowerDetail";
-import SalePropertyDetailDropdown from "@components/salepropertydetaildropdown/salePropertyDetailDropdown"
 
 export default function RealtorListingsDetail(state) {
   const { property_id } = useParams();
@@ -66,7 +66,7 @@ export default function RealtorListingsDetail(state) {
           <SalePropertyLowerDetail
             property={data && data.realtorForSaleDetail.properties[0]}
           />
-          <SalePropertyDetailDropdown />
+          <SalePropertyDetailMenu />
         </div>
       </div>
       <ScrollMarker />
