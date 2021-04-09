@@ -11,6 +11,7 @@ import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
 import { useParams } from "react-router";
 import SalePropertyLowerDetail from "@components/salepropertylowerdetail/salePropertyLowerDetail";
+import SalePropertyDetailDropdown from "@components/salepropertydetaildropdown/salePropertyDetailDropdown"
 
 export default function RealtorListingsDetail(state) {
   const { property_id } = useParams();
@@ -65,6 +66,7 @@ export default function RealtorListingsDetail(state) {
           <SalePropertyLowerDetail
             property={data && data.realtorForSaleDetail.properties[0]}
           />
+          <SalePropertyDetailDropdown />
         </div>
       </div>
       <ScrollMarker />

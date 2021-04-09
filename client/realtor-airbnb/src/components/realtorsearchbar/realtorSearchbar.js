@@ -61,7 +61,7 @@ export default function RealtorSearchbar() {
     optionalURLValues.min_price,
     optionalURLValues.prop_type,
   ]);
-
+  console.log(dataForNextPage);
   return (
     <>
       <div className="bg-secondary border-b-2 border-white">
