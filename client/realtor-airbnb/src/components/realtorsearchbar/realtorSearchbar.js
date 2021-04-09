@@ -20,7 +20,7 @@ export default function RealtorSearchbar() {
     getRealtorSearchAutocompleteQuery,
     { loading, error: apolloGraphqlError, data },
   ] = useLazyQuery(AUTO_COMPLETE_QUERY);
-  // When the Formik onSubmit function fires, it will update the 'data' returned from the Apollo/GraphQL query 'getRealtorSearchAutocompleteQuery' on line 14 (above)
+  // When the Formik onSubmit function fires, it will update the 'data' returned from the Apollo/GraphQL query 'getRealtorSearchAutocompleteQuery' 
   // useEffect is used here to listen to these changes and then use the 'history' hook to push to the /listings page which is set up to take in the parameterized data for processing
   // These changes only happen when the onSubmit function is fired, and not on page load - which is useful for a way to pull in fresh data when using this searchbar component
   useEffect(() => {
@@ -40,8 +40,10 @@ export default function RealtorSearchbar() {
           autocomplete[i].area_type === "city"
         ) {
           setDataForNextPage(autocomplete[0]);
+          console.log(autocomplete[0])
         }
       }
+      console.log(autocomplete[0])
       history.push(
         `/listings/${dataForNextPage.city}/${dataForNextPage.state_code}/${optionalURLValues.results}/0/sell/${optionalURLValues.min_price}/${optionalURLValues.max_price}/${optionalURLValues.prop_type}/${optionalURLValues.beds_min}/${optionalURLValues.baths_min}`
       );
@@ -69,6 +71,7 @@ export default function RealtorSearchbar() {
           }}
           validationSchema={FormSchemaValidation}
           onSubmit={async (values) => {
+            console.log(values)
             // Set errors to false initially
             setIsError(false);
             setOptionalURLValues(values);
@@ -78,6 +81,7 @@ export default function RealtorSearchbar() {
             }
 
             try {
+              console.log(values)
               await getRealtorSearchAutocompleteQuery({
                 variables: {
                   location: values.location,
