@@ -34,7 +34,7 @@ export default function ScrollMarker() {
         icon={faArrowUp}
         size="2x"
         classNames={
-          "animate-bounce text-white fixed bottom-0 ml-2 mb-2 cursor-pointer bg-gray-400 rounded p-1 hover:bg-blue-500 transition duration-500 ease-in-out"
+          "animate-bounce text-white fixed bottom-0 ml-2 mb-2 cursor-pointer bg-gray-400 rounded p-1 hover:bg-blue-500 transition duration-500 ease-in-out z-10"
         }
       />
     </button>

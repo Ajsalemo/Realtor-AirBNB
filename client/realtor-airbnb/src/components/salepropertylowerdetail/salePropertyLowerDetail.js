@@ -4,7 +4,7 @@ import propTypeHelper from "@helpers/functions/propTypeHelper";
 
 export default function SalePropertyLowerDetail({ property }) {
   return (
-    <div className="grid grid-cols-3 gap-4 border-t-2 border-gray-500 pt-4 my-12">
+    <div className="grid grid-cols-3 gap-4 border-t-2 border-b-2 border-gray-500 py-4 my-24">
       <div className="flex flex-col border-r-2 border-gray-500">
         {property && property.prop_type ? (
           <div className="text-sm">
