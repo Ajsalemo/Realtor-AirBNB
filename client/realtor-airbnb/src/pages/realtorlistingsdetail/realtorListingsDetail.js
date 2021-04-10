@@ -4,6 +4,7 @@ import FontAwesomeLib from "@components/fontawesomelib/fontAwesomeLib";
 import Footer from "@components/footer/footer";
 import LazyLoadImages from "@components/lazyloadimages/lazyLoadImages";
 import Navbar from "@components/navbar/navbar";
+import PropertySaleFeatures from "@components/propertysalefeatures/propertySaleFeatures";
 import RealtorSearchbar from "@components/realtorsearchbar/realtorSearchbar";
 import SalePropertyDetailMenu from "@components/salepropertydetailmenu/salePropertyDetailMenu";
 import SalePropertyLowerDetail from "@components/salepropertylowerdetail/salePropertyLowerDetail";
@@ -72,6 +73,8 @@ export default function RealtorListingsDetail(state) {
                 {data.realtorForSaleDetail.properties[0].description}
               </p>
             ) : null}
+            <h3 className="font-suez-one pt-12">Property Features</h3>
+            <PropertySaleFeatures data={data && data.realtorForSaleDetail.properties[0].features} />
           </SalePropertyDetailMenu>
           <SalePropertyDetailMenu title="Home Value">
             <p className="text-sm">"Placeholder"</p>

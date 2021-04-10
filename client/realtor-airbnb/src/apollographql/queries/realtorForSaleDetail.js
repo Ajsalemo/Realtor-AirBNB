@@ -42,6 +42,10 @@ export const REALTOR_FORSALE_DETAIL = gql`
         schools
         sold_history
         tax_history
+        features {
+          category 
+          text
+        }
       }
     }
   }
