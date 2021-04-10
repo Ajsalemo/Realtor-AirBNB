@@ -22,6 +22,7 @@ module.exports = {
       width: {
         ft: "fit-content",
         50: "50rem",
+        112: "112"
       },
     },
   },
