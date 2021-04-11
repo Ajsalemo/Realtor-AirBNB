@@ -8,10 +8,10 @@ export default function PropertySaleFeatures({ data }) {
             <span className="text-white text-sm border-b-2 border-gray-500 py-4 mb-2">
               {feature && feature.category}
             </span>
-            <ul className="flex justify-between">
+            <ul className="flex flex-col">
               {feature &&
                 feature.text.map((text, j) => (
-                  <li className="text-gray-400 text-xs" key={j}>{text}</li>
+                  <li className="text-gray-400 text-xs list-disc ml-6" key={j}>{text}</li>
                 ))}
             </ul>
           </div>
