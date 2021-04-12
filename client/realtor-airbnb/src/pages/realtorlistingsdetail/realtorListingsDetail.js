@@ -93,7 +93,7 @@ export default function RealtorListingsDetail(state) {
             />
           </SalePropertyDetailMenu>
           <SalePropertyDetailMenu title="Photos">
-            <div className="sm:grid sm:grid-cols-2 sm:gap-4 text-center">
+            <div className="text-center sm:grid sm:grid-cols-2 sm:gap-4">
               {data &&
               data.realtorForSaleDetail.properties[0].photos &&
               data.realtorForSaleDetail.properties[0].photos.length > 0
