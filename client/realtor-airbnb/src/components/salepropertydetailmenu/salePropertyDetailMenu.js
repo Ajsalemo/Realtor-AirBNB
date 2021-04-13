@@ -6,13 +6,16 @@ export default function SalePropertyDetailMenu({ title, children }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <div className="border-b-2 border-gray-500 py-4 mb-10">
-      <div className="flex justify-center lg:justify-start">
-        <span onClick={() => setIsMenuOpen(!isMenuOpen)}>
+      <div
+        className="flex justify-center lg:justify-start cursor-pointer"
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+      >
+        <span>
           {!isMenuOpen ? (
             <FontAwesomeLib
               icon={faChevronDown}
               size="2x"
-              classNames="text-white cursor-pointer"
+              classNames="text-white"
             />
           ) : (
             <FontAwesomeLib
@@ -22,7 +25,9 @@ export default function SalePropertyDetailMenu({ title, children }) {
             />
           )}
         </span>
-        <h2 className="pl-2 font-suez-one text-lg sm:text-xl md:text-2xl">{title}</h2>
+        <h2 className="pl-2 font-suez-one text-lg sm:text-xl md:text-2xl">
+          {title}
+        </h2>
       </div>
       <div className={!isMenuOpen ? `hidden` : ``}>{children}</div>
     </div>
