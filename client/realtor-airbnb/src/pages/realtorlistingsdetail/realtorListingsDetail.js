@@ -11,6 +11,7 @@ import SalePropertyLowerDetail from "@components/salepropertylowerdetail/salePro
 import SalePropertyUpperDetail from "@components/salepropertyupperdetail/salePropertyUpperDetail";
 import ScrollMarker from "@components/scrollmarker/scrollMarker";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
+import propertyDateTimeHelper from "@helpers/functions/propertyDateTimeHelper";
 import { useEffect } from "react";
 import { useParams } from "react-router";
 
@@ -114,7 +115,9 @@ export default function RealtorListingsDetail(state) {
                 {data.realtorForSaleDetail.properties[0].property_history.map(
                   (history) => (
                     <li>
-                      {history.date ? `${history.date} - ` : null}{" "}
+                      {history.date
+                        ? `${propertyDateTimeHelper(history.date)} - `
+                        : null}{" "}
                       {history.event_name ? `${history.event_name} - ` : null}$
                       {history.price ? `${history.price}` : null}
                     </li>
