@@ -41,6 +41,7 @@ export const REALTOR_FORSALE_DETAIL = gql`
         garage
         schools
         sold_history
+        property_history
         tax_history
         features {
           category 

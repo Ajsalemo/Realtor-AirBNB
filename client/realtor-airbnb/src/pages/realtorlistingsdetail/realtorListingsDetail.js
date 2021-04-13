@@ -106,7 +106,24 @@ export default function RealtorListingsDetail(state) {
             </div>
           </SalePropertyDetailMenu>
           <SalePropertyDetailMenu title="Home Value">
-            <p className="text-sm">"Placeholder"</p>
+            {data &&
+            data.realtorForSaleDetail.properties[0].property_history &&
+            data.realtorForSaleDetail.properties[0].property_history.length >
+              0 ? (
+              <ul>
+                {data.realtorForSaleDetail.properties[0].property_history.map(
+                  (history) => (
+                    <li>
+                      {history.date ? `${history.date} - ` : null}{" "}
+                      {history.event_name ? `${history.event_name} - ` : null}$
+                      {history.price ? `${history.price}` : null}
+                    </li>
+                  )
+                )}
+              </ul>
+            ) : (
+              "No data to display."
+            )}
           </SalePropertyDetailMenu>
           <SalePropertyDetailMenu title="Monthly Payment">
             <p className="text-sm">"Placeholder"</p>
