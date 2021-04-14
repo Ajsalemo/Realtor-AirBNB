@@ -1,5 +1,4 @@
 export default function MonthlyPaymentPropertyDetail({ data, price }) {
-  console.log(data);
   return (
     <>
       <div className="border-b-2 border-gray-500 pb-4 mb-4 text-sm">

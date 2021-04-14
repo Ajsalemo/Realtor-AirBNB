@@ -5,7 +5,7 @@ import { useState } from "react";
 export default function SalePropertyDetailMenu({ title, children }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
-    <div className="border-b-2 border-gray-500 py-4 mb-10">
+    <div className="px-4 md:px-0 border-b-2 border-gray-500 py-4 mb-10">
       <div
         className="flex justify-center lg:justify-start cursor-pointer"
         onClick={() => setIsMenuOpen(!isMenuOpen)}

@@ -130,7 +130,36 @@ export default function RealtorListingsDetail(state) {
             )}
           </SalePropertyDetailMenu>
           <SalePropertyDetailMenu title="Property History">
-            <p className="text-sm">"Placeholder"</p>
+            <div className="flex flex-col">
+              <span className="text-white text-sm border-b-2 border-gray-500 py-4 mb-2">
+                Property Price
+              </span>
+              {data &&
+              data.realtorForSaleDetail.properties[0].property_history.length >
+                0 ? (
+                <ul>
+                  {data.realtorForSaleDetail.properties[0].property_history.map(
+                    (history, i) => (
+                      <li
+                        key={`${history.price} - ${i}`}
+                        className="text-gray-400 text-xs"
+                      >
+                        {history.date
+                          ? `${propertyDateTimeHelper(history.date)} - `
+                          : null}{" "}
+                        {history.event_name ? `${history.event_name} - ` : null}
+                        ${history.price ? `${history.price}` : null}
+                      </li>
+                    )
+                  )}
+                </ul>
+              ) : (
+                "No data to display."
+              )}{" "}
+              <span className="text-white text-sm border-b-2 border-gray-500 py-4 mb-2">
+                Property Tax
+              </span>
+            </div>
           </SalePropertyDetailMenu>
           <SalePropertyDetailMenu title="Schools">
             <p className="text-sm">"Placeholder"</p>
