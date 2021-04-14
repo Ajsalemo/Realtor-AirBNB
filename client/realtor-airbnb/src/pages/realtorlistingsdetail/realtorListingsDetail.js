@@ -5,6 +5,7 @@ import Footer from "@components/footer/footer";
 import LazyLoadImages from "@components/lazyloadimages/lazyLoadImages";
 import MonthlyPaymentPropertyDetail from "@components/monthlypaymentpropertydetail/monthlypaymentpropertydetail";
 import Navbar from "@components/navbar/navbar";
+import PropertyForSaleHistory from "@components/propertyforsalehistory/propertyForSaleHistory";
 import PropertySaleFeatures from "@components/propertysalefeatures/propertySaleFeatures";
 import RealtorSearchbar from "@components/realtorsearchbar/realtorSearchbar";
 import SalePropertyDetailMenu from "@components/salepropertydetailmenu/salePropertyDetailMenu";
@@ -131,34 +132,20 @@ export default function RealtorListingsDetail(state) {
           </SalePropertyDetailMenu>
           <SalePropertyDetailMenu title="Property History">
             <div className="flex flex-col">
-              <span className="text-white text-sm border-b-2 border-gray-500 py-4 mb-2">
-                Property Price
-              </span>
-              {data &&
-              data.realtorForSaleDetail.properties[0].property_history.length >
-                0 ? (
-                <ul>
-                  {data.realtorForSaleDetail.properties[0].property_history.map(
-                    (history, i) => (
-                      <li
-                        key={`${history.price} - ${i}`}
-                        className="text-gray-400 text-xs"
-                      >
-                        {history.date
-                          ? `${propertyDateTimeHelper(history.date)} - `
-                          : null}{" "}
-                        {history.event_name ? `${history.event_name} - ` : null}
-                        ${history.price ? `${history.price}` : null}
-                      </li>
-                    )
-                  )}
-                </ul>
+              {(data &&
+                data.realtorForSaleDetail.properties[0].property_history) ||
+              (data && data.realtorForSaleDetail.properties[0].tax_history) ? (
+                <PropertyForSaleHistory
+                  saleHistory={
+                    data.realtorForSaleDetail.properties[0].property_history
+                  }
+                  taxHistory={
+                    data.realtorForSaleDetail.properties[0].tax_history
+                  }
+                />
               ) : (
                 "No data to display."
               )}{" "}
-              <span className="text-white text-sm border-b-2 border-gray-500 py-4 mb-2">
-                Property Tax
-              </span>
             </div>
           </SalePropertyDetailMenu>
           <SalePropertyDetailMenu title="Schools">
