@@ -54,7 +54,6 @@ export default function RealtorListingsDetail(state) {
       <div className="bg-primary text-white pt-48 md:pt-24 md:w-50 md:mx-auto">
         <div className="flex flex-col w-ft px-1 pt-12">
           {data &&
-          data.realtorForSaleDetail.properties &&
           data.realtorForSaleDetail.properties[0].photo_attribution[0] ? (
             <div className="flex flex-col">
               <span className="font-suez-one text-sm">
@@ -64,23 +63,13 @@ export default function RealtorListingsDetail(state) {
           ) : null}
           <LazyLoadImages src={thumbnail} classNames="rounded-lg w-50" />
           <SalePropertyUpperDetail
-            property={
-              data &&
-              data.realtorForSaleDetail.properties &&
-              data.realtorForSaleDetail.properties[0]
-            }
+            property={data && data.realtorForSaleDetail.properties[0]}
           />
           <SalePropertyLowerDetail
-            property={
-              data &&
-              data.realtorForSaleDetail.properties &&
-              data.realtorForSaleDetail.properties[0]
-            }
+            property={data && data.realtorForSaleDetail.properties[0]}
           />
           <SalePropertyDetailMenu title="Property Details">
-            {data &&
-            data.realtorForSaleDetail.properties &&
-            data.realtorForSaleDetail.properties[0].description ? (
+            {data && data.realtorForSaleDetail.properties[0].description ? (
               <p className="text-sm">
                 {data.realtorForSaleDetail.properties[0].description}
               </p>
@@ -96,9 +85,7 @@ export default function RealtorListingsDetail(state) {
           </SalePropertyDetailMenu>
           <SalePropertyDetailMenu title="Photos">
             <div className="text-center sm:grid sm:grid-cols-2 sm:gap-4">
-              {data &&
-              data.realtorForSaleDetail.properties[0].photos &&
-              data.realtorForSaleDetail.properties[0].photos.length > 0
+              {data && data.realtorForSaleDetail.properties[0].photos.length > 0
                 ? data.realtorForSaleDetail.properties[0].photos.map(
                     (photo) => (
                       <LazyLoadImages src={photo.href} key={photo.href} />
@@ -109,7 +96,6 @@ export default function RealtorListingsDetail(state) {
           </SalePropertyDetailMenu>
           <SalePropertyDetailMenu title="Home Value">
             {data &&
-            data.realtorForSaleDetail.properties[0].property_history &&
             data.realtorForSaleDetail.properties[0].property_history.length >
               0 ? (
               <ul>
@@ -134,7 +120,6 @@ export default function RealtorListingsDetail(state) {
           </SalePropertyDetailMenu>
           <SalePropertyDetailMenu title="Monthly Payment">
             {data &&
-            data.realtorForSaleDetail.properties[0] &&
             data.realtorForSaleDetail.properties[0].mortgage.estimate ? (
               <MonthlyPaymentPropertyDetail
                 data={data.realtorForSaleDetail.properties[0].mortgage.estimate}
