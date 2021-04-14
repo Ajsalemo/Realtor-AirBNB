@@ -4,7 +4,7 @@ export default function PropertySaleFeatures({ data }) {
       {data &&
         data.map((feature, i) => (
           // TODO - Index's being used as keys are placeholders for now
-          <div className="flex flex-col" key={i}>
+          <div className="flex flex-col" key={`${feature.category} - {i}`}>
             <span className="text-white text-sm border-b-2 border-gray-500 py-4 mb-2">
               {feature && feature.category}
             </span>

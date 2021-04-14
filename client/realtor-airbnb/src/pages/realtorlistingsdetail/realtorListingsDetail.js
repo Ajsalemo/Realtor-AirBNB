@@ -3,6 +3,7 @@ import { REALTOR_FORSALE_DETAIL } from "@apollographql_queries/realtorForSaleDet
 import FontAwesomeLib from "@components/fontawesomelib/fontAwesomeLib";
 import Footer from "@components/footer/footer";
 import LazyLoadImages from "@components/lazyloadimages/lazyLoadImages";
+import MonthlyPaymentPropertyDetail from "@components/monthlypaymentpropertydetail/monthlypaymentpropertydetail";
 import Navbar from "@components/navbar/navbar";
 import PropertySaleFeatures from "@components/propertysalefeatures/propertySaleFeatures";
 import RealtorSearchbar from "@components/realtorsearchbar/realtorSearchbar";
@@ -113,8 +114,11 @@ export default function RealtorListingsDetail(state) {
               0 ? (
               <ul>
                 {data.realtorForSaleDetail.properties[0].property_history.map(
-                  (history) => (
-                    <li>
+                  (history, i) => (
+                    <li
+                      key={`${history.source} - ${i}`}
+                      className="text-gray-400 text-xs"
+                    >
                       {history.date
                         ? `${propertyDateTimeHelper(history.date)} - `
                         : null}{" "}
@@ -129,7 +133,16 @@ export default function RealtorListingsDetail(state) {
             )}
           </SalePropertyDetailMenu>
           <SalePropertyDetailMenu title="Monthly Payment">
-            <p className="text-sm">"Placeholder"</p>
+            {data &&
+            data.realtorForSaleDetail.properties[0] &&
+            data.realtorForSaleDetail.properties[0].mortgage.estimate ? (
+              <MonthlyPaymentPropertyDetail
+                data={data.realtorForSaleDetail.properties[0].mortgage.estimate}
+                price={data.realtorForSaleDetail.properties[0].price}
+              />
+            ) : (
+              "No data to display."
+            )}
           </SalePropertyDetailMenu>
           <SalePropertyDetailMenu title="Property History">
             <p className="text-sm">"Placeholder"</p>

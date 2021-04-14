@@ -34,6 +34,9 @@ export const REALTOR_FORSALE_DETAIL = gql`
         heating
         lot_size
         list_date
+        mortgage {
+          estimate
+        }
         photos
         photo_attribution
         price
