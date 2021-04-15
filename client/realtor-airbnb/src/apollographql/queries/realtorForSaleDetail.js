@@ -42,12 +42,26 @@ export const REALTOR_FORSALE_DETAIL = gql`
         price
         prop_type
         garage
-        schools
+        schools {
+          name
+          funding_type
+          student_count
+          relevance
+          ratings {
+            great_schools_rating
+          }
+          grades {
+            range {
+              low
+              high
+            }
+          }
+        }
         sold_history
         property_history
         tax_history
         features {
-          category 
+          category
           text
         }
       }
