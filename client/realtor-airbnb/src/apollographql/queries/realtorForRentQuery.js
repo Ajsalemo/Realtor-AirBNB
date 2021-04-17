@@ -9,6 +9,7 @@ export const REALTOR_FORRENT_QUERY = gql`
       ) {
       properties {
         property_id
+        photos
         address {
           city
           county

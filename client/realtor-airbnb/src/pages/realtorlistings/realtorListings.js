@@ -1,11 +1,10 @@
 import { useLazyQuery } from "@apollo/client";
 import { REALTOR_FORRENT_QUERY } from "@apollographql_queries/realtorForRentQuery";
 import { REALTOR_FORSALE_QUERY } from "@apollographql_queries/realtorForSaleQuery";
-import DisplayRentalListings from "@components/rentals/displayrentallistings/displayRentalListings";
-import DisplaySaleListings from "@components/sales/displaysalelistings/displaySaleListings";
+import DisplaySaleAndRentalListings from "@components/shared/displaysaleandrentallistings/displaySaleAndRentalListings";
+import RealtorSearchbar from "@components/sales/realtorsearchbar/realtorSearchbar";
 import Footer from "@components/shared/footer/footer";
 import Navbar from "@components/shared/navbar/navbar";
-import RealtorSearchbar from "@components/sales/realtorsearchbar/realtorSearchbar";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
@@ -85,14 +84,16 @@ export default function RealtorListings() {
       */}
       <div className="pb-12 bg-primary text-gray-300">
         {rentOrSell === "sell" ? (
-          <DisplaySaleListings
-            data={forSaleData}
+          <DisplaySaleAndRentalListings
+            data={forSaleData && forSaleData.RealtorForSaleQuery}
             forSaleLoading={forSaleLoading}
+            rentOrSell={rentOrSell}
           />
         ) : (
-          <DisplayRentalListings
-            data={forRentData}
+          <DisplaySaleAndRentalListings
+            data={forRentData && forRentData.RealtorForRentQuery}
             forRentLoading={forRentLoading}
+            rentOrSell={rentOrSell}
           />
         )}
       </div>
