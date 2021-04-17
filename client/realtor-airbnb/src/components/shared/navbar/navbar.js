@@ -1,5 +1,5 @@
-import FontAwesomeLib from "@components/fontawesomelib/fontAwesomeLib";
-import NavDropdown from "@components/navdropdown/navDropdown";
+import FontAwesomeLib from "@components/shared/fontawesomelib/fontAwesomeLib";
+import NavDropdown from "@components/shared/navdropdown/navDropdown";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -17,7 +17,6 @@ export default function Navbar() {
           <Link to="/realtor-dashboard" className="pr-3">
             Realtor listings
           </Link>
-          <Link to="/">AirBnB listings</Link>
         </div>
         <Link to="/" className="pr-3">
           Login

@@ -1,10 +1,10 @@
 import { useLazyQuery } from "@apollo/client";
 import { AUTO_COMPLETE_QUERY } from "@apollographql_queries/autoComplete";
-import DisplaySuggestions from "@components/displaysuggestions/displaySuggestions";
-import FontAwesomeLib from "@components/fontawesomelib/fontAwesomeLib";
-import Footer from "@components/footer/footer";
-import LazyLoadImages from "@components/lazyloadimages/lazyLoadImages";
-import Navbar from "@components/navbar/navbar";
+import DisplaySuggestions from "@components/sales/displaysuggestions/displaySuggestions";
+import FontAwesomeLib from "@components/shared/fontawesomelib/fontAwesomeLib";
+import Footer from "@components/shared/footer/footer";
+import LazyLoadImages from "@components/shared/lazyloadimages/lazyLoadImages";
+import Navbar from "@components/shared/navbar/navbar";
 import { faCircleNotch, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FormSchemaValidation } from "@helpers/formSchemaValidation/FormSchemaValidation";
 import RealtorDashboardBackgroundImage from "@images/backgrounds/realtor_dashboard_background.jpg";

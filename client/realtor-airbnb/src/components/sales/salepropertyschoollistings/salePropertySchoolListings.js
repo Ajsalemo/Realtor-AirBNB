@@ -4,7 +4,7 @@ export default function SalePropertySchoolListings({ schools }) {
   return (
     <div>
       {schools.map((school, i) => (
-        <div className="grid grid-cols-6 gap-1 md:gap-4" key={`schools-${i}`}>
+        <div className="grid grid-cols-6 gap-1  md:gap-4" key={`schools-${i}`}>
           <div className="flex flex-col pb-4">
             <span className="text-gray-500 text-xs border-b-2 border-gray-500 mb-2">
               Rating

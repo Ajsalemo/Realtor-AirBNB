@@ -1,7 +1,7 @@
 import { useLazyQuery } from "@apollo/client";
 import { AUTO_COMPLETE_QUERY } from "@apollographql_queries/autoComplete";
-import FontAwesomeLib from "@components/fontawesomelib/fontAwesomeLib";
-import RealtorSearchbarSelect from "@components/realtorsearchbarselect/realtorSearchbarSelect";
+import FontAwesomeLib from "@components/shared/fontawesomelib/fontAwesomeLib";
+import RealtorSearchbarSelect from "@components/sales/realtorsearchbarselect/realtorSearchbarSelect";
 import { faCircleNotch, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FormSchemaValidation } from "@helpers/formSchemaValidation/FormSchemaValidation";
 import { Field, Form, Formik } from "formik";

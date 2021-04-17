@@ -1,4 +1,4 @@
-import FontAwesomeLib from "@components/fontawesomelib/fontAwesomeLib";
+import FontAwesomeLib from "@components/shared/fontawesomelib/fontAwesomeLib";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 
