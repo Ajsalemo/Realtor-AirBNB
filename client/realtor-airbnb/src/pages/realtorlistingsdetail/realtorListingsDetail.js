@@ -95,8 +95,8 @@ export default function RealtorListingsDetail(state) {
             <div className="text-center sm:grid sm:grid-cols-2 sm:gap-4">
               {data && data.realtorForSaleDetail.properties[0].photos.length > 0
                 ? data.realtorForSaleDetail.properties[0].photos.map(
-                    (photo) => (
-                      <LazyLoadImages src={photo.href} key={photo.href} />
+                    (photo, i) => (
+                      <LazyLoadImages src={photo.href} key={`${photo.href} - ${i}`} />
                     )
                   )
                 : "No photos available."}
@@ -109,9 +109,9 @@ export default function RealtorListingsDetail(state) {
               0 ? (
               <ul>
                 {data.realtorForSaleDetail.properties[0].property_history.map(
-                  (history, i) => (
+                  (history, j) => (
                     <li
-                      key={`${history.source} - ${i}`}
+                      key={`${history.source} - ${j}`}
                       className="text-gray-400 text-xs"
                     >
                       {history.date

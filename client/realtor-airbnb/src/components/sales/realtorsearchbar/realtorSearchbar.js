@@ -1,7 +1,7 @@
 import { useLazyQuery } from "@apollo/client";
 import { AUTO_COMPLETE_QUERY } from "@apollographql_queries/autoComplete";
-import FontAwesomeLib from "@components/shared/fontawesomelib/fontAwesomeLib";
 import RealtorSearchbarSelect from "@components/sales/realtorsearchbarselect/realtorSearchbarSelect";
+import FontAwesomeLib from "@components/shared/fontawesomelib/fontAwesomeLib";
 import { faCircleNotch, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FormSchemaValidation } from "@helpers/formSchemaValidation/FormSchemaValidation";
 import { Field, Form, Formik } from "formik";
@@ -13,14 +13,15 @@ export default function RealtorSearchbar() {
   // Check if the 'window' object is available
   const isBrowser = typeof window !== "undefined";
   const [isError, setIsError] = useState(false);
+  const [isUserError, setIsUserError] = useState(false);
+  const [noResultsMessage, setNoResultsMessage] = useState("");
   const [optionalURLValues, setOptionalURLValues] = useState("");
-  const [dataForNextPage, setDataForNextPage] = useState([]);
   // Autocomplete query to get needed information to pass into the for sale query
   const [
     getRealtorSearchAutocompleteQuery,
     { loading, error: apolloGraphqlError, data },
   ] = useLazyQuery(AUTO_COMPLETE_QUERY);
-  // When the Formik onSubmit function fires, it will update the 'data' returned from the Apollo/GraphQL query 'getRealtorSearchAutocompleteQuery' 
+  // When the Formik onSubmit function fires, it will update the 'data' returned from the Apollo/GraphQL query 'getRealtorSearchAutocompleteQuery'
   // useEffect is used here to listen to these changes and then use the 'history' hook to push to the /listings page which is set up to take in the parameterized data for processing
   // These changes only happen when the onSubmit function is fired, and not on page load - which is useful for a way to pull in fresh data when using this searchbar component
   useEffect(() => {
@@ -33,24 +34,27 @@ export default function RealtorSearchbar() {
     }
     if (data && !loading) {
       const { autocomplete } = data.autoCompleteQuery;
-      for (let i = 0; i < autocomplete.length; i++) {
-        if (
-          autocomplete[i].area_type === "neighborhood" ||
-          autocomplete[i].area_type === "address" ||
-          autocomplete[i].area_type === "city"
-        ) {
-          setDataForNextPage(autocomplete[0]);
-          console.log(autocomplete[0])
-        }
+      if (
+        autocomplete &&
+        autocomplete[0] &&
+        (autocomplete[0].area_type === "neighborhood" ||
+          autocomplete[0].area_type === "address" ||
+          autocomplete[0].area_type === "city")
+      ) {
+        setIsUserError(false);
+        setNoResultsMessage("");
+        history.push(
+          `/listings/${autocomplete[0].city}/${autocomplete[0].state_code}/${optionalURLValues.results}/0/sell/${optionalURLValues.min_price}/${optionalURLValues.max_price}/${optionalURLValues.prop_type}/${optionalURLValues.beds_min}/${optionalURLValues.baths_min}`
+        );
+      } else {
+        setIsUserError(true);
+        setNoResultsMessage(
+          "No results match that search term. Please try again."
+        );
       }
-      console.log(autocomplete[0])
-      history.push(
-        `/listings/${dataForNextPage.city}/${dataForNextPage.state_code}/${optionalURLValues.results}/0/sell/${optionalURLValues.min_price}/${optionalURLValues.max_price}/${optionalURLValues.prop_type}/${optionalURLValues.beds_min}/${optionalURLValues.baths_min}`
-      );
     }
   }, [
     data,
-    dataForNextPage,
     history,
     isBrowser,
     loading,
@@ -61,7 +65,7 @@ export default function RealtorSearchbar() {
     optionalURLValues.min_price,
     optionalURLValues.prop_type,
   ]);
-  console.log(dataForNextPage);
+
   return (
     <>
       <div className="bg-secondary border-b-2 border-white">
@@ -71,7 +75,6 @@ export default function RealtorSearchbar() {
           }}
           validationSchema={FormSchemaValidation}
           onSubmit={async (values) => {
-            console.log(values)
             // Set errors to false initially
             setIsError(false);
             setOptionalURLValues(values);
@@ -81,7 +84,6 @@ export default function RealtorSearchbar() {
             }
 
             try {
-              console.log(values)
               await getRealtorSearchAutocompleteQuery({
                 variables: {
                   location: values.location,
@@ -89,6 +91,7 @@ export default function RealtorSearchbar() {
               });
             } catch (error) {
               setIsError(true);
+              setNoResultsMessage("An error has occured. Please try again.");
             }
           }}
         >
@@ -143,10 +146,12 @@ export default function RealtorSearchbar() {
       </div>
       {/* Display non-form validation related errors - i.e, upstream not responsive/down */}
       <div className="text-center">
-        {isError && (
-          <span className="text-red-500">
-            An error has occurred. Please try again.
-          </span>
+        {isError && <span className="text-red-500">{noResultsMessage}</span>}
+      </div>
+      {/* Display user related error messages - i.e, not valid search term */}
+      <div className="text-center">
+        {isUserError && (
+          <span className="text-red-500">{noResultsMessage}</span>
         )}
       </div>
     </>

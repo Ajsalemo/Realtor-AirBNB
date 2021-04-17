@@ -10,7 +10,7 @@ export default function SalePropertySchoolListings({ schools }) {
               Rating
             </span>
             <span className="text-gray-400 text-xs">
-              {school.ratings.great_schools_rating
+              {school.ratings && school.ratings.great_schools_rating
                 ? `${school.ratings.great_schools_rating}/10`
                 : "Not available"}
             </span>
@@ -32,7 +32,7 @@ export default function SalePropertySchoolListings({ schools }) {
                 If both grade ranges(low and high) are available then format them and display them
             */}
             <span className="text-gray-400 text-xs">
-              {school.grades.range
+              {school.grades && school.grades.range
                 ? school.grades.range.low && !school.grades.range.high
                   ? school.grades.range.low
                   : !school.grades.range.low && school.grades.range.high
@@ -68,7 +68,7 @@ export default function SalePropertySchoolListings({ schools }) {
             </span>
             <span className="text-gray-400 text-xs">
               {/* Since the school relevance is returned in all lowercase - we capitalize the first letter of the word */}
-              {school.student_count
+              {school.relevance
                 ? capitalizeString(school.relevance)
                 : "Not available"}
             </span>
