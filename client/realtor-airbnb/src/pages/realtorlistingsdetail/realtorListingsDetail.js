@@ -1,10 +1,6 @@
 import { useLazyQuery } from "@apollo/client";
 import { REALTOR_FORSALE_DETAIL } from "@apollographql_queries/realtorForSaleDetail";
-import FontAwesomeLib from "@components/shared/fontawesomelib/fontAwesomeLib";
-import Footer from "@components/shared/footer/footer";
-import LazyLoadImages from "@components/shared/lazyloadimages/lazyLoadImages";
 import MonthlyPaymentPropertyDetail from "@components/sales/monthlypaymentpropertydetail/monthlypaymentpropertydetail";
-import Navbar from "@components/shared/navbar/navbar";
 import PropertyForSaleHistory from "@components/sales/propertyforsalehistory/propertyForSaleHistory";
 import PropertySaleFeatures from "@components/sales/propertysalefeatures/propertySaleFeatures";
 import RealtorSearchbar from "@components/sales/realtorsearchbar/realtorSearchbar";
@@ -12,8 +8,11 @@ import SalePropertyDetailMenu from "@components/sales/salepropertydetailmenu/sal
 import SalePropertyLowerDetail from "@components/sales/salepropertylowerdetail/salePropertyLowerDetail";
 import SalePropertySchoolListings from "@components/sales/salepropertyschoollistings/salePropertySchoolListings";
 import SalePropertyUpperDetail from "@components/sales/salepropertyupperdetail/salePropertyUpperDetail";
+import Footer from "@components/shared/footer/footer";
+import LazyLoadImages from "@components/shared/lazyloadimages/lazyLoadImages";
+import LoadingPage from "@components/shared/loadingpage/loadingPage";
+import Navbar from "@components/shared/navbar/navbar";
 import ScrollMarker from "@components/shared/scrollmarker/scrollMarker";
-import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import propertyDateTimeHelper from "@helpers/functions/propertyDateTimeHelper";
 import { useEffect } from "react";
 import { useParams } from "react-router";
@@ -34,18 +33,7 @@ export default function RealtorListingsDetail(state) {
     });
   }, [getRealtorForSaleDetail, property_id]);
 
-  if (loading)
-    return (
-      <div className="h-screen flex justify-center items-center text-white bg-primary">
-        {" "}
-        <FontAwesomeLib
-          icon={faCircleNotch}
-          size="2x"
-          classNames={"animate-spin text-blue-600 mr-2"}
-        />
-        Loading..
-      </div>
-    );
+  if (loading) return <LoadingPage />;
 
   return (
     <div className="min-h-screen relative bg-primary">
@@ -96,7 +84,10 @@ export default function RealtorListingsDetail(state) {
               {data && data.realtorForSaleDetail.properties[0].photos.length > 0
                 ? data.realtorForSaleDetail.properties[0].photos.map(
                     (photo, i) => (
-                      <LazyLoadImages src={photo.href} key={`${photo.href} - ${i}`} />
+                      <LazyLoadImages
+                        src={photo.href}
+                        key={`${photo.href} - ${i}`}
+                      />
                     )
                   )
                 : "No photos available."}

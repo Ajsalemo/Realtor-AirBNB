@@ -1,6 +1,6 @@
 import { useLazyQuery } from "@apollo/client";
 import { AUTO_COMPLETE_QUERY } from "@apollographql_queries/autoComplete";
-import DisplaySuggestions from "@components/sales/displaysuggestions/displaySuggestions";
+import DisplaySuggestions from "@components/shared/displaysuggestions/displaySuggestions";
 import FontAwesomeLib from "@components/shared/fontawesomelib/fontAwesomeLib";
 import Footer from "@components/shared/footer/footer";
 import LazyLoadImages from "@components/shared/lazyloadimages/lazyLoadImages";

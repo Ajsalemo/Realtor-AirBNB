@@ -1,23 +1,11 @@
-import FontAwesomeLib from "@components/shared/fontawesomelib/fontAwesomeLib";
-import LazyLoadImages from "@components/shared/lazyloadimages/lazyLoadImages";
 import SalePropertyDetail from "@components/sales/salepropertyupperdetail/salePropertyUpperDetail";
+import LazyLoadImages from "@components/shared/lazyloadimages/lazyLoadImages";
+import LoadingPage from "@components/shared/loadingpage/loadingPage";
 import ScrollMarker from "@components/shared/scrollmarker/scrollMarker";
-import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 export default function DisplaySaleListings({ data, forSaleLoading }) {
-  if (forSaleLoading)
-    return (
-      <div className="h-screen flex justify-center items-center text-white">
-        {" "}
-        <FontAwesomeLib
-          icon={faCircleNotch}
-          size="2x"
-          classNames={"animate-spin text-blue-600 mr-2"}
-        />
-        Loading..
-      </div>
-    );
+  if (forSaleLoading) return <LoadingPage />
     
   return (
     <div className="pt-48 md:pt-24">
