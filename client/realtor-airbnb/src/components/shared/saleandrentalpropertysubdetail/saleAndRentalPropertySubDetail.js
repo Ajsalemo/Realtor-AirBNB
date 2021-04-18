@@ -1,9 +1,4 @@
-export default function SaleAndRentalPropertySubDetail({
-  property,
-  min,
-  max,
-  roomType,
-}) {
+export default function SaleAndRentalPropertySubDetail({ min, max, roomType }) {
   return (
     /* 
         Conditionally display the min/max range for property features of the apartment
