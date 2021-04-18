@@ -11,6 +11,10 @@ export const REALTOR_FORRENT_QUERY = gql`
         community {
           price_min
           price_max
+          baths_min
+          baths_max
+          beds_min
+          beds_max
         }
         property_id
         photos
