@@ -39,15 +39,14 @@ export default function DisplaySaleAndRentalListings({
                     src={
                       rentOrSell === "sell"
                         ? property.thumbnail
-                        : property.photos[0].href
+                        : property.photos[0] && property.photos[0].href
                     }
                     classNames="rounded-lg mx-auto"
                   />
-                  {rentOrSell === "sell" ? (
-                    <SalePropertyDetail property={property} />
-                  ) : (
-                    "Possible Rent Placeholder"
-                  )}
+                  <SalePropertyDetail
+                    property={property}
+                    rentOrSell={rentOrSell}
+                  />
                 </Link>
               </div>
             ))

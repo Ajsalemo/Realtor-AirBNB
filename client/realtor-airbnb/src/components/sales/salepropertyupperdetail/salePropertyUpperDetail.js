@@ -1,10 +1,16 @@
-export default function SalePropertyUpperDetail({ property }) {
+export default function SalePropertyUpperDetail({ property, rentOrSell }) {
   return (
     <>
       {/* Show the price of the property if it exists */}
       {property && property.price ? (
         <span className="font-suez-one text-lg sm:text-xl md:text-2xl">
           ${property.price}
+        </span>
+      // If this is a rental property, display the min - max monthly rent
+      ) : property && property.community ? (
+        <span className="font-suez-one text-lg sm:text-xl md:text-2xl">
+          ${property.community.price_min} - ${property.community.price_max} 
+          <span className="font-suez-one text-sm"> /month</span>
         </span>
       ) : null}
       <div className="flex">
