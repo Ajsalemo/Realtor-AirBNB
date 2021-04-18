@@ -15,6 +15,8 @@ export const REALTOR_FORRENT_QUERY = gql`
           baths_max
           beds_min
           beds_max
+          sqft_min
+          sqft_max
         }
         property_id
         photos

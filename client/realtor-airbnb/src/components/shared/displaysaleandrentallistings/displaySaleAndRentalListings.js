@@ -1,6 +1,6 @@
-import SalePropertyDetail from "@components/sales/salepropertyupperdetail/salePropertyUpperDetail";
 import LazyLoadImages from "@components/shared/lazyloadimages/lazyLoadImages";
 import LoadingPage from "@components/shared/loadingpage/loadingPage";
+import SaleAndRentalPropertyUpperDetail from "@components/shared/saleandrentalpropertyupperdetail/saleAndRentalPropertyUpperDetail";
 import ScrollMarker from "@components/shared/scrollmarker/scrollMarker";
 import { Link } from "react-router-dom";
 
@@ -43,7 +43,7 @@ export default function DisplaySaleAndRentalListings({
                     }
                     classNames="rounded-lg mx-auto"
                   />
-                  <SalePropertyDetail
+                  <SaleAndRentalPropertyUpperDetail
                     property={property}
                     rentOrSell={rentOrSell}
                   />

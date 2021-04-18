@@ -7,7 +7,7 @@ import RealtorSearchbar from "@components/sales/realtorsearchbar/realtorSearchba
 import SalePropertyDetailMenu from "@components/sales/salepropertydetailmenu/salePropertyDetailMenu";
 import SalePropertyLowerDetail from "@components/sales/salepropertylowerdetail/salePropertyLowerDetail";
 import SalePropertySchoolListings from "@components/sales/salepropertyschoollistings/salePropertySchoolListings";
-import SalePropertyUpperDetail from "@components/sales/salepropertyupperdetail/salePropertyUpperDetail";
+import SalePropertyUpperDetail from "@components/shared/saleandrentalpropertyupperdetail/saleAndRentalPropertyUpperDetail";
 import Footer from "@components/shared/footer/footer";
 import LazyLoadImages from "@components/shared/lazyloadimages/lazyLoadImages";
 import LoadingPage from "@components/shared/loadingpage/loadingPage";

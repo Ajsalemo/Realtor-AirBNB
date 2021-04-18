@@ -1,4 +1,9 @@
-export default function SalePropertyUpperDetail({ property, rentOrSell }) {
+import SaleAndRentalPropertySubDetail from "@components/shared/saleandrentalpropertysubdetail/saleAndRentalPropertySubDetail";
+
+export default function SaleAndRentalPropertyUpperDetail({
+  property,
+  rentOrSell,
+}) {
   return (
     <>
       {/* Show the price of the property if it exists */}
@@ -16,39 +21,52 @@ export default function SalePropertyUpperDetail({ property, rentOrSell }) {
 
       <div className="flex">
         {/* Show how many bedrooms of the property if it exists */}
-        {property && property.beds ? (
+        {property && property.baths ? (
           <span className="font-suez-one">{property.beds} bed</span>
         ) : // If this is a rental property, display the min - max bedrooms
         property && property.community ? (
           <span className="font-suez-one">
-            {/* 
-              Conditionally display the min/max bedroom range
-              If one value is avaiable over the other, then display it. If both are, then display the full range
-              If none are, display nothing
-            */}
-            {property.community.beds_min && !property.community.beds_max
-              ? `${property.community.beds_min} bed`
-              : !property.community.beds_min && property.community.beds_max
-              ? `${property.community.beds_max} bed`
-              : property.community.beds_min && property.community.beds_max
-              ? `${property.community.beds_min} - ${property.community.beds_max} bed`
-              : null}
+            <SaleAndRentalPropertySubDetail
+              min={property.community.beds_min}
+              max={property.community.beds_max}
+              roomType="bed"
+            />
           </span>
         ) : null}
         {/* Show how many bathrooms of the property if it exists */}
         {property && property.baths ? (
           <span className="font-suez-one pl-6">{property.baths} baths</span>
+        ) : // If this is a rental property, display the min - max bathrooms
+        property && property.community ? (
+          <span className="font-suez-one pl-6">
+            <SaleAndRentalPropertySubDetail
+              min={property.community.baths_min}
+              max={property.community.baths_max}
+              roomType="bath"
+            />
+          </span>
         ) : null}
         {/* Show the square footage of the property if it exists */}
         {property && property.building_size ? (
           <span className="font-suez-one pl-6">
             {property.building_size.size} sqft
           </span>
+        ) : // If this is a rental property, display the min - max sqft
+        property && property.community ? (
+          <span className="font-suez-one pl-6">
+            <SaleAndRentalPropertySubDetail
+              min={property.community.sqft_min}
+              max={property.community.sqft_max}
+              roomType="sqft"
+            />
+          </span>
         ) : null}
       </div>
 
       <div className="flex flex-col">
-        <span className="font-suez-one text-xs">House for sale</span>
+        <span className="font-suez-one text-xs">
+          {rentOrSell === "sell" ? "House for sale" : "Apartment for rent"}
+        </span>
         {property && property.address ? (
           <>
             <span className="font-suez-one text-sm">
