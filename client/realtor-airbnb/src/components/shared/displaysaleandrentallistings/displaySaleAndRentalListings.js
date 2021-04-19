@@ -28,13 +28,17 @@ export default function DisplaySaleAndRentalListings({
                 key={property.property_id}
               >
                 <Link
+                  // Change the route and the state being passed in the <Link> depending on whether or not for sale or rentals are being searched for
                   to={{
                     pathname:
                       rentOrSell === "sell"
                         ? `/detail/${property.property_id}`
                         : `/rental/${property.property_id}`,
                     state: {
-                      thumbnail: rentOrSell === "sell" ? property.thumbnail : property.photos && property.photos[0],
+                      thumbnail:
+                        rentOrSell === "sell"
+                          ? property.thumbnail
+                          : property.photos && property.photos[0],
                     },
                   }}
                   className="flex flex-col w-ft mx-auto px-1"
