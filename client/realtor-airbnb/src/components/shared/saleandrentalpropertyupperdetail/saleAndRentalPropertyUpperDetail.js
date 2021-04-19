@@ -7,9 +7,12 @@ export default function SaleAndRentalPropertyUpperDetail({
   return (
     <>
       {/* Show the price of the property if it exists */}
-      {property && property.price ? (
+      {property && property.price && property.prop_type !== "apartment" ? (
         <span className="font-suez-one text-lg sm:text-xl md:text-2xl">
           ${property.price}
+          {rentOrSell === "rent" ? (
+            <span className="font-suez-one text-sm"> /month</span>
+          ) : null}
         </span>
       ) : // If this is a rental property, display the min - max monthly rent
       property && property.community ? (
@@ -65,7 +68,13 @@ export default function SaleAndRentalPropertyUpperDetail({
 
       <div className="flex flex-col">
         <span className="font-suez-one text-xs">
-          {rentOrSell === "sell" ? "House for sale" : "Apartment for rent"}
+          {rentOrSell === "sell"
+            ? "House for sale"
+            : rentOrSell === "rent" &&
+              property.community &&
+              property.prop_type === "apartment"
+            ? "Apartment for rent"
+            : "House for rent"}
         </span>
         {property && property.address ? (
           <>

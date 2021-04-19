@@ -20,7 +20,8 @@ export default function DisplaySaleAndRentalListings({
               // If the thumbnail is missing for the property - hide the result
               <div
                 className={
-                  !property.thumbnail && rentOrSell === "sell"
+                  (!property.thumbnail && rentOrSell === "sell") ||
+                  (!property.photos && rentOrSell === "rent")
                     ? "hidden"
                     : "flex"
                 }
@@ -37,7 +38,8 @@ export default function DisplaySaleAndRentalListings({
                 >
                   <LazyLoadImages
                     src={
-                      rentOrSell === "sell"
+                      rentOrSell === "sell" &&
+                      property.prop_type !== "apartment"
                         ? property.thumbnail
                         : property.photos[0] && property.photos[0].href
                     }
