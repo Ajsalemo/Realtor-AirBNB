@@ -2,6 +2,7 @@ import Home from "@pages/home/home";
 import RealtorDashboard from "@pages/realtordashboard/realtorDashboard";
 import RealtorListings from "@pages/realtorlistings/realtorListings";
 import RealtorListingsDetail from "@pages/realtorlistingsdetail/realtorListingsDetail";
+import RealtorRentalDetail from "@pages/realtorrentaldetail/realtorRentalDetail";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 export default function RouteContainer() {
@@ -15,6 +16,7 @@ export default function RouteContainer() {
         component={RealtorListings}
       />
       <Route path="/detail/:property_id" component={RealtorListingsDetail} />
+      <Route path="/rental/:property_id" component={RealtorRentalDetail} />
     </Router>
   );
 }

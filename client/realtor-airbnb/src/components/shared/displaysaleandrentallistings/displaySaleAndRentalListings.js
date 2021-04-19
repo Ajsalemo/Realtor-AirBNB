@@ -29,9 +29,12 @@ export default function DisplaySaleAndRentalListings({
               >
                 <Link
                   to={{
-                    pathname: `/detail/${property.property_id}`,
+                    pathname:
+                      rentOrSell === "sell"
+                        ? `/detail/${property.property_id}`
+                        : `/rental/${property.property_id}`,
                     state: {
-                      thumbnail: property.thumbnail,
+                      thumbnail: rentOrSell === "sell" ? property.thumbnail : property.photos && property.photos[0],
                     },
                   }}
                   className="flex flex-col w-ft mx-auto px-1"
