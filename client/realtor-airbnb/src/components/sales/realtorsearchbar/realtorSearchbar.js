@@ -43,8 +43,10 @@ export default function RealtorSearchbar() {
       ) {
         setIsUserError(false);
         setNoResultsMessage("");
+        console.log(optionalURLValues);
+
         history.push(
-          `/listings/${autocomplete[0].city}/${autocomplete[0].state_code}/${optionalURLValues.results}/0/sell/${optionalURLValues.min_price}/${optionalURLValues.max_price}/${optionalURLValues.prop_type}/${optionalURLValues.beds_min}/${optionalURLValues.baths_min}`
+          `/listings/${autocomplete[0].city}/${autocomplete[0].state_code}/${optionalURLValues.results}/0/${optionalURLValues.rentOrSell}/${optionalURLValues.min_price}/${optionalURLValues.max_price}/${optionalURLValues.prop_type}/${optionalURLValues.beds_min}/${optionalURLValues.baths_min}`
         );
       } else {
         setIsUserError(true);
@@ -64,6 +66,7 @@ export default function RealtorSearchbar() {
     optionalURLValues.max_price,
     optionalURLValues.min_price,
     optionalURLValues.prop_type,
+    optionalURLValues.rentOrSell,
   ]);
 
   return (

@@ -4,7 +4,6 @@ export default function SaleAndRentalPropertyUpperDetail({
   property,
   rentOrSell,
 }) {
-  console.log(property.community.sqft_max);
   return (
     <>
       {/* Show the price of the property if it exists */}
