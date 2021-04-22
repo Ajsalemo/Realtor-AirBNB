@@ -4,6 +4,7 @@ export default function SaleAndRentalPropertyUpperDetail({
   property,
   rentOrSell,
 }) {
+  console.log(property.community.sqft_max);
   return (
     <>
       {/* Show the price of the property if it exists */}
@@ -17,8 +18,12 @@ export default function SaleAndRentalPropertyUpperDetail({
       ) : // If this is a rental property, display the min - max monthly rent
       property && property.community ? (
         <span className="font-suez-one text-lg sm:text-xl md:text-2xl">
-          ${property.community.price_min} - ${property.community.price_max}
-          <span className="font-suez-one text-sm"> /month</span>
+          $
+          <SaleAndRentalPropertySubDetail
+            min={`${property.community.price_min}`}
+            max={`${property.community.price_max}`}
+            roomType=""
+          />
         </span>
       ) : null}
 
@@ -50,7 +55,7 @@ export default function SaleAndRentalPropertyUpperDetail({
           </span>
         ) : null}
         {/* Show the square footage of the property if it exists */}
-        {property && property.building_size ? (
+        {property && property.building_size && rentOrSell === "sell" ? (
           <span className="font-suez-one pl-6">
             {property.building_size.size} sqft
           </span>
