@@ -42,7 +42,7 @@ export default function MonthlyPaymentPropertyDetail({ data, price }) {
             </span>
           </div>
         ) : null}
-        {data.hoa_fees ? (
+        {data && data.hoa_fees ? (
           <div className="flex flex-col">
             <span className="text-white text-sm border-b-2 border-gray-500 py-4 mb-2">
               HOA Fees{" "}
@@ -52,7 +52,7 @@ export default function MonthlyPaymentPropertyDetail({ data, price }) {
             </span>
           </div>
         ) : null}
-        {data.rate ? (
+        {data && data.rate ? (
           <div className="flex flex-col">
             <span className="text-white text-sm border-b-2 border-gray-500 py-4 mb-2">
               Rate
@@ -60,7 +60,7 @@ export default function MonthlyPaymentPropertyDetail({ data, price }) {
             <span className="text-gray-400 text-xs ml-6">{data.rate} (%)</span>
           </div>
         ) : null}
-        {data.term ? (
+        {data && data.term ? (
           <div className="flex flex-col">
             <span className="text-white text-sm border-b-2 border-gray-500 py-4 mb-2">
               Mortgage loan type
@@ -70,7 +70,7 @@ export default function MonthlyPaymentPropertyDetail({ data, price }) {
             </span>
           </div>
         ) : null}
-        {data.down_payment ? (
+        {data && data.down_payment ? (
           <div className="flex flex-col">
             <span className="text-white text-sm border-b-2 border-gray-500 py-4 mb-2">
               Down payment{" "}
@@ -80,7 +80,7 @@ export default function MonthlyPaymentPropertyDetail({ data, price }) {
             </span>
           </div>
         ) : null}
-        {price ? (
+        {data && price ? (
           <div className="flex flex-col">
             <span className="text-white text-sm border-b-2 border-gray-500 py-4 mb-2">
               Home Price{" "}
@@ -89,7 +89,7 @@ export default function MonthlyPaymentPropertyDetail({ data, price }) {
           </div>
         ) : null}
       </div>
-      {data.monthly_payment ? (
+      {data && data.monthly_payment ? (
         <span className="mt-4 text-sm">
           ${data.monthly_payment} monthly payment (based on the above figures)
         </span>
