@@ -7,11 +7,12 @@ import RealtorSearchbar from "@components/sales/realtorsearchbar/realtorSearchba
 import SalePropertyDetailMenu from "@components/sales/salepropertydetailmenu/salePropertyDetailMenu";
 import SalePropertyLowerDetail from "@components/sales/salepropertylowerdetail/salePropertyLowerDetail";
 import SalePropertySchoolListings from "@components/sales/salepropertyschoollistings/salePropertySchoolListings";
-import SalePropertyUpperDetail from "@components/shared/saleandrentalpropertyupperdetail/saleAndRentalPropertyUpperDetail";
+import ErrorPage from "@components/shared/errorpage/errorPage";
 import Footer from "@components/shared/footer/footer";
 import LazyLoadImages from "@components/shared/lazyloadimages/lazyLoadImages";
 import LoadingPage from "@components/shared/loadingpage/loadingPage";
 import Navbar from "@components/shared/navbar/navbar";
+import SalePropertyUpperDetail from "@components/shared/saleandrentalpropertyupperdetail/saleAndRentalPropertyUpperDetail";
 import ScrollMarker from "@components/shared/scrollmarker/scrollMarker";
 import propertyDateTimeHelper from "@helpers/functions/propertyDateTimeHelper";
 import { useEffect } from "react";
@@ -19,8 +20,8 @@ import { useParams } from "react-router";
 
 export default function RealtorListingsDetail(state) {
   const { property_id } = useParams();
-  const { thumbnail } = state.location.state;
-  const [getRealtorForSaleDetail, { loading, data }] = useLazyQuery(
+  const { thumbnail } = state && state.location && state.location.state;
+  const [getRealtorForSaleDetail, { loading, data, error }] = useLazyQuery(
     REALTOR_FORSALE_DETAIL
   );
   useEffect(() => {
@@ -34,6 +35,17 @@ export default function RealtorListingsDetail(state) {
   }, [getRealtorForSaleDetail, property_id]);
 
   if (loading) return <LoadingPage />;
+  // Validate is any needed arguments or properties are missing before passing props or acting on data
+  // If any of these are missing - this indicates an error - show the error page is so
+  if (
+    !thumbnail ||
+    !property_id ||
+    error ||
+    !data ||
+    !data.realtorForSaleDetail ||
+    !data.realtorForSaleDetail.properties
+  )
+    return <ErrorPage />;
 
   return (
     <div className="min-h-screen relative bg-primary">
