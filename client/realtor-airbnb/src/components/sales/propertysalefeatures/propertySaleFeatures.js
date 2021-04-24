@@ -9,6 +9,7 @@ export default function PropertySaleFeatures({ data }) {
             </span>
             <ul className="flex flex-col">
               {feature &&
+                feature.text.length > 0 &&
                 feature.text.map((text, j) => (
                   <li className="text-gray-400 text-xs list-disc ml-6" key={j}>
                     {text}
