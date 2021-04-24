@@ -9,7 +9,8 @@ export default function PropertyForSaleHistory({ saleHistory, taxHistory }) {
       <div className="pb-4">
         <ul>
           {/* Check if the saleHistory array has content before mapping over it */}
-          {saleHistory.length > 0 &&
+          {saleHistory &&
+            saleHistory.length > 0 &&
             saleHistory.map((history, i) => (
               <li
                 key={`${history.price} - ${i}`}
@@ -18,8 +19,10 @@ export default function PropertyForSaleHistory({ saleHistory, taxHistory }) {
                 {history.date
                   ? `${propertyDateTimeHelper(history.date)} - `
                   : null}{" "}
-                {history.event_name ? `${history.event_name} - ` : null}$
-                {history.price ? `${history.price}` : null}
+                {history && history.event_name
+                  ? `${history.event_name} - `
+                  : null}
+                ${history && history.price ? `${history.price}` : null}
               </li>
             ))}
         </ul>
@@ -29,7 +32,8 @@ export default function PropertyForSaleHistory({ saleHistory, taxHistory }) {
       </span>
       <div>
         {/* Check if the taxHistory array has content before mapping over it */}
-        {taxHistory.length > 0 &&
+        {taxHistory &&
+          taxHistory.length > 0 &&
           taxHistory.map((tax, j) => (
             <div className="flex flex-row w-ft" key={`tax-history-${j}`}>
               <div className="flex flex-col pb-4">
@@ -37,7 +41,7 @@ export default function PropertyForSaleHistory({ saleHistory, taxHistory }) {
                   Tax year
                 </span>
                 <span className="text-gray-400 text-xs">
-                  {tax.year ? tax.year : "Not available"}
+                  {tax && tax.year ? tax.year : "Not available"}
                 </span>
               </div>
               <div className="flex flex-col pl-4">
@@ -45,7 +49,7 @@ export default function PropertyForSaleHistory({ saleHistory, taxHistory }) {
                   Taxes
                 </span>
                 <span className="text-gray-400 text-xs">
-                  {tax.tax ? `$${tax.tax}` : "Not available"}
+                  {tax && tax.tax ? `$${tax.tax}` : "Not available"}
                 </span>
               </div>
               <div className="flex flex-col pl-4">
@@ -53,7 +57,7 @@ export default function PropertyForSaleHistory({ saleHistory, taxHistory }) {
                   Land
                 </span>
                 <span className="text-gray-400 text-xs">
-                  {tax.assessment && tax.assessment.land
+                  {tax && tax.assessment && tax.assessment.land
                     ? `$${tax.assessment.land}`
                     : "Not available"}
                 </span>
@@ -63,7 +67,7 @@ export default function PropertyForSaleHistory({ saleHistory, taxHistory }) {
                   Building
                 </span>
                 <span className="text-gray-400 text-xs">
-                  {tax.assessment && tax.assessment.building
+                  {tax && tax.assessment && tax.assessment.building
                     ? `$${tax.assessment.building}`
                     : "Not available"}
                 </span>
@@ -73,7 +77,7 @@ export default function PropertyForSaleHistory({ saleHistory, taxHistory }) {
                   Total Assessment
                 </span>
                 <span className="text-gray-400 text-xs">
-                  {tax.assessment && tax.assessment.total
+                  {tax && tax.assessment && tax.assessment.total
                     ? `$${tax.assessment.total}`
                     : "Not available"}
                 </span>
