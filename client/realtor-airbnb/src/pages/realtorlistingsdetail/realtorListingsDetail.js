@@ -12,7 +12,7 @@ import Footer from "@components/shared/footer/footer";
 import LazyLoadImages from "@components/shared/lazyloadimages/lazyLoadImages";
 import LoadingPage from "@components/shared/loadingpage/loadingPage";
 import Navbar from "@components/shared/navbar/navbar";
-import SalePropertyUpperDetail from "@components/shared/saleandrentalpropertyupperdetail/saleAndRentalPropertyUpperDetail";
+import SaleAndRentalPropertyUpperDetail from "@components/shared/saleandrentalpropertyupperdetail/saleAndRentalPropertyUpperDetail";
 import ScrollMarker from "@components/shared/scrollmarker/scrollMarker";
 import propertyDateTimeHelper from "@helpers/functions/propertyDateTimeHelper";
 import { useEffect } from "react";
@@ -66,7 +66,7 @@ export default function RealtorListingsDetail(state) {
           ) : null}
           <LazyLoadImages src={thumbnail} classNames="rounded-lg w-50" />
           {/* This component displays the price, bed/bath, address under the main photo */}
-          <SalePropertyUpperDetail
+          <SaleAndRentalPropertyUpperDetail
             property={data && data.realtorForSaleDetail.properties[0]}
           />
           {/* This displays 'secondary' information such as property type, year built, list date, etc. */}

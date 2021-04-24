@@ -16,6 +16,16 @@ export const REALTOR_FORRENT_DETAIL = gql`
           line
         }
         photos
+        community {
+          baths_min
+          baths_max
+          beds_min
+          beds_max
+          price_min
+          price_max
+          sqft_min
+          sqft_max
+        }
       }
     }
   }
