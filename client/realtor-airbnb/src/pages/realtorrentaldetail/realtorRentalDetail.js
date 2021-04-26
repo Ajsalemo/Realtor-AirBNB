@@ -54,7 +54,9 @@ export default function RealtorRentalDetail(state) {
           <SaleAndRentalPropertyUpperDetail
             property={data && data.realtorForRentDetail.properties[0]}
           />
-          <RentalFloorPlans />
+          <RentalFloorPlans
+            data={data && data.realtorForRentDetail.properties[0]}
+          />
         </div>
       </div>
     </div>

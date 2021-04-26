@@ -25,6 +25,8 @@ export const REALTOR_FORRENT_DETAIL = gql`
           price_max
           sqft_min
           sqft_max
+          name
+          contact_number
         }
         floor_plans {
           availability {
@@ -35,6 +37,7 @@ export const REALTOR_FORRENT_DETAIL = gql`
           name
           sqft
           price
+          id
         }
       }
     }
