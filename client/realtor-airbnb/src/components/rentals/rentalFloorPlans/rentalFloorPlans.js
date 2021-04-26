@@ -4,11 +4,11 @@ export default function RentalFloorPlans({ data }) {
   return (
     <>
       <h2 className="font-suez-one pt-6 text-xl">
-        {data && data.community && data.community.name
+        {data && data.community.name && data.community.name !== ""
           ? `Property Details for ${data.community.name}`
           : `Property Details`}
       </h2>
-      {data && data.community && data.community.contact_number ? (
+      {data && data.community.contact_number ? (
         <h3>Call at {data.community.contact_number}</h3>
       ) : null}
       {/* 
@@ -16,7 +16,7 @@ export default function RentalFloorPlans({ data }) {
         This makes it easier to collapse all plans at once
       */}
       <SaleAndRentalPropertyDetailMenu title="Floor Plans">
-        {data && data.floor_plans && data.floor_plans.length > 0
+        {data && data.floor_plans.length > 0
           ? data.floor_plans.map((plan) => (
               <SaleAndRentalPropertyDetailMenu
                 key={plan.id}
