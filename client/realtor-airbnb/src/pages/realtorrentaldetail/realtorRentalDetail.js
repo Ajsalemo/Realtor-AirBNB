@@ -9,6 +9,9 @@ import Navbar from "@components/shared/navbar/navbar";
 import SaleAndRentalPropertyUpperDetail from "@components/shared/saleandrentalpropertyupperdetail/saleAndRentalPropertyUpperDetail";
 import { useEffect } from "react";
 import { useParams } from "react-router";
+import SaleAndRentalPropertyDetailMenu from "@components/shared/saleandrentalpropertydetailmenu/saleAndRentalPropertyDetailMenu";
+import ScrollMarker from "@components/shared/scrollmarker/scrollMarker";
+import Footer from "@components/shared/footer/footer";
 
 export default function RealtorRentalDetail(state) {
   const { property_id } = useParams();
@@ -57,8 +60,25 @@ export default function RealtorRentalDetail(state) {
           <RentalFloorPlans
             data={data && data.realtorForRentDetail.properties[0]}
           />
+          <SaleAndRentalPropertyDetailMenu title="Photos">
+            {/* This collapsable menu displays photos taken of the community/rental */}
+            <div className="text-center sm:grid sm:grid-cols-2 sm:gap-4">
+              {data && data.realtorForRentDetail.properties[0].photos.length > 0
+                ? data.realtorForRentDetail.properties[0].photos.map(
+                    (photo, i) => (
+                      <LazyLoadImages
+                        src={photo.href}
+                        key={`${photo.href} - ${i}`}
+                      />
+                    )
+                  )
+                : "No photos available."}
+            </div>
+          </SaleAndRentalPropertyDetailMenu>
         </div>
       </div>
+      <ScrollMarker />
+      <Footer />
     </div>
   );
 }
