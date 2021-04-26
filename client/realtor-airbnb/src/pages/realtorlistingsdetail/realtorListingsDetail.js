@@ -4,7 +4,7 @@ import MonthlyPaymentPropertyDetail from "@components/sales/monthlypaymentproper
 import PropertyForSaleHistory from "@components/sales/propertyforsalehistory/propertyForSaleHistory";
 import PropertySaleFeatures from "@components/sales/propertysalefeatures/propertySaleFeatures";
 import RealtorSearchbar from "@components/sales/realtorsearchbar/realtorSearchbar";
-import SalePropertyDetailMenu from "@components/sales/salepropertydetailmenu/salePropertyDetailMenu";
+import SaleAndRentalPropertyDetailMenu from "@components/shared/saleandrentalpropertydetailmenu/saleAndRentalPropertyDetailMenu";
 import SalePropertyLowerDetail from "@components/sales/salepropertylowerdetail/salePropertyLowerDetail";
 import SalePropertySchoolListings from "@components/sales/salepropertyschoollistings/salePropertySchoolListings";
 import ErrorPage from "@components/shared/errorpage/errorPage";
@@ -74,7 +74,7 @@ export default function RealtorListingsDetail(state) {
             property={data && data.realtorForSaleDetail.properties[0]}
           />
           {/* SlaePropertyDetailMenu is the collapsable menu component */}
-          <SalePropertyDetailMenu title="Property Details">
+          <SaleAndRentalPropertyDetailMenu title="Property Details">
             {/* This collapsable menu displays house description and in-depth property details */}
             {data && data.realtorForSaleDetail.properties[0].description ? (
               <p className="text-sm">
@@ -89,8 +89,8 @@ export default function RealtorListingsDetail(state) {
                 data.realtorForSaleDetail.properties[0].features
               }
             />
-          </SalePropertyDetailMenu>
-          <SalePropertyDetailMenu title="Photos">
+          </SaleAndRentalPropertyDetailMenu>
+          <SaleAndRentalPropertyDetailMenu title="Photos">
             {/* This collapsable menu displays photos taken of the home */}
             <div className="text-center sm:grid sm:grid-cols-2 sm:gap-4">
               {data && data.realtorForSaleDetail.properties[0].photos.length > 0
@@ -104,8 +104,8 @@ export default function RealtorListingsDetail(state) {
                   )
                 : "No photos available."}
             </div>
-          </SalePropertyDetailMenu>
-          <SalePropertyDetailMenu title="Home Value">
+          </SaleAndRentalPropertyDetailMenu>
+          <SaleAndRentalPropertyDetailMenu title="Home Value">
             {/* This collapsable menu displays selling history of the home */}
             {data &&
             data.realtorForSaleDetail.properties[0].property_history.length >
@@ -129,8 +129,8 @@ export default function RealtorListingsDetail(state) {
             ) : (
               "No data to display."
             )}
-          </SalePropertyDetailMenu>
-          <SalePropertyDetailMenu title="Monthly Payment">
+          </SaleAndRentalPropertyDetailMenu>
+          <SaleAndRentalPropertyDetailMenu title="Monthly Payment">
             {/* This collapsable menu displays the estimated monthly payment */}
             {data &&
             data.realtorForSaleDetail.properties[0].mortgage.estimate ? (
@@ -141,8 +141,8 @@ export default function RealtorListingsDetail(state) {
             ) : (
               "No data to display."
             )}
-          </SalePropertyDetailMenu>
-          <SalePropertyDetailMenu title="Property History">
+          </SaleAndRentalPropertyDetailMenu>
+          <SaleAndRentalPropertyDetailMenu title="Property History">
             {/* This collapsable menu displays the selling and yearly tax history */}
             <div className="flex flex-col">
               {(data &&
@@ -160,8 +160,8 @@ export default function RealtorListingsDetail(state) {
                 "No data to display."
               )}{" "}
             </div>
-          </SalePropertyDetailMenu>
-          <SalePropertyDetailMenu title="Schools">
+          </SaleAndRentalPropertyDetailMenu>
+          <SaleAndRentalPropertyDetailMenu title="Schools">
             {data &&
             data.realtorForSaleDetail.properties[0].schools.length > 0 ? (
               <SalePropertySchoolListings
@@ -170,7 +170,7 @@ export default function RealtorListingsDetail(state) {
             ) : (
               "No data to display."
             )}
-          </SalePropertyDetailMenu>
+          </SaleAndRentalPropertyDetailMenu>
         </div>
       </div>
       <ScrollMarker />

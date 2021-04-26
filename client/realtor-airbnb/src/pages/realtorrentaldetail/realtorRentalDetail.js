@@ -1,5 +1,6 @@
 import { useLazyQuery } from "@apollo/client";
 import { REALTOR_FORRENT_DETAIL } from "@apollographql_queries/realtorForRentDetail";
+import RentalFloorPlans from "@components/rentals/rentalFloorPlans/rentalFloorPlans";
 import RealtorSearchbar from "@components/sales/realtorsearchbar/realtorSearchbar";
 import ErrorPage from "@components/shared/errorpage/errorPage";
 import LazyLoadImages from "@components/shared/lazyloadimages/lazyLoadImages";
@@ -53,6 +54,7 @@ export default function RealtorRentalDetail(state) {
           <SaleAndRentalPropertyUpperDetail
             property={data && data.realtorForRentDetail.properties[0]}
           />
+          <RentalFloorPlans />
         </div>
       </div>
     </div>

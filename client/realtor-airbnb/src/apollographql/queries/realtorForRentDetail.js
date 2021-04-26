@@ -26,6 +26,16 @@ export const REALTOR_FORRENT_DETAIL = gql`
           sqft_min
           sqft_max
         }
+        floor_plans {
+          availability {
+            available
+          }
+          baths
+          beds
+          name
+          sqft
+          price
+        }
       }
     }
   }
