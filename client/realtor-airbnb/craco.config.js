@@ -12,6 +12,7 @@ module.exports = {
       "@images": path.resolve(__dirname, "src/assets/images/"),
       "@pages": path.resolve(__dirname, "src/pages/"),
       "@helpers": path.resolve(__dirname, "src/helpers/"),
+      "@layouts": path.resolve(__dirname, "src/layouts/"),
       "@apollographql_queries": path.resolve(
         __dirname,
         "src/apollographql/queries/"

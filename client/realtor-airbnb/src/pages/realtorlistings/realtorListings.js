@@ -2,9 +2,7 @@ import { useLazyQuery } from "@apollo/client";
 import { REALTOR_FORRENT_QUERY } from "@apollographql_queries/realtorForRentQuery";
 import { REALTOR_FORSALE_QUERY } from "@apollographql_queries/realtorForSaleQuery";
 import DisplaySaleAndRentalListings from "@components/shared/displaysaleandrentallistings/displaySaleAndRentalListings";
-import RealtorSearchbar from "@components/sales/realtorsearchbar/realtorSearchbar";
-import Footer from "@components/shared/footer/footer";
-import Navbar from "@components/shared/navbar/navbar";
+import ResultLayout from "@layouts/ResultLayout/resultLayout";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
@@ -73,11 +71,7 @@ export default function RealtorListings() {
   ]);
 
   return (
-    <div className="min-h-screen relative">
-      <div className="fixed w-full z-10">
-        <Navbar />
-        <RealtorSearchbar />
-      </div>
+    <ResultLayout>
       {/* 
         Splitting the Rent and Sale listings into their own components for easier component management
         The returned API's share mostly the same properties but vary just enough to warrant a splitting of components
@@ -97,7 +91,6 @@ export default function RealtorListings() {
           />
         )}
       </div>
-      <Footer />
-    </div>
+    </ResultLayout>
   );
 }

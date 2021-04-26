@@ -1,17 +1,14 @@
 import { useLazyQuery } from "@apollo/client";
 import { REALTOR_FORRENT_DETAIL } from "@apollographql_queries/realtorForRentDetail";
 import RentalFloorPlans from "@components/rentals/rentalFloorPlans/rentalFloorPlans";
-import RealtorSearchbar from "@components/sales/realtorsearchbar/realtorSearchbar";
 import ErrorPage from "@components/shared/errorpage/errorPage";
 import LazyLoadImages from "@components/shared/lazyloadimages/lazyLoadImages";
 import LoadingPage from "@components/shared/loadingpage/loadingPage";
-import Navbar from "@components/shared/navbar/navbar";
+import SaleAndRentalPropertyDetailMenu from "@components/shared/saleandrentalpropertydetailmenu/saleAndRentalPropertyDetailMenu";
 import SaleAndRentalPropertyUpperDetail from "@components/shared/saleandrentalpropertyupperdetail/saleAndRentalPropertyUpperDetail";
+import ResultLayout from "@layouts/ResultLayout/resultLayout";
 import { useEffect } from "react";
 import { useParams } from "react-router";
-import SaleAndRentalPropertyDetailMenu from "@components/shared/saleandrentalpropertydetailmenu/saleAndRentalPropertyDetailMenu";
-import ScrollMarker from "@components/shared/scrollmarker/scrollMarker";
-import Footer from "@components/shared/footer/footer";
 
 export default function RealtorRentalDetail(state) {
   const { property_id } = useParams();
@@ -45,11 +42,7 @@ export default function RealtorRentalDetail(state) {
     return <ErrorPage />;
 
   return (
-    <div className="min-h-screen relative bg-primary">
-      <div className="fixed w-full z-10">
-        <Navbar />
-        <RealtorSearchbar />
-      </div>
+    <ResultLayout>
       <div className="bg-primary text-white pt-48 md:pt-24 md:w-50 md:mx-auto">
         <div className="flex flex-col w-ft px-1 pt-12">
           <LazyLoadImages src={href} classNames="rounded-lg w-50" />
@@ -77,8 +70,6 @@ export default function RealtorRentalDetail(state) {
           </SaleAndRentalPropertyDetailMenu>
         </div>
       </div>
-      <ScrollMarker />
-      <Footer />
-    </div>
+    </ResultLayout>
   );
 }

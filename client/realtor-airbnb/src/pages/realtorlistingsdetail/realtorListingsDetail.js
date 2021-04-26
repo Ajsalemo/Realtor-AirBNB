@@ -3,18 +3,15 @@ import { REALTOR_FORSALE_DETAIL } from "@apollographql_queries/realtorForSaleDet
 import MonthlyPaymentPropertyDetail from "@components/sales/monthlypaymentpropertydetail/monthlypaymentpropertydetail";
 import PropertyForSaleHistory from "@components/sales/propertyforsalehistory/propertyForSaleHistory";
 import PropertySaleFeatures from "@components/sales/propertysalefeatures/propertySaleFeatures";
-import RealtorSearchbar from "@components/sales/realtorsearchbar/realtorSearchbar";
-import SaleAndRentalPropertyDetailMenu from "@components/shared/saleandrentalpropertydetailmenu/saleAndRentalPropertyDetailMenu";
 import SalePropertyLowerDetail from "@components/sales/salepropertylowerdetail/salePropertyLowerDetail";
 import SalePropertySchoolListings from "@components/sales/salepropertyschoollistings/salePropertySchoolListings";
 import ErrorPage from "@components/shared/errorpage/errorPage";
-import Footer from "@components/shared/footer/footer";
 import LazyLoadImages from "@components/shared/lazyloadimages/lazyLoadImages";
 import LoadingPage from "@components/shared/loadingpage/loadingPage";
-import Navbar from "@components/shared/navbar/navbar";
+import SaleAndRentalPropertyDetailMenu from "@components/shared/saleandrentalpropertydetailmenu/saleAndRentalPropertyDetailMenu";
 import SaleAndRentalPropertyUpperDetail from "@components/shared/saleandrentalpropertyupperdetail/saleAndRentalPropertyUpperDetail";
-import ScrollMarker from "@components/shared/scrollmarker/scrollMarker";
 import propertyDateTimeHelper from "@helpers/functions/propertyDateTimeHelper";
+import ResultLayout from "@layouts/ResultLayout/resultLayout";
 import { useEffect } from "react";
 import { useParams } from "react-router";
 
@@ -48,11 +45,7 @@ export default function RealtorListingsDetail(state) {
     return <ErrorPage />;
 
   return (
-    <div className="min-h-screen relative bg-primary">
-      <div className="fixed w-full z-10">
-        <Navbar />
-        <RealtorSearchbar />
-      </div>
+    <ResultLayout>
       <div className="bg-primary text-white pt-48 md:pt-24 md:w-50 md:mx-auto">
         <div className="flex flex-col w-ft px-1 pt-12">
           {/* List the Realtor who can be credited for the photo */}
@@ -173,8 +166,6 @@ export default function RealtorListingsDetail(state) {
           </SaleAndRentalPropertyDetailMenu>
         </div>
       </div>
-      <ScrollMarker />
-      <Footer />
-    </div>
+    </ResultLayout>
   );
 }
