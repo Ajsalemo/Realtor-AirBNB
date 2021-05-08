@@ -1,11 +1,14 @@
 import { useLazyQuery } from "@apollo/client";
 import { REALTOR_FORRENT_DETAIL } from "@apollographql_queries/realtorForRentDetail";
 import RentalFloorPlans from "@components/rentals/rentalFloorPlans/rentalFloorPlans";
+import SaleAndRentalPropertySchoolListings from "@components/sales/saleandrentalpropertyschoollistings/saleAndRentalPropertySchoolListings";
 import ErrorPage from "@components/shared/errorpage/errorPage";
+import FontAwesomeLib from "@components/shared/fontawesomelib/fontAwesomeLib";
 import LazyLoadImages from "@components/shared/lazyloadimages/lazyLoadImages";
 import LoadingPage from "@components/shared/loadingpage/loadingPage";
 import SaleAndRentalPropertyDetailMenu from "@components/shared/saleandrentalpropertydetailmenu/saleAndRentalPropertyDetailMenu";
 import SaleAndRentalPropertyUpperDetail from "@components/shared/saleandrentalpropertyupperdetail/saleAndRentalPropertyUpperDetail";
+import { faHammer } from "@fortawesome/free-solid-svg-icons";
 import ResultLayout from "@layouts/ResultLayout/resultLayout";
 import { useEffect } from "react";
 import { useParams } from "react-router";
@@ -67,6 +70,41 @@ export default function RealtorRentalDetail(state) {
                   )
                 : "No photos available."}
             </div>
+          </SaleAndRentalPropertyDetailMenu>
+          <SaleAndRentalPropertyDetailMenu title="Overview">
+            {/* This collapsable menu displays community description and in-depth property details */}
+            <div className="pb-8">
+              {data && data.realtorForRentDetail.properties[0].year_built ? (
+                <div className="flex flex-col">
+                  <h3 className="text-lg text-gray-400">Built</h3>
+                  <FontAwesomeLib
+                    icon={faHammer}
+                    size="2x"
+                    classNames="text-gray-400"
+                  />
+                  <p>{data.realtorForRentDetail.properties[0].year_built}</p>
+                </div>
+              ) : (
+                "No data to display."
+              )}
+            </div>
+            {data && data.realtorForRentDetail.properties[0].description ? (
+              <p className="text-sm">
+                {data.realtorForRentDetail.properties[0].description}
+              </p>
+            ) : (
+              "No data to display."
+            )}
+          </SaleAndRentalPropertyDetailMenu>
+          <SaleAndRentalPropertyDetailMenu title="Schools">
+            {data &&
+            data.realtorForRentDetail.properties[0].schools.length > 0 ? (
+              <SaleAndRentalPropertySchoolListings
+                schools={data.realtorForRentDetail.properties[0].schools}
+              />
+            ) : (
+              "No data to display."
+            )}
           </SaleAndRentalPropertyDetailMenu>
         </div>
       </div>

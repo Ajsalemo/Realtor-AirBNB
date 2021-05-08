@@ -1,6 +1,6 @@
 import capitalizeString from "@helpers/functions/capitalizeString";
 
-export default function SalePropertySchoolListings({ schools }) {
+export default function SaleAndRentalPropertySchoolListings({ schools }) {
   return (
     <div>
       {schools &&

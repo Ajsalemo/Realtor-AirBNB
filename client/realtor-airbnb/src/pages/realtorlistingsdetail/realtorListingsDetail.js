@@ -4,7 +4,7 @@ import MonthlyPaymentPropertyDetail from "@components/sales/monthlypaymentproper
 import PropertyForSaleHistory from "@components/sales/propertyforsalehistory/propertyForSaleHistory";
 import PropertySaleFeatures from "@components/sales/propertysalefeatures/propertySaleFeatures";
 import SalePropertyLowerDetail from "@components/sales/salepropertylowerdetail/salePropertyLowerDetail";
-import SalePropertySchoolListings from "@components/sales/salepropertyschoollistings/salePropertySchoolListings";
+import SalePropertySchoolListings from "@components/sales/saleandrentalpropertyschoollistings/saleAndRentalPropertySchoolListings";
 import ErrorPage from "@components/shared/errorpage/errorPage";
 import LazyLoadImages from "@components/shared/lazyloadimages/lazyLoadImages";
 import LoadingPage from "@components/shared/loadingpage/loadingPage";

@@ -34,7 +34,7 @@ export default function RentalFloorPlans({ data }) {
                       {plan && plan.sqft ? `${plan.sqft} sqft` : "N/A"}
                     </span>
                     <span className="text-gray-400 text-xs pl-2">
-                      {plan && plan.price ? `$${plan.price} price` : "N/A"}
+                      {plan && plan.price ? `$${plan.price} / month` : "N/A"}
                     </span>
                   </div>
                 </div>

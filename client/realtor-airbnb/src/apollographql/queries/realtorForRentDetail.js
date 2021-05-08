@@ -8,6 +8,8 @@ export const REALTOR_FORRENT_DETAIL = gql`
         path: "/properties/v2/detail?property_id={args.property_id}"
       ) {
       properties {
+        description
+        year_built
         address {
           city
           county
@@ -38,6 +40,21 @@ export const REALTOR_FORRENT_DETAIL = gql`
           sqft
           price
           id
+        }
+        schools {
+          name
+          funding_type
+          student_count
+          relevance
+          ratings {
+            great_schools_rating
+          }
+          grades {
+            range {
+              low
+              high
+            }
+          }
         }
       }
     }
