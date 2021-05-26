@@ -43,10 +43,9 @@ export default function RealtorSearchbar() {
       ) {
         setIsUserError(false);
         setNoResultsMessage("");
-        console.log(optionalURLValues.rentOrSell);
 
         history.push(
-          `/listings/${autocomplete[0].city}/${autocomplete[0].state_code}/${optionalURLValues.results}/0/${optionalURLValues.rentOrSell}/${optionalURLValues.min_price}/${optionalURLValues.max_price}/${optionalURLValues.prop_type}/${optionalURLValues.beds_min}/${optionalURLValues.baths_min}`
+          `/listings/${autocomplete[0].city}/${autocomplete[0].state_code}/${optionalURLValues.results}/0/${optionalURLValues.rentOrSell}/${optionalURLValues.minPrice}/${optionalURLValues.maxPrice}/${optionalURLValues.propType}/${optionalURLValues.bedsMin}/${optionalURLValues.bathsMin}`
         );
       } else {
         setIsUserError(true);
@@ -61,11 +60,11 @@ export default function RealtorSearchbar() {
     isBrowser,
     loading,
     optionalURLValues,
-    optionalURLValues.baths_min,
-    optionalURLValues.beds_min,
-    optionalURLValues.max_price,
-    optionalURLValues.min_price,
-    optionalURLValues.prop_type,
+    optionalURLValues.bathsMin,
+    optionalURLValues.bedsMin,
+    optionalURLValues.maxPrice,
+    optionalURLValues.minPrice,
+    optionalURLValues.propType,
     optionalURLValues.rentOrSell,
   ]);
 
@@ -75,13 +74,20 @@ export default function RealtorSearchbar() {
         <Formik
           initialValues={{
             location: "",
+            minPrice: 0,
+            maxPrice: null,
+            propType: "single_family",
+            bedsMin: 0,
+            bathsMin: 0,
+            results: 10000,
+            rentOrSell: "sell",
           }}
           validationSchema={FormSchemaValidation}
           onSubmit={async (values) => {
             // Set errors to false initially
             setIsError(false);
             setOptionalURLValues(values);
-            console.log(values)
+            
             // If a Apollo/GraphQL error occurs when submitting, set the error state to true to display there is an issue
             if (apolloGraphqlError) {
               setIsError(true);

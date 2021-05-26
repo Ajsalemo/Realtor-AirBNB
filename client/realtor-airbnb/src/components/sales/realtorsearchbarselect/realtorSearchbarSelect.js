@@ -10,10 +10,10 @@ export default function RealtorSearchbarSelect() {
   return (
     <>
       <Field
-        name="min_price"
+        name="minPrice"
         as="select"
-        defaultValue="Min Price"
         className="h-full ml-2"
+        value=""
       >
         <option value="Min Price" disabled>
           Min Price
@@ -25,10 +25,10 @@ export default function RealtorSearchbarSelect() {
         ))}
       </Field>
       <Field
-        name="max_price"
+        name="maxPrice"
         as="select"
-        defaultValue="Max Price"
         className="h-full ml-2"
+        value=""
       >
         <option value="Max Price" disabled>
           Max Price
@@ -40,10 +40,10 @@ export default function RealtorSearchbarSelect() {
         ))}
       </Field>
       <Field
-        name="prop_type"
+        name="propType"
         as="select"
-        defaultValue="Property Type"
         className="h-full ml-2"
+        value=""
       >
         <option value="Property Type" disabled>
           Property Type
@@ -55,9 +55,9 @@ export default function RealtorSearchbarSelect() {
         ))}
       </Field>
       <Field
-        name="beds_min"
+        name="bedsMin"
         as="select"
-        defaultValue="Beds"
+        value="Beds"
         className="h-full ml-2"
       >
         <option value="Beds" disabled>
@@ -70,10 +70,10 @@ export default function RealtorSearchbarSelect() {
         ))}
       </Field>
       <Field
-        name="baths_min"
+        name="bathsMin"
         as="select"
-        defaultValue="Baths"
         className="h-full ml-2"
+        value=""
       >
         <option value="Baths" disabled>
           Baths
@@ -87,8 +87,8 @@ export default function RealtorSearchbarSelect() {
       <Field
         name="results"
         as="select"
-        defaultValue="10000"
         className="h-full ml-2"
+        value=""
       >
         {/* If no 'results' value is chosen, then it will default to 10,000 (arbitrary number, equivalent to no limit) */}
         <option value="10000" disabled>
@@ -103,9 +103,12 @@ export default function RealtorSearchbarSelect() {
       <Field
         name="rentOrSell"
         as="select"
-        defaultValue="sell"
         className="h-full ml-2"
+        value=""
       >
+        <option value="sell" disabled>
+          For Sale
+        </option>
         <option value="sell">For Sale</option>
         <option value="rent">For Rent</option>
         ))
