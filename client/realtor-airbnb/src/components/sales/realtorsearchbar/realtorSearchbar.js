@@ -43,7 +43,7 @@ export default function RealtorSearchbar() {
       ) {
         setIsUserError(false);
         setNoResultsMessage("");
-        console.log(optionalURLValues);
+        console.log(optionalURLValues.rentOrSell);
 
         history.push(
           `/listings/${autocomplete[0].city}/${autocomplete[0].state_code}/${optionalURLValues.results}/0/${optionalURLValues.rentOrSell}/${optionalURLValues.min_price}/${optionalURLValues.max_price}/${optionalURLValues.prop_type}/${optionalURLValues.beds_min}/${optionalURLValues.baths_min}`
@@ -81,6 +81,7 @@ export default function RealtorSearchbar() {
             // Set errors to false initially
             setIsError(false);
             setOptionalURLValues(values);
+            console.log(values)
             // If a Apollo/GraphQL error occurs when submitting, set the error state to true to display there is an issue
             if (apolloGraphqlError) {
               setIsError(true);

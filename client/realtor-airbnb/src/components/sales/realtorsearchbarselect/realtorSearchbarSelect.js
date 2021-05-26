@@ -103,12 +103,9 @@ export default function RealtorSearchbarSelect() {
       <Field
         name="rentOrSell"
         as="select"
-        defaultValue="For Sale"
+        defaultValue="sell"
         className="h-full ml-2"
       >
-        <option value="sell" disabled>
-          For Sale
-        </option>
         <option value="sell">For Sale</option>
         <option value="rent">For Rent</option>
         ))
