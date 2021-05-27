@@ -12,7 +12,7 @@ export default function RealtorSearchbarSelect() {
       <Field
         name="minPrice"
         as="select"
-        className="h-full ml-2"
+        className="h-full ml-2 rounded-none"
         value=""
       >
         <option value="Min Price" disabled>
@@ -27,7 +27,7 @@ export default function RealtorSearchbarSelect() {
       <Field
         name="maxPrice"
         as="select"
-        className="h-full ml-2"
+        className="h-full ml-2 rounded-none"
         value=""
       >
         <option value="Max Price" disabled>
@@ -42,7 +42,7 @@ export default function RealtorSearchbarSelect() {
       <Field
         name="propType"
         as="select"
-        className="h-full ml-2"
+        className="h-full ml-2 rounded-none"
         value=""
       >
         <option value="Property Type" disabled>
@@ -58,7 +58,7 @@ export default function RealtorSearchbarSelect() {
         name="bedsMin"
         as="select"
         value="Beds"
-        className="h-full ml-2"
+        className="h-full ml-2 rounded-none"
       >
         <option value="Beds" disabled>
           Beds
@@ -72,7 +72,7 @@ export default function RealtorSearchbarSelect() {
       <Field
         name="bathsMin"
         as="select"
-        className="h-full ml-2"
+        className="h-full ml-2 rounded-none"
         value=""
       >
         <option value="Baths" disabled>
@@ -87,7 +87,7 @@ export default function RealtorSearchbarSelect() {
       <Field
         name="results"
         as="select"
-        className="h-full ml-2"
+        className="h-full ml-2 rounded-none"
         value=""
       >
         {/* If no 'results' value is chosen, then it will default to 10,000 (arbitrary number, equivalent to no limit) */}
@@ -103,7 +103,7 @@ export default function RealtorSearchbarSelect() {
       <Field
         name="rentOrSell"
         as="select"
-        className="h-full ml-2"
+        className="h-full ml-2 rounded-none"
         value=""
       >
         <option value="sell" disabled>

@@ -112,7 +112,7 @@ export default function RealtorSearchbar() {
                   <Field
                     name="location"
                     placeholder="Address, School, City, ZIP or Neighborhood"
-                    className="w-full"
+                    className="w-full rounded-none"
                   />
                   <button
                     type="submit"
