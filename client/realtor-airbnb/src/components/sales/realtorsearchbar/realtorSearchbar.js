@@ -107,7 +107,7 @@ export default function RealtorSearchbar() {
         >
           {({ handleSubmit, errors, touched }) => (
             <div className="relative">
-              <Form className="flex flex-col py-1 px-2 md:flex-row">
+              <Form className="flex flex-col py-1 px-2 md:flex-row h-8">
                 <div className="flex pb-2 md:pb-0 md:w-1/2">
                   <Field
                     name="location"
@@ -128,13 +128,12 @@ export default function RealtorSearchbar() {
                   >
                     <FontAwesomeLib
                       icon={!loading ? faSearch : faCircleNotch}
-                      size="2x"
                       classNames={
                         !loading && errors.location && touched.location
-                          ? "text-red-600 ml-2"
+                          ? "text-red-600 ml-2 text-xl"
                           : loading
-                          ? "animate-spin text-red-600 ml-2 transition duration-400 ease-in-out"
-                          : "text-white ml-2"
+                          ? "animate-spin text-red-600 ml-2 transition duration-400 ease-in-out text-xl"
+                          : "text-white ml-2 text-xl"
                       }
                     />
                   </button>
