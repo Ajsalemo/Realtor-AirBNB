@@ -25,7 +25,7 @@ export default function SalePropertyDetailMenu({ title, children }) {
             />
           )}
         </span>
-        <h2 className="pl-2 font-suez-one text-lg sm:text-xl md:text-2xl">
+        <h2 className="pl-2 font-raleway text-lg sm:text-xl md:text-2xl">
           {title}
         </h2>
       </div>

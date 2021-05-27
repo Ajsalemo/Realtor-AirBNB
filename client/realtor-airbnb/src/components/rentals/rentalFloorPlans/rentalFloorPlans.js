@@ -3,7 +3,7 @@ import SaleAndRentalPropertyDetailMenu from "@components/shared/saleandrentalpro
 export default function RentalFloorPlans({ data }) {
   return (
     <>
-      <h2 className="font-suez-one pt-6 text-xl">
+      <h2 className="font-raleway pt-6 text-xl">
         {data && data.community.name && data.community.name !== ""
           ? `Property Details for ${data.community.name}`
           : `Property Details`}

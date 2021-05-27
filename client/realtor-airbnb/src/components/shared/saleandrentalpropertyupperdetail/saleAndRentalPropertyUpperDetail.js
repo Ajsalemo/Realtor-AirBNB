@@ -8,15 +8,15 @@ export default function SaleAndRentalPropertyUpperDetail({
     <>
       {/* Show the price of the property if it exists */}
       {property && property.price && property.prop_type !== "apartment" ? (
-        <span className="font-suez-one text-lg sm:text-xl md:text-2xl">
+        <span className="font-raleway text-lg sm:text-xl md:text-2xl">
           ${property.price}
           {rentOrSell === "rent" ? (
-            <span className="font-suez-one text-sm"> /month</span>
+            <span className="font-raleway text-sm"> /month</span>
           ) : null}
         </span>
       ) : // If this is a rental property, display the min - max monthly rent
       property && property.community ? (
-        <span className="font-suez-one text-lg sm:text-xl md:text-2xl">
+        <span className="font-raleway text-lg sm:text-xl md:text-2xl">
           $
           <SaleAndRentalPropertySubDetail
             min={`${property.community.price_min}`}
@@ -29,10 +29,10 @@ export default function SaleAndRentalPropertyUpperDetail({
       <div className="flex">
         {/* Show how many bedrooms of the property if it exists */}
         {property && property.baths ? (
-          <span className="font-suez-one">{property.beds} bed</span>
+          <span className="font-raleway">{property.beds} bed</span>
         ) : // If this is a rental property, display the min - max bedrooms
         property && property.community ? (
-          <span className="font-suez-one">
+          <span className="font-raleway">
             <SaleAndRentalPropertySubDetail
               min={property.community.beds_min}
               max={property.community.beds_max}
@@ -42,10 +42,10 @@ export default function SaleAndRentalPropertyUpperDetail({
         ) : null}
         {/* Show how many bathrooms of the property if it exists */}
         {property && property.baths ? (
-          <span className="font-suez-one pl-6">{property.baths} baths</span>
+          <span className="font-raleway pl-6">{property.baths} baths</span>
         ) : // If this is a rental property, display the min - max bathrooms
         property && property.community ? (
-          <span className="font-suez-one pl-6">
+          <span className="font-raleway pl-6">
             <SaleAndRentalPropertySubDetail
               min={property.community.baths_min}
               max={property.community.baths_max}
@@ -55,12 +55,12 @@ export default function SaleAndRentalPropertyUpperDetail({
         ) : null}
         {/* Show the square footage of the property if it exists */}
         {property && property.building_size && rentOrSell === "sell" ? (
-          <span className="font-suez-one pl-6">
+          <span className="font-raleway pl-6">
             {property.building_size.size} sqft
           </span>
         ) : // If this is a rental property, display the min - max sqft
         property && property.community ? (
-          <span className="font-suez-one pl-6">
+          <span className="font-raleway pl-6">
             <SaleAndRentalPropertySubDetail
               min={property.community.sqft_min}
               max={property.community.sqft_max}
@@ -71,7 +71,7 @@ export default function SaleAndRentalPropertyUpperDetail({
       </div>
 
       <div className="flex flex-col">
-        <span className="font-suez-one text-xs">
+        <span className="font-raleway text-xs">
           {rentOrSell === "sell"
             ? "House for sale"
             : rentOrSell === "rent" &&
@@ -82,10 +82,10 @@ export default function SaleAndRentalPropertyUpperDetail({
         </span>
         {property && property.address ? (
           <>
-            <span className="font-suez-one text-sm">
+            <span className="font-raleway text-sm">
               {property.address.line}
             </span>
-            <span className="font-suez-one text-sm">
+            <span className="font-raleway text-sm">
               {property.address.city}, {property.address.state}{" "}
               {property.address.postal_code}
             </span>

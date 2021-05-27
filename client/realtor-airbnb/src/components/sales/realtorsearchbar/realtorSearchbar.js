@@ -146,7 +146,7 @@ export default function RealtorSearchbar() {
               </Form>
               {/* Display any errors with the form submission */}
               {errors.location && touched.location ? (
-                <span className="text-red-700 font-suez-one pl-2">
+                <span className="text-red-700 font-raleway pl-2">
                   {errors.location}
                 </span>
               ) : null}

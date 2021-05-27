@@ -10,7 +10,7 @@ module.exports = {
         "1/10": "10%",
       },
       fontFamily: {
-        "suez-one": ["Helvetica, Arial, sans-serif"],
+        "raleway": ["Raleway, Helvetica, Arial, sans-serif"],
       },
       width: {
         ft: "fit-content",

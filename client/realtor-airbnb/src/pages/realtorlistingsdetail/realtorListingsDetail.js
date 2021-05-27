@@ -3,8 +3,8 @@ import { REALTOR_FORSALE_DETAIL } from "@apollographql_queries/realtorForSaleDet
 import MonthlyPaymentPropertyDetail from "@components/sales/monthlypaymentpropertydetail/monthlypaymentpropertydetail";
 import PropertyForSaleHistory from "@components/sales/propertyforsalehistory/propertyForSaleHistory";
 import PropertySaleFeatures from "@components/sales/propertysalefeatures/propertySaleFeatures";
-import SalePropertyLowerDetail from "@components/sales/salepropertylowerdetail/salePropertyLowerDetail";
 import SalePropertySchoolListings from "@components/sales/saleandrentalpropertyschoollistings/saleAndRentalPropertySchoolListings";
+import SalePropertyLowerDetail from "@components/sales/salepropertylowerdetail/salePropertyLowerDetail";
 import ErrorPage from "@components/shared/errorpage/errorPage";
 import LazyLoadImages from "@components/shared/lazyloadimages/lazyLoadImages";
 import LoadingPage from "@components/shared/loadingpage/loadingPage";
@@ -52,7 +52,7 @@ export default function RealtorListingsDetail(state) {
           {data &&
           data.realtorForSaleDetail.properties[0].photo_attribution[0] ? (
             <div className="flex flex-col">
-              <span className="font-suez-one text-sm">
+              <span className="font-raleway text-sm">
                 {data.realtorForSaleDetail.properties[0].photo_attribution[0]}
               </span>
             </div>
@@ -74,7 +74,7 @@ export default function RealtorListingsDetail(state) {
                 {data.realtorForSaleDetail.properties[0].description}
               </p>
             ) : null}
-            <h3 className="font-suez-one pt-12">Property Features</h3>
+            <h3 className="font-raleway pt-12">Property Features</h3>
             <PropertySaleFeatures
               data={
                 data &&
