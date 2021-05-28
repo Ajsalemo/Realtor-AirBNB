@@ -1,7 +1,7 @@
 // Maximum price values for the 'realtorsearchbar.js' component
 export const realtorSearchbarMaxPrice = [
   {
-    value: undefined,
+    value: 0,
     display: "No max",
     key: "rsmax0",
   },

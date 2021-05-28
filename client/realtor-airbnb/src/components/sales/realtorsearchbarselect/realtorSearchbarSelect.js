@@ -6,16 +6,16 @@ import { realtorSearchbarPropType } from "@helpers/formValues/realtorSearchbarPr
 import { realtorSearchbarResults } from "@helpers/formValues/realtorSearchbarResults";
 import { Field } from "formik";
 
-export default function RealtorSearchbarSelect() {
+export default function RealtorSearchbarSelect({ values }) {
   return (
     <>
       <Field
         name="minPrice"
         as="select"
-        className="h-full ml-2 rounded-none"
-        value=""
+        value={values.minPrice} 
+        className="h-full ml-2 rounded-none bg-primary text-white border-2 border-gray-400 rounded-sm"
       >
-        <option value="Min Price" disabled>
+        <option value={0} defaultValue disabled>
           Min Price
         </option>
         {realtorSearchbarMinPrice.map((minPrice) => (
@@ -27,10 +27,10 @@ export default function RealtorSearchbarSelect() {
       <Field
         name="maxPrice"
         as="select"
-        className="h-full ml-2 rounded-none"
-        value=""
+        value={values.maxPrice} 
+        className="h-full ml-2 rounded-none bg-primary text-white border-2 border-gray-400 rounded-sm"
       >
-        <option value="Max Price" disabled>
+        <option value={0} defaultValue disabled>
           Max Price
         </option>
         {realtorSearchbarMaxPrice.map((minPrice) => (
@@ -42,10 +42,10 @@ export default function RealtorSearchbarSelect() {
       <Field
         name="propType"
         as="select"
-        className="h-full ml-2 rounded-none"
-        value=""
+        value={values.propType} 
+        className="h-full ml-2 rounded-none bg-primary text-white border-2 border-gray-400 rounded-sm"
       >
-        <option value="Property Type" disabled>
+        <option value="single_family" defaultValue disabled>
           Property Type
         </option>
         {realtorSearchbarPropType.map((minPrice) => (
@@ -57,10 +57,10 @@ export default function RealtorSearchbarSelect() {
       <Field
         name="bedsMin"
         as="select"
-        value="Beds"
-        className="h-full ml-2 rounded-none"
+        value={values.bedsMin} 
+        className="h-full ml-2 rounded-none bg-primary text-white border-2 border-gray-400 rounded-sm"
       >
-        <option value="Beds" disabled>
+        <option value={0} defaultValue disabled>
           Beds
         </option>
         {realtorSearchbarBedMin.map((minPrice) => (
@@ -72,10 +72,10 @@ export default function RealtorSearchbarSelect() {
       <Field
         name="bathsMin"
         as="select"
-        className="h-full ml-2 rounded-none"
-        value=""
+        value={values.bathsMin} 
+        className="h-full ml-2 rounded-none bg-primary text-white border-2 border-gray-400 rounded-sm"
       >
-        <option value="Baths" disabled>
+        <option value={0} defaultValue disabled>
           Baths
         </option>
         {realtorSearchbarBathMin.map((minPrice) => (
@@ -87,11 +87,11 @@ export default function RealtorSearchbarSelect() {
       <Field
         name="results"
         as="select"
-        className="h-full ml-2 rounded-none"
-        value=""
+        value={values.results} 
+        className="h-full ml-2 rounded-none bg-primary text-white border-2 border-gray-400 rounded-sm"
       >
         {/* If no 'results' value is chosen, then it will default to 10,000 (arbitrary number, equivalent to no limit) */}
-        <option value="10000" disabled>
+        <option value={10000} defaultValue disabled>
           Results
         </option>
         {realtorSearchbarResults.map((minPrice) => (
@@ -103,10 +103,10 @@ export default function RealtorSearchbarSelect() {
       <Field
         name="rentOrSell"
         as="select"
-        className="h-full ml-2 rounded-none"
-        value=""
+        value={values.rentOrSell} 
+        className="h-full ml-2 rounded-none bg-primary text-white border-2 border-gray-400 rounded-sm"
       >
-        <option value="sell" disabled>
+        <option value="sell" defaultValue disabled>
           For Sale
         </option>
         <option value="sell">For Sale</option>

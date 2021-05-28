@@ -72,10 +72,11 @@ export default function RealtorSearchbar() {
     <>
       <div className="bg-primary border-b-2 border-white">
         <Formik
+          enableReinitialize={true}
           initialValues={{
             location: "",
             minPrice: 0,
-            maxPrice: null,
+            maxPrice: 0,
             propType: "single_family",
             bedsMin: 0,
             bathsMin: 0,
@@ -105,7 +106,7 @@ export default function RealtorSearchbar() {
             }
           }}
         >
-          {({ handleSubmit, errors, touched }) => (
+          {({ handleSubmit, errors, touched, values }) => (
             <div className="relative">
               <Form className="flex flex-col py-1 px-2 md:flex-row h-8">
                 <div className="flex pb-2 md:pb-0 md:w-1/2">
@@ -140,7 +141,7 @@ export default function RealtorSearchbar() {
                 </div>
                 <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 md:flex">
                   {/* Select fields for the Search form */}
-                  <RealtorSearchbarSelect />
+                  <RealtorSearchbarSelect values={values} />
                 </div>
               </Form>
               {/* Display any errors with the form submission */}
