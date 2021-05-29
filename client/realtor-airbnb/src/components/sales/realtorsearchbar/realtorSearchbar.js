@@ -108,8 +108,8 @@ export default function RealtorSearchbar() {
         >
           {({ handleSubmit, errors, touched, values }) => (
             <div className="relative">
-              <Form className="flex flex-col py-1 px-2 md:flex-row h-8">
-                <div className="flex pb-2 md:pb-0 md:w-1/2">
+              <Form className="flex flex-col py-1 lg:flex-row h-8">
+                <div className="flex px-2 pb-2 md:pb-0 md:w-full">
                   <Field
                     name="location"
                     placeholder="Address, School, City, ZIP or Neighborhood"
@@ -139,7 +139,7 @@ export default function RealtorSearchbar() {
                     />
                   </button>
                 </div>
-                <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 md:flex">
+                <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-2 md:flex bg-primary lg:mt-0 md:mt-2">
                   {/* Select fields for the Search form */}
                   <RealtorSearchbarSelect values={values} />
                 </div>
