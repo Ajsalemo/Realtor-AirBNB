@@ -1,4 +1,4 @@
-import RealtorSearchbar from "@components/sales/realtorsearchbar/realtorSearchbar";
+import RealtorSearchbar from "@components/shared/realtorsearchbar/realtorSearchbar";
 import Footer from "@components/shared/footer/footer";
 import Navbar from "@components/shared/navbar/navbar";
 import ScrollMarker from "@components/shared/scrollmarker/scrollMarker";

@@ -1,6 +1,6 @@
 import FontAwesomeLib from "@components/shared/fontawesomelib/fontAwesomeLib";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
-import RealtorSearchbar from "@components/sales/realtorsearchbar/realtorSearchbar";
+import RealtorSearchbar from "@components/shared/realtorsearchbar/realtorSearchbar";
 import Navbar from "@components/shared/navbar/navbar";
 
 export default function LoadingPage() {

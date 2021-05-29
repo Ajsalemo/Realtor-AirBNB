@@ -1,4 +1,4 @@
-import RealtorSearchbar from "@components/sales/realtorsearchbar/realtorSearchbar";
+import RealtorSearchbar from "@components/shared/realtorsearchbar/realtorSearchbar";
 import Navbar from "@components/shared/navbar/navbar";
 import { useHistory } from "react-router-dom";
 

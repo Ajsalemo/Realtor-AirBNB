@@ -6,6 +6,7 @@ export default function LazyLoadImages({ src, classNames }) {
       src={src}
       alt="Images of homes for sale"
       effect="blur"
+      placeholderSrc={src}
       className={classNames || null}
     />
   );
