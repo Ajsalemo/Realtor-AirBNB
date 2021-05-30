@@ -1,4 +1,5 @@
 import { ApolloProvider } from "@apollo/client";
+import Auth0ProviderHOC from "@components/auth/auth0ProviderHOC";
 import RouteContainer from "@components/shared/routecontainer/routeContainer";
 import React from "react";
 import ReactDOM from "react-dom";
@@ -11,7 +12,9 @@ require("dotenv").config();
 ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <RouteContainer />
+      <Auth0ProviderHOC>
+        <RouteContainer />
+      </Auth0ProviderHOC>
     </ApolloProvider>
   </React.StrictMode>,
   document.getElementById("root")
