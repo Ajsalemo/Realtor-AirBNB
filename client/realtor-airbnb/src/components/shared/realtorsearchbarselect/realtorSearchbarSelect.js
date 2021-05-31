@@ -45,7 +45,7 @@ export default function RealtorSearchbarSelect({ values }) {
         value={values.propType} 
         className="h-full ml-2 rounded-none bg-primary text-white border-2 border-gray-400 rounded-sm"
       >
-        <option value="single_family" defaultValue disabled>
+        <option value="any" defaultValue disabled>
           Property Type
         </option>
         {realtorSearchbarPropType.map((minPrice) => (

@@ -16,7 +16,10 @@ export default function Navbar() {
             Home
           </Link>
         </div>
-        <AuthButton />
+        <AuthButton
+          logInOutClassname="pr-3"
+          loadingIconClassname="animate-spin text-white mr-2"
+        />
       </div>
       {/* This div contains navigation links for mobile sized screens - this is hidden on tablets and larger */}
       <div className="flex justify-end items-center h-full md:hidden pr-2">

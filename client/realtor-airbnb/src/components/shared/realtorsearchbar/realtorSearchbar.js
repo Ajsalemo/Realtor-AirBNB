@@ -77,7 +77,7 @@ export default function RealtorSearchbar() {
             location: "",
             minPrice: 0,
             maxPrice: 0,
-            propType: "single_family",
+            propType: "any",
             bedsMin: 0,
             bathsMin: 0,
             results: 10000,

@@ -52,6 +52,9 @@ export default function RealtorListings() {
           limit: limit,
           offset: offset,
           state_code: state_code,
+          beds_min: optBedsMin,
+          baths_min: optBathsMin,
+          prop_type: optPropType,
         },
       });
     }

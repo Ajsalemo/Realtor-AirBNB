@@ -1,3 +1,4 @@
+import AuthButton from "@components/shared/authbutton/authButton";
 import { Link } from "react-router-dom";
 
 export default function NavDropdown({ isOpen }) {
@@ -23,20 +24,11 @@ export default function NavDropdown({ isOpen }) {
         >
           Home
         </Link>
-        <Link
-          to="/realtor-dashboard"
-          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-          role="menuitem"
-        >
-          Realtor listings
-        </Link>
-        <Link
-          to="/"
-          className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
-          role="menuitem"
-        >
-          Log in
-        </Link>
+        {/* Login and Logout buttons */}
+        <AuthButton
+          logInOutClassname="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+          loadingIconClassname="animate-spin text-gray-700 ml-2"
+        />
       </div>
     </div>
   );
