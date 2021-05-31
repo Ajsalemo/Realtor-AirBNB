@@ -20,7 +20,7 @@
     "formik": "^2.2.6",
     "graphql": "^15.5.0",
     "graphql-anywhere": "^4.2.7",
-    "postcss": "^7",
+    "postcss": "^8",
     "qs": "^6.9.6",
     "react": "^17.0.1",
     "react-autocomplete": "^1.8.1",
