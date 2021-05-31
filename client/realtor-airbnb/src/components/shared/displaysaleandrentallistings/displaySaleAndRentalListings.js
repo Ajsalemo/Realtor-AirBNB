@@ -32,8 +32,8 @@ export default function DisplaySaleAndRentalListings({
                   to={{
                     pathname:
                       rentOrSell === "sell"
-                        ? `/detail/${property.property_id}`
-                        : `/rental/${property.property_id}`,
+                        ? `/sale/detail/${property.property_id}`
+                        : `/rental/detail/${property.property_id}`,
                     state: {
                       thumbnail:
                         rentOrSell === "sell"

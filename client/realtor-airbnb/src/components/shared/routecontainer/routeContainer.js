@@ -1,4 +1,5 @@
 import Home from "@pages/home/home";
+import Profile from "@pages/profile/profile";
 import RealtorListings from "@pages/realtorlistings/realtorListings";
 import RealtorListingsDetail from "@pages/realtorlistingsdetail/realtorListingsDetail";
 import RealtorRentalDetail from "@pages/realtorrentaldetail/realtorRentalDetail";
@@ -13,8 +14,9 @@ export default function RouteContainer() {
         path="/listings/:city/:state_code/:limit/:offset/:rentOrSell/:optPriceMin?/:optPriceMax?/:optPropType?/:optBedsMin?/:optBathsMin?"
         component={RealtorListings}
       />
-      <Route path="/detail/:property_id" component={RealtorListingsDetail} />
-      <Route path="/rental/:property_id" component={RealtorRentalDetail} />
+      <Route path="/sale/detail/:property_id" component={RealtorListingsDetail} />
+      <Route path="/rental/detail/:property_id" component={RealtorRentalDetail} />
+      <Route path="/account" component={Profile} />
     </Router>
   );
 }
