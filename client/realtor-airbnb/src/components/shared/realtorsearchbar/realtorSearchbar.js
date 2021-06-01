@@ -1,15 +1,21 @@
 import { useLazyQuery } from "@apollo/client";
 import { AUTO_COMPLETE_QUERY } from "@apollographql_queries/autoComplete";
-import RealtorSearchbarSelect from "@components/shared/realtorsearchbarselect/realtorSearchbarSelect";
 import FontAwesomeLib from "@components/shared/fontawesomelib/fontAwesomeLib";
-import { faCircleNotch, faSearch } from "@fortawesome/free-solid-svg-icons";
+import RealtorSearchbarSelect from "@components/shared/realtorsearchbarselect/realtorSearchbarSelect";
+import {
+  faAngleLeft,
+  faCircleNotch,
+  faSearch,
+} from "@fortawesome/free-solid-svg-icons";
 import { FormSchemaValidation } from "@helpers/formSchemaValidation/FormSchemaValidation";
 import { Field, Form, Formik } from "formik";
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 export default function RealtorSearchbar() {
   const history = useHistory();
+  const location = useLocation();
+  const path = location.pathname;
   // Check if the 'window' object is available
   const isBrowser = typeof window !== "undefined";
   const [isError, setIsError] = useState(false);
@@ -88,7 +94,7 @@ export default function RealtorSearchbar() {
             // Set errors to false initially
             setIsError(false);
             setOptionalURLValues(values);
-            
+
             // If a Apollo/GraphQL error occurs when submitting, set the error state to true to display there is an issue
             if (apolloGraphqlError) {
               setIsError(true);
@@ -149,6 +155,19 @@ export default function RealtorSearchbar() {
                 <span className="text-red-700 font-raleway pl-2">
                   {errors.location}
                 </span>
+              ) : null}
+              {/* Display a link to go back to the results page - only display this on the details page for sales/rental properties*/}
+              {path.includes("/detail") ? (
+                <button
+                  onClick={() => history.goBack()}
+                  className="text-white pl-2 block"
+                >
+                  <FontAwesomeLib
+                    icon={faAngleLeft}
+                    classNames="text-white mr-2"
+                  />
+                  Back to results
+                </button>
               ) : null}
             </div>
           )}
