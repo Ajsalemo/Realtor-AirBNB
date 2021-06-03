@@ -3,7 +3,7 @@ import { REALTOR_FORSALE_DETAIL } from "@apollographql_queries/realtorForSaleDet
 import MonthlyPaymentPropertyDetail from "@components/sales/monthlypaymentpropertydetail/monthlypaymentpropertydetail";
 import PropertyForSaleHistory from "@components/sales/propertyforsalehistory/propertyForSaleHistory";
 import PropertySaleFeatures from "@components/sales/propertysalefeatures/propertySaleFeatures";
-import SalePropertySchoolListings from "@components/sales/saleandrentalpropertyschoollistings/saleAndRentalPropertySchoolListings";
+import SalePropertySchoolListings from "@components/shared/saleandrentalpropertyschoollistings/saleAndRentalPropertySchoolListings";
 import SalePropertyLowerDetail from "@components/sales/salepropertylowerdetail/salePropertyLowerDetail";
 import ErrorPage from "@components/shared/errorpage/errorPage";
 import LazyLoadImages from "@components/shared/lazyloadimages/lazyLoadImages";

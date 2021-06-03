@@ -1,7 +1,7 @@
 import { useLazyQuery } from "@apollo/client";
 import { REALTOR_FORRENT_DETAIL } from "@apollographql_queries/realtorForRentDetail";
 import RentalFloorPlans from "@components/rentals/rentalFloorPlans/rentalFloorPlans";
-import SaleAndRentalPropertySchoolListings from "@components/sales/saleandrentalpropertyschoollistings/saleAndRentalPropertySchoolListings";
+import SaleAndRentalPropertySchoolListings from "@components/shared/saleandrentalpropertyschoollistings/saleAndRentalPropertySchoolListings";
 import ErrorPage from "@components/shared/errorpage/errorPage";
 import FontAwesomeLib from "@components/shared/fontawesomelib/fontAwesomeLib";
 import LazyLoadImages from "@components/shared/lazyloadimages/lazyLoadImages";
