@@ -1,8 +1,9 @@
 import { useAuth0 } from "@auth0/auth0-react";
+import AuthButton from "@components/shared/authbutton/authButton";
 import FontAwesomeLib from "@components/shared/fontawesomelib/fontAwesomeLib";
 import LazyLoadImages from "@components/shared/lazyloadimages/lazyLoadImages";
 import NavDropdown from "@components/shared/navdropdown/navDropdown";
-import { faBars, faCircleNotch } from "@fortawesome/free-solid-svg-icons";
+import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -11,9 +12,8 @@ export default function Navbar() {
   const [isOpen, expandDropdown] = useState(false);
   return (
     <nav className="h-12 bg-primary border-b-2 border-white font-raleway text-white">
-      {/* This div contains navigation links for tablet sized screens and bigger - this is hidden on mobile */}
-      <div className="hidden md:flex md:justify-between md:items-center h-full pl-2">
-        <div>
+      <div className="flex justify-end md:justify-between md:items-center h-full pl-2">
+        <div className="hidden md:flex">
           <Link to="/" className="pr-3">
             Home
           </Link>
@@ -21,7 +21,6 @@ export default function Navbar() {
         <div className="flex justify-end items-center h-full pr-2">
           <button
             onClick={() => expandDropdown(!isOpen)}
-            onBlur={() => expandDropdown(!isOpen)}
             className="rounded-full"
           >
             {isLoading ? (
@@ -36,7 +35,7 @@ export default function Navbar() {
                 classNames="h-10 w-10 rounded-full"
               />
             ) : (
-              <FontAwesomeLib icon={faBars} size="2x" classNames="text-white" />
+              <AuthButton />
             )}
           </button>
         </div>
